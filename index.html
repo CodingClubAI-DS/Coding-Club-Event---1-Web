@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Coding Club — AI × AGENTICTHON</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- COUNTDOWN STYLE -->
+    <style>
+        /* =========================
+           AGENTICTHON COUNTDOWN
+        ========================= */
+
+        .countdown {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 38px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .countdown-box {
+            position: relative;
+            min-width: 105px;
+            padding: 15px 18px 12px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 217, 255, 0.10),
+                    rgba(110, 0, 255, 0.16)
+                );
+
+            border: 1px solid rgba(0, 217, 255, 0.75);
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow:
+                0 0 8px rgba(0, 217, 255, 0.35),
+                0 0 25px rgba(0, 217, 255, 0.12),
+                inset 0 0 18px rgba(0, 217, 255, 0.08);
+
+            backdrop-filter: blur(10px);
+
+            overflow: hidden;
+
+            transition: 0.3s ease;
+        }
+
+        .countdown-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 12px;
+            right: 12px;
+            height: 1px;
+
+            background: #00d9ff;
+
+            box-shadow:
+                0 0 8px #00d9ff,
+                0 0 15px #00d9ff;
+        }
+
+        .countdown-box::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 18px;
+            right: 18px;
+            height: 1px;
+
+            background: #b400ff;
+
+            box-shadow:
+                0 0 8px #b400ff,
+                0 0 15px #b400ff;
+        }
+
+        .countdown-box:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 0 12px rgba(0, 217, 255, 0.7),
+                0 0 35px rgba(160, 0, 255, 0.25),
+                inset 0 0 20px rgba(0, 217, 255, 0.12);
+        }
+
+        .countdown-box span {
+            display: block;
+
+            font-family: "Orbitron", sans-serif;
+            font-size: 34px;
+            font-weight: 800;
+
+            line-height: 1;
+
+            color: #ffffff;
+
+            letter-spacing: 2px;
+
+            text-shadow:
+                0 0 5px #ffffff,
+                0 0 12px #00d9ff,
+                0 0 25px rgba(0, 217, 255, 0.8);
+        }
+
+        .countdown-box small {
+            display: block;
+
+            margin-top: 9px;
+
+            font-family: "Orbitron", sans-serif;
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            color: #00d9ff;
+
+            text-shadow:
+                0 0 8px #00d9ff;
+        }
+
+        /* Connecting lines */
+        .countdown-box:not(:last-child)::marker {
+            display: none;
+        }
+
+        /* Small glowing dots between boxes */
+        .countdown-box + .countdown-box {
+            margin-left: 5px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            .countdown {
+                gap: 6px;
+                margin-top: 28px;
+            }
+
+            .countdown-box {
+                min-width: 72px;
+                padding: 12px 5px 10px;
+                border-radius: 8px;
+            }
+
+            .countdown-box span {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+
+            .countdown-box small {
+                margin-top: 6px;
+                font-size: 6px;
+                letter-spacing: 1px;
+            }
+        }
+
+        @media (max-width: 420px) {
+
+            .countdown {
+                gap: 4px;
+            }
+
+            .countdown-box {
+                min-width: 62px;
+                padding: 10px 3px;
+            }
+
+            .countdown-box span {
+                font-size: 18px;
+            }
+
+            .countdown-box small {
+                font-size: 5px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         BACKGROUND EFFECTS
+    ========================== -->
+
+    <div class="fx" aria-hidden="true">
+
+        <div class="stars"></div>
+
+        <div class="scan"></div>
+
+        <div class="nebula n1"></div>
+        <div class="nebula n2"></div>
+
+        <div class="ai-grid"></div>
+
+        <div class="ai-haze haze1"></div>
+        <div class="ai-haze haze2"></div>
+
+        <div class="planet"></div>
+
+        <div class="rings r1"></div>
+        <div class="rings r2"></div>
+
+        <div class="visual-orbs"></div>
+        <div class="visual-cubes"></div>
+        <div class="visual-hexes"></div>
+
+        <div class="circuit-field"></div>
+
+        <div class="neural-network"></div>
+
+        <div class="brain-visual">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+
+                <path
+                    d="M72 145c-23-5-39-22-39-46 0-16 8-29 20-37-2-25 15-44 39-44 13 0 24 5 32 14 8-9 19-14 32-14 24 0 41 19 39 44 12 8 20 21 20 37 0 24-16 41-39 46-7 15-19 23-37 23H109c-18 0-30-8-37-23Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="5"
+                    stroke-linejoin="round" />
+
+                <path
+                    d="M82 30c-9 8-11 19-7 29M55 66c14 2 22 10 23 23M46 105c15-2 26 5 31 18M91 61c10 7 14 17 10 29M92 119c8-9 18-12 30-9M138 31c9 8 11 19 7 29M165 66c-14 2-22 10-23 23M174 105c-15-2-26 5-31 18M129 61c-10 7-14 17-10 29M128 119c-8-9-18-12-30-9M110 44v92M77 91h65"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    opacity=".85" />
+
+            </svg>
+        </div>
+
+        <div class="ai-core">
+            <span></span>
+            <i></i>
+            <b></b>
+        </div>
+
+        <div class="particles">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="brand">
+
+            <div class="logos">
+
+                <img src="assets/college-logo.png">
+
+                <img src="assets/coding-club-logo.png">
+
+                <img src="assets/ai-nexus-logo.png">
+
+                <img src="assets/innovate-logo.png">
+
+            </div>
+
+            <div>
+
+                <b>MAHENDRA ENGINEERING COLLEGE</b>
+
+                <small>
+                    (Autonomous, Mahendrapuri, Mallasamudram, Namakkal)
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button class="hamb">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav>
+
+            <a class="active" href="#home">Home</a>
+
+            <a href="#workshop">Workshop</a>
+
+            <a href="#hackathon">Hackathon</a>
+
+            <a href="#team">Team</a>
+
+            <a href="#faq">FAQ</a>
+
+            <a href="#contact">Contact</a>
+
+            <a class="cta" href="#register">
+                Register Now ↗
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main id="home">
+
+
+        <!-- =========================
+             HERO SECTION
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="hero-inner">
+
+                <div class="eyebrow">
+
+                    <span></span>
+
+                    CODING CLUB PRESENTS
+
+                    <span></span>
+
+                </div>
+
+
+                <h1>
+
+                    <em>AI ×</em>
+
+                    <strong>AGENTICTHON</strong>
+
+                </h1>
+
+
+                <p class="lead">
+
+                    Two days. One campus. Learn with AI,
+                    then build fast at a high-energy hackathon.
+
+                </p>
+
+
+                <div class="date-line">
+
+                    ◈ 24–25 SEPTEMBER 2026
+
+                    &nbsp; ◈ &nbsp;
+
+                    MAHENDRA ENGINEERING COLLEGE
+
+                </div>
+
+
+                <!-- HERO BUTTONS -->
+
+                <div class="hero-buttons">
+
+                    <a href="#workshop">
+                        Explore Events ↓
+                    </a>
+
+                    <a class="cta" href="#register">
+                        Register Now
+                    </a>
+
+                </div>
+
+
+                <!-- =========================
+                     COUNTDOWN TIMER
+                ========================== -->
+
+                <div class="countdown">
+
+                    <div class="countdown-box">
+
+                        <span id="days">00</span>
+
+                        <small>DAYS</small>
+
+                    </div>
+
+
+                    <div class="countdown-box">
+
+                        <span id="hours">00</span>
+
+                        <small>HOURS</small>
+
+                    </div>
+
+
+                    <div class="countdown-box">
+
+                        <span id="minutes">00</span>
+
+                        <small>MINUTES</small>
+
+                    </div>
+
+
+                    <div class="countdown-box">
+
+                        <span id="seconds">00</span>
+
+                        <small>SECONDS</small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO ORB -->
+
+            <div class="hero-orb">
+
+                <img src="assets/Club Logo Png.png">
+
+                <span>
+                    AI · BUILD · COMPETE
+                </span>
+
+                <b>
+                    24 — 25 SEP
+                </b>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXPERIENCE
+        ========================== -->
+
+        <section class="section experience">
+
+            <div class="kicker">
+                THE EXPERIENCE
+            </div>
+
+            <h2>
+                Where Concepts Become Code,
+                <br>
+                <span>and Code Becomes Creation.</span>
+            </h2>
+
+            <p>
+                Select your tech stack,
+                or dive deep into the ultimate tech weekend.
+            </p>
+
+
+            <div class="event-grid">
+
+
+                <!-- AI WORKSHOP -->
+
+                <article class="event" id="workshop">
+
+                    <div class="event-img campus">
+
+                        <span>
+                            24
+                            <br>
+                            <small>SEPT</small>
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-body">
+
+                        <div class="tag">
+                            WORKSHOP
+                        </div>
+
+                        <h3>
+                            AI Workshop
+                        </h3>
+
+                        <p>
+                            A hands-on AI experience designed for students.
+                        </p>
+
+
+                        <div class="facts">
+
+                            <span>
+                                ₹199
+                                <small>Fee</small>
+                            </span>
+
+                            <span>
+                                200
+                                <small>Max participants</small>
+                            </span>
+
+                            <span>
+                                Optional
+                                <small>Laptop</small>
+                            </span>
+
+                        </div>
+
+
+                        <div class="chips">
+
+                            <b>🎓 Certificate</b>
+
+                            <b>🎒 Workshop Kit</b>
+
+                            <b>🎉 Fun Activity</b>
+
+                            <b>🥤 Refreshments</b>
+
+                            <b>❌ 🍽️ Lunch not provided</b>
+
+                        </div>
+
+
+                        <div class="location">
+                            ⌖ Thiruvalluvar Arangam &amp; VoC Arangam
+                        </div>
+
+
+                        <a class="event-btn"
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
+                            target="_blank"
+                            rel="noopener">
+
+                            Register for AI Workshop →
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- AGENTICTHON -->
+
+                <article class="event" id="hackathon">
+
+                    <div class="event-img campus aerial">
+
+                        <span>
+                            25
+                            <br>
+                            <small>SEPT</small>
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-body">
+
+                        <div class="tag pink">
+                            HACKATHON
+                        </div>
+
+                        <h3>
+                            AGENTICTHON
+                        </h3>
+
+                        <p>
+                            A fast-paced hackathon for teams ready to build under pressure.
+                        </p>
+
+
+                        <div class="facts">
+
+                            <span>
+                                ₹199
+                                <small>Per head</small>
+                            </span>
+
+                            <span>
+                                1–5
+                                <small>Members</small>
+                            </span>
+
+                            <span>
+                                ₹12K
+                                <small>Prize pool</small>
+                            </span>
+
+                        </div>
+
+
+                        <div class="chips">
+
+                            <b>🎓 Certificate</b>
+
+                            <b>🎉 Fun Activities</b>
+
+                            <b>❌ 🍽️ Food not provided</b>
+
+                            <b>🥤 Refreshments</b>
+
+                        </div>
+
+
+                        <div class="location">
+                            ⌖ MG Auditorium · Prize pool: ₹12,000
+                        </div>
+
+
+                        <a class="event-btn pink-btn"
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSc7CL5igNfzYNUMa1JRG6yKdPZKBJz-Kqf3IHec0rHO3BdU6g/viewform?usp=header"
+                            target="_blank"
+                            rel="noopener">
+
+                            Register for AGENTICTHON →
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRIZE SECTION
+        ========================== -->
+
+        <section class="prize-section">
+
+            <div class="kicker">
+                AGENTICTHON
+            </div>
+
+            <h2>
+                ₹12,000
+                <span>prize pool.</span>
+            </h2>
+
+            <p>
+                Top five teams take home prizes.
+            </p>
+
+
+            <div class="prizes">
+
+                <div>
+                    <b>1ST</b>
+                    <strong>₹5,000</strong>
+                </div>
+
+                <div>
+                    <b>2ND</b>
+                    <strong>₹3,000</strong>
+                </div>
+
+                <div>
+                    <b>3RD</b>
+                    <strong>₹2,000</strong>
+                </div>
+
+                <div>
+                    <b>4TH</b>
+                    <strong>₹1,000</strong>
+                </div>
+
+                <div>
+                    <b>5TH</b>
+                    <strong>₹1,000</strong>
+                </div>
+
+            </div>
+
+
+            <div class="benefits">
+
+                <span>
+                    🏅 Certificates
+                    <small>For participants.</small>
+                </span>
+
+                <span>
+                    🎒 Workshop Kit
+                    <small>Included with AI Workshop.</small>
+                </span>
+
+                <span>
+                    🎉 Fun Activities
+                    <small>Across the event experience.</small>
+                </span>
+
+                <span>
+                    🚀 Build &amp; Innovate
+                    <small>Show what you can create.</small>
+                </span>
+
+                <span>
+                    🏆 Top 5 Prizes
+                    <small>₹12,000 total prize pool.</small>
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CAMPUS
+        ========================== -->
+
+        <section class="section campus-section">
+
+            <div class="kicker">
+                WHERE IT HAPPENS
+            </div>
+
+            <h2>
+                Inside the
+                <span>campus.</span>
+            </h2>
+
+
+            <div class="campus-card">
+
+                <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/campus-building.png">
+
+                <div>
+
+                    <h3>
+                        Mahendra Engineering College
+                    </h3>
+
+                    <p>
+                        Our campus is the backdrop for both experiences.
+                    </p>
+
+
+                    <div class="venue">
+
+                        <b>AI Workshop</b>
+
+                        <span>
+                            24 September · Thiruvalluvar Arangam &amp; VoC Arangam
+                        </span>
+
+                        <b>AGENTICTHON</b>
+
+                        <span>
+                            25 September · MG Auditorium
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================== -->
+
+        <section class="section faq" id="faq">
+
+            <div class="kicker">
+                FAQ
+            </div>
+
+            <h2>
+                Good to
+                <span>know.</span>
+            </h2>
+
+
+            <div class="faq-grid">
+
+                <details open>
+
+                    <summary>
+                        Is a laptop required for the AI Workshop?
+                    </summary>
+
+                    <p>
+                        No. A laptop is optional.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        What is included with the AI Workshop?
+                    </summary>
+
+                    <p>
+                        Certificate, workshop kit, fun activity and refreshments.
+                        Lunch is not provided.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        How many people can be in an AGENTICTHON team?
+                    </summary>
+
+                    <p>
+                        Teams can have 1 to 5 members.
+                        The fee is ₹179 per person.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Is food provided during AGENTICTHON?
+                    </summary>
+
+                    <p>
+                        No. Food is not provided.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        How are judges allocated?
+                    </summary>
+
+                    <p>
+                        The planned allocation is 1 judge for every 10 teams.
+                        At 50 teams, that is 5 judges.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Where will registration happen?
+                    </summary>
+
+                    <p>
+                        The website will open the relevant Google Form.
+                        The final form links will be added later.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TEAM
+        ========================== -->
+
+        <section class="section team" id="team">
+
+            <div class="kicker">
+                MEET THE CODING CLUB
+            </div>
+
+            <h2>
+                The team behind
+                <span>AI × CODING CLUB.</span>
+            </h2>
+
+            <p>
+                Our student leadership and operations team driving the event
+                from idea to execution.
+            </p>
+
+
+            <div class="team-grid">
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/president-pavithra.jpeg">
+                    <b>Pavithra N</b>
+                    <small>President</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/president-balamurugan.jpeg">
+                    <b>Balamurugan R</b>
+                    <small>President</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/Sujaycs.jpeg">
+                    <b>Sujay Chidambaram C S</b>
+                    <small>President</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/praveen.jpeg">
+                    <b>Praveen K Y</b>
+                    <small>Operation Lead</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/pooja%20v%2824%29.jpeg">
+                    <b>Pooja V (24/07)</b>
+                    <small>Executive Lead</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/Janashree.png">
+                    <b>Janashree R</b>
+                    <small>Strategy Lead</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/pooja%20v%20%2820%29.jpeg">
+                    <b>Pooja V (20/8)</b>
+                    <small>Operation Manager</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/jessika.jpeg">
+                    <b>Jessika B</b>
+                    <small>Strategy Manager</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/keerthana.jpeg">
+                    <b>Keerthana E</b>
+                    <small>Strategy Director</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/kalaimathi.jpeg">
+                    <b>Kalaimathi V</b>
+                    <small>Executive Director</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/kowshiga.jpeg">
+                    <b>Kowshigadevi S</b>
+                    <small>Executive Governor</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/Saran.jpeg">
+                    <b>Saran L</b>
+                    <small>Operations Officer</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+                <div class="person">
+                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/Srithar.jpeg">
+                    <b>Srithar K</b>
+                    <small>Data Intelligence Lead</small>
+                    <em>Coding Club · AI &amp; DS</em>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section class="section contact" id="contact">
+
+            <div class="kicker">
+                CONTACT
+            </div>
+
+            <h2>
+                Talk to the
+                <span>team.</span>
+            </h2>
+
+
+            <div class="contact-grid">
+
+                <div>
+
+                    <b>CODING CLUB</b>
+
+                    <strong>Saran</strong>
+
+                    <span>
+                        AI &amp; DS · OPERATIONS OFFICER · Coding Club
+                    </span>
+
+                    <a href="tel:+919500593351">
+                        +91 95005 93351
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <b>CODING CLUB</b>
+
+                    <strong>Kalaimathi</strong>
+
+                    <span>
+                        AI &amp; DS · EXECUTIVE DIRECTOR · Coding Club
+                    </span>
+
+                    <a href="tel:+916381618631">
+                        +91 63816 18631
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <b>STAFF COORDINATORS</b>
+
+                    <strong>Nithya M</strong>
+
+                    <span>
+                        AP / AI &amp; DS
+                    </span>
+
+                    <a href="tel:+919524746744">
+                        +91 95247 46744
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <b>STAFF COORDINATORS</b>
+
+                    <strong>Mekala R</strong>
+
+                    <span>
+                        AP / AI &amp; DS
+                    </span>
+
+                    <a href="tel:+918778422234">
+                        +91 87784 22234
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL
+        ========================== -->
+
+        <section class="final">
+
+            <div class="kicker">
+                24 — 25 SEPTEMBER 2026
+            </div>
+
+            <h2>
+                Ready to learn, build and compete?
+            </h2>
+
+            <p>
+                Choose the AI Workshop or enter AGENTICTHON.
+                Your Google Form links can be connected when they are ready.
+            </p>
+
+            <a class="cta" href="#register">
+                Register Now ↗
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             REGISTRATION
+        ========================== -->
+
+        <section class="registration" id="register">
+
+            <div class="kicker">
+                REGISTRATION
+            </div>
+
+            <h2>
+                Choose your
+                <span>event.</span>
+            </h2>
+
+            <p>
+                Select an experience below.
+                Each registration button opens its respective Google Form.
+            </p>
+
+
+            <div class="reg-grid">
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
+                    target="_blank"
+                    rel="noopener">
+
+                    <b>🧠 AI Workshop</b>
+
+                    <span>
+                        24 Sept · ₹199 · Max 200
+                    </span>
+
+                    <em>
+                        Register →
+                    </em>
+
+                </a>
+
+
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7CL5igNfzYNUMa1JRG6yKdPZKBJz-Kqf3IHec0rHO3BdU6g/viewform?usp=header"
+                    target="_blank"
+                    rel="noopener">
+
+                    <b>
+                        🚀 AGENTICTHON (HACKATHON)
+                    </b>
+
+                    <span>
+                        25 Sept · ₹199/person · Teams 1–5
+                    </span>
+
+                    <em>
+                        Register →
+                    </em>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <span>
+            MAHENDRA ENGINEERING COLLEGE · CODING CLUB AI &amp; DS
+        </span>
+
+        <span>
+            AI Workshop · AGENTICTHON · 24–25 September 2026
+        </span>
+
+    </footer>
+
+
+    <!-- =========================
+         EXISTING SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+
+    <!-- =========================
+         COUNTDOWN JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* AGENTICTHON EVENT DATE
+           24 September 2026
+           9:00 AM
+        */
+
+        const eventDate =
+            new Date("September 24, 2026 09:00:00").getTime();
+
+
+        function updateCountdown() {
+
+            const now =
+                new Date().getTime();
+
+            const distance =
+                eventDate - now;
+
+
+            /* EVENT STARTED */
+
+            if (distance <= 0) {
+
+                document.getElementById("days").textContent = "00";
+
+                document.getElementById("hours").textContent = "00";
+
+                document.getElementById("minutes").textContent = "00";
+
+                document.getElementById("seconds").textContent = "00";
+
+                return;
+            }
+
+
+            /* CALCULATE TIME */
+
+            const days =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            const hours =
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60 * 24))
+                    /
+                    (1000 * 60 * 60)
+                );
+
+
+            const minutes =
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60))
+                    /
+                    (1000 * 60)
+                );
+
+
+            const seconds =
+                Math.floor(
+                    (distance %
+                        (1000 * 60))
+                    /
+                    1000
+                );
+
+
+            /* DISPLAY */
+
+            document.getElementById("days").textContent =
+                String(days).padStart(2, "0");
+
+
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
+
+
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
+
+
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
+
+        }
+
+
+        /* RUN IMMEDIATELY */
+
+        updateCountdown();
+
+
+        /* UPDATE EVERY SECOND */
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+    </script>
+
+</body>
+
+</html>
