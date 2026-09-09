@@ -191,6 +191,57 @@
                 font-size: 5px;
             }
         }
+
+
+        /* =========================
+           WORKSHOP + AGENTICTHON COMBO
+        ========================= */
+
+        .reg-grid .combo-card {
+            grid-column: 1 / -1;
+            position: relative;
+            text-align: center;
+            border-color: rgba(255, 43, 214, 0.65);
+            background: linear-gradient(135deg, rgba(8, 20, 54, 0.82), rgba(48, 5, 50, 0.78));
+            box-shadow: 0 0 35px rgba(255, 43, 214, 0.12), inset 0 0 30px rgba(112, 45, 255, 0.06);
+        }
+
+        .reg-grid .combo-card:hover {
+            transform: translateY(-4px);
+            border-color: #ff2bd6;
+            box-shadow: 0 0 35px rgba(255, 43, 214, 0.28), 0 0 60px rgba(92, 50, 255, 0.14);
+        }
+
+        .combo-card .combo-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 43, 214, 0.7);
+            border-radius: 20px;
+            color: #ff7be6;
+            background: rgba(255, 43, 214, 0.08);
+            font: 700 10px Orbitron;
+            letter-spacing: 2px;
+        }
+
+        .combo-card b {
+            font-size: 19px !important;
+        }
+
+        .combo-card span {
+            font-size: 13px !important;
+        }
+
+        .combo-card em {
+            color: #ff6be3 !important;
+        }
+
+        @media (max-width: 800px) {
+            .reg-grid .combo-card {
+                grid-column: auto;
+            }
+        }
+
     </style>
 </head>
 
@@ -936,7 +987,7 @@
                 </div>
 
                 <div class="person">
-                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/president-balamurugan.jpeg">
+                    <img src="assets/bala.jpeg">
                     <b>Balamurugan R</b>
                     <small>President</small>
                     <em>Coding Club · AI &amp; DS</em>
@@ -1006,7 +1057,7 @@
                 </div>
 
                 <div class="person">
-                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/Saran.jpeg">
+                    <img src="assets/saran.jpeg">
                     <b>Saran L</b>
                     <small>Operations Officer</small>
                     <em>Coding Club · AI &amp; DS</em>
@@ -1190,6 +1241,30 @@
 
                     <span>
                         25 Sept · ₹199/person · Teams 1–5
+                    </span>
+
+                    <em>
+                        Register →
+                    </em>
+
+                </a>
+
+
+                <!-- WORKSHOP + AGENTICTHON COMBO -->
+
+                <a class="combo-card"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSehtvuJuJHM-3ES4yR0Zbm19rv9ApH9oMwK4N9vBtlKagXePg/viewform?usp=header"
+                    target="_blank"
+                    rel="noopener">
+
+                    <div class="combo-badge">👑 BEST VALUE</div>
+
+                    <b>
+                        🎁 Workshop + AGENTICTHON Combo
+                    </b>
+
+                    <span>
+                        24–25 Sept · ₹359 · Both Events
                     </span>
 
                     <em>
