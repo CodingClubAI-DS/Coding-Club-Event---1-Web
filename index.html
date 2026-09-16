@@ -733,20 +733,51 @@
         }
 
         .institution-title p {
-            margin: 9px 0 0;
-            font-family: var(--font-body), sans-serif;
-            font-size: clamp(10px, 1.1vw, 13px);
-            font-weight: 600;
-            letter-spacing: 3px;
+            margin: 11px auto 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            font-family: var(--font-display), 'Space Grotesk', sans-serif;
+            font-size: clamp(10.5px, 1.2vw, 13.5px);
+            font-weight: 800;
+            letter-spacing: 3.5px;
             line-height: 1.4;
-            color: #68ddff;
-            text-shadow: 0 0 10px rgba(25, 216, 255, .55), 0 0 25px rgba(25, 216, 255, .2);
-            transition: letter-spacing .35s ease, color .35s ease;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12), rgba(255, 43, 214, 0.1));
+            border: 1px solid rgba(0, 217, 255, 0.42);
+            box-shadow: 0 0 18px rgba(0, 217, 255, 0.18), inset 0 0 14px rgba(255, 43, 214, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            background-image: linear-gradient(90deg, #00f0ff 0%, #7eeaff 25%, #ff2bd6 55%, #c084fc 80%, #00f0ff 100%);
+            background-size: 250% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.5));
+            animation: deptGlow 5s linear infinite;
+            transition: all .35s cubic-bezier(.2, .8, .2, 1);
         }
 
         .institution-title:hover p {
             letter-spacing: 5px;
-            color: #9cecff;
+            border-color: rgba(255, 43, 214, 0.7);
+            box-shadow: 0 0 28px rgba(255, 43, 214, 0.35), 0 0 45px rgba(0, 217, 255, 0.25), inset 0 0 18px rgba(0, 217, 255, 0.18);
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 16px rgba(255, 43, 214, 0.6));
+        }
+
+        @keyframes deptGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 250% 50%;
+            }
         }
 
         @keyframes institutionBorder {
@@ -1000,6 +1031,7 @@
                     <small>
                         (Autonomous, Mahendrapuri, Mallasamudram, Namakkal)
                     </small>
+                    <br>
                     <p>ARTIFICIAL INTELLIGENCE &amp; DATA SCIENCE</p>
                 </div>
 
@@ -1351,7 +1383,7 @@
 
 
                         <a class="event-btn"
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSdYtjFbHntz2r8RtjzLCVGQvLXBYm3ksrnWIts0uDAgjJbHQQ/viewform?usp=header"
                             target="_blank" rel="noopener">
 
                             Register for AI Workshop →
@@ -1467,36 +1499,6 @@
             <p>
                 Top five teams take home prizes.
             </p>
-
-
-            <div class="prizes">
-
-                <div>
-                    <b>1ST</b>
-                    <strong>₹5,000</strong>
-                </div>
-
-                <div>
-                    <b>2ND</b>
-                    <strong>₹3,000</strong>
-                </div>
-
-                <div>
-                    <b>3RD</b>
-                    <strong>₹2,000</strong>
-                </div>
-
-                <div>
-                    <b>4TH</b>
-                    <strong>₹1,000</strong>
-                </div>
-
-                <div>
-                    <b>5TH</b>
-                    <strong>₹1,000</strong>
-                </div>
-
-            </div>
 
 
             <div class="benefits">
@@ -1638,7 +1640,7 @@
 
                     <p>
                         Teams can have 1 to 5 members.
-                        The fee is ₹179 per person.
+                        The fee is ₹199 per person.
                     </p>
 
                 </details>
@@ -1678,8 +1680,8 @@
                     </summary>
 
                     <p>
-                        The website will open the relevant Google Form.
-                        The final form links will be added later.
+                        Click the Register buttons on this page — they open
+                        the respective Google Form directly.
                     </p>
 
                 </details>
@@ -1705,8 +1707,8 @@
             </h2>
 
             <p>
-                Our student leadership and operations team driving the event
-                from idea to execution.
+                Our faculty leadership and coordinators guiding the event
+                from vision to execution.
             </p>
 
 
@@ -1716,118 +1718,51 @@
                     FACULTY &amp; COORDINATORS
                 </div>
 
-                <div class="faculty-grid">
+                <div class="faculty-tree">
 
-                    <!-- HOD -->
-                    <div class="person faculty-card hod-card">
-                        <img src="assets/HodSir.jpeg" alt="HOD">
-                        <b>ANANTH S - HOD</b>
-                        <small>HEAD OF DEPARTMENT</small>
-                        <em>AI &amp; DS · Mahendra Engineering College</em>
+                    <!-- LEVEL 1: HOD (TREE ROOT) -->
+                    <div class="tree-level tree-root-level">
+                        <div class="person faculty-card hod-card">
+                            <img src="assets/HodSir.jpeg" alt="HoD">
+                            <b>ANANTH S - HOD</b>
+                            <small>HEAD OF DEPARTMENT</small>
+                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        </div>
                     </div>
 
-                    <!-- WORKSHOP STAFF COORDINATOR -->
-                    <div class="person faculty-card workshop-card">
-                        <img src="assets/Mekala Mam.jpeg" alt="Workshop Staff Coordinator">
-                        <b>Mekala R AP/AI&DS</b>
-                        <small>STAFF COORDINATOR - AI WORKSHOP</small>
-                        <em>AI &amp; DS · Mahendra Engineering College</em>
+                    <!-- CYBER TREE CONNECTOR LINES -->
+                    <div class="tree-connector" aria-hidden="true">
+                        <div class="connector-stem-top"></div>
+                        <div class="connector-fork"></div>
+                        <div class="connector-stems-bottom">
+                            <span class="stem-bottom left"></span>
+                            <span class="stem-bottom right"></span>
+                        </div>
                     </div>
 
-                    <!-- HACKATHON STAFF COORDINATOR -->
-                    <div class="person faculty-card hackathon-card">
-                        <img src="assets/hackathon-coordinator.jpeg" alt="Hackathon Staff Coordinator">
-                        <b>Staff Coordinator</b>
-                        <small>AGENTICTHON</small>
-                        <em>AI &amp; DS · Mahendra Engineering College</em>
+                    <!-- LEVEL 2: FACULTY COORDINATORS (BRANCHES) -->
+                    <div class="tree-level tree-branch-level">
+
+                        <!-- WORKSHOP STAFF COORDINATOR -->
+                        <div class="person faculty-card workshop-card">
+                            <img src="assets/Mekala Mam.jpeg" alt="Workshop Staff Coordinator">
+                            <b>Mekala R AP/AI&DS</b>
+                            <small>STAFF COORDINATOR - AI WORKSHOP</small>
+                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        </div>
+
+                        <!-- HACKATHON STAFF COORDINATOR -->
+                        <div class="person faculty-card hackathon-card">
+                            <img src="assets/hackathon-coordinator.jpeg" alt="Hackathon Staff Coordinator">
+                            <b>Staff Coordinator</b>
+                            <small>AGENTICTHON</small>
+                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div class="team-section-title student-title">
-                    STUDENT CORE TEAM
-                </div>
-
-                <div class="student-core-grid">
-                    <div class="person">
-                        <img src="assets/pavithra.jpeg">
-                        <b>Pavithra N</b>
-                        <small>President</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/bala.jpeg">
-                        <b>Balamurugan R</b>
-                        <small>President</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Sujay1.jpeg">
-                        <b>Sujay Chidambaram C S</b>
-                        <small>President</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Praveen1.jpeg">
-                        <b>Praveen K Y</b>
-                        <small>Operation Lead</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Pooja (24).jpeg">
-                        <b>Pooja V (24/07)</b>
-                        <small>Executive Lead</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Janashree1.jpeg">
-                        <b>Janashree R</b>
-                        <small>Strategy Lead</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Pooja(20).jpeg">
-                        <b>Pooja V (20/8)</b>
-                        <small>Operation Manager</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/jessika.jpeg">
-                        <b>Jessika B</b>
-                        <small>Strategy Manager</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Keerthana.jpeg">
-                        <b>Keerthana E</b>
-                        <small>Strategy Director</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Kalaimathi.jpeg">
-                        <b>Kalaimathi V</b>
-                        <small>Executive Director</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Kowshiga.jpeg">
-                        <b>Kowshigadevi S</b>
-                        <small>Executive Governor</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Saran1.jpeg">
-                        <b>Saran L</b>
-                        <small>Operations Officer</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                    <div class="person">
-                        <img src="assets/Srithar1.jpeg">
-                        <b>Srithar K</b>
-                        <small>Data Intelligence Lead</small>
-                        <em>Coding Club · AI &amp; DS</em>
-                    </div>
-                </div>
 
             </div>
 
@@ -1940,7 +1875,7 @@
 
             <p>
                 Choose the AI Workshop or enter AGENTICTHON.
-                Your Google Form links can be connected when they are ready.
+                Click Register Now to open the Google Form.
             </p>
 
             <a class="cta" href="#register">
@@ -1973,7 +1908,7 @@
 
             <div class="reg-grid">
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYtjFbHntz2r8RtjzLCVGQvLXBYm3ksrnWIts0uDAgjJbHQQ/viewform?usp=header"
                     target="_blank" rel="noopener">
 
                     <b>🧠 AI Workshop</b>

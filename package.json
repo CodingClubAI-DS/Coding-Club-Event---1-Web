@@ -1,0 +1,10 @@
+{
+  "name": "coding-club-event-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Coding Club AI Event Website",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  }
+}

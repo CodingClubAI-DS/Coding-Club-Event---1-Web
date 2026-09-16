@@ -502,29 +502,58 @@ nav a.active:after{
 }
 
 .institution-title p{
-    margin:9px 0 0;
+    margin:11px auto 0;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:6px 18px;
 
-    font-family:Oxanium,sans-serif;
-    font-size:clamp(9px,1.3vw,13px);
-    font-weight:700;
+    font-family:var(--font-display),Oxanium,sans-serif;
+    font-size:clamp(10.5px,1.2vw,13.5px);
+    font-weight:800;
 
-    letter-spacing:4px;
+    letter-spacing:3.5px;
     line-height:1.4;
 
-    color:#68ddff;
+    border-radius:25px;
+    background:linear-gradient(135deg, rgba(0,217,255,.12), rgba(255,43,214,.1));
+    border:1px solid rgba(0,217,255,.42);
+    box-shadow:
+        0 0 18px rgba(0,217,255,.18),
+        inset 0 0 14px rgba(255,43,214,.12);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
 
-    text-shadow:
-        0 0 10px rgba(25,216,255,.55),
-        0 0 25px rgba(25,216,255,.2);
+    background-image:linear-gradient(90deg, #00f0ff 0%, #7eeaff 25%, #ff2bd6 55%, #c084fc 80%, #00f0ff 100%);
+    background-size:250% auto;
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
 
-    transition:
-        letter-spacing .35s ease,
-        color .35s ease;
+    filter:drop-shadow(0 0 12px rgba(0,217,255,.5));
+    animation:deptGlow 5s linear infinite;
+    transition:all .35s cubic-bezier(.2,.8,.2,1);
 }
 
 .institution-title:hover p{
     letter-spacing:5px;
-    color:#9cecff;
+    border-color:rgba(255,43,214,.7);
+    box-shadow:
+        0 0 28px rgba(255,43,214,.35),
+        0 0 45px rgba(0,217,255,.25),
+        inset 0 0 18px rgba(0,217,255,.18);
+    transform:scale(1.04);
+    filter:drop-shadow(0 0 16px rgba(255,43,214,.6));
+}
+
+@keyframes deptGlow{
+    0%{
+        background-position:0% 50%;
+    }
+    100%{
+        background-position:250% 50%;
+    }
 }
 
 .institution-title::after{
@@ -1563,11 +1592,166 @@ footer{
 
 .faculty-grid{
     display:grid;
-    grid-template-columns:
-        repeat(3,minmax(0,1fr));
-    gap:18px;
-    max-width:1050px;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 340px));
+    justify-content:center;
+    gap:24px;
+    max-width:1100px;
     margin:0 auto;
+    width:100%;
+}
+
+/* =========================================================
+   FACULTY HIERARCHICAL TREE STRUCTURE
+   ========================================================= */
+
+.faculty-tree{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    max-width:960px;
+    margin:0 auto;
+    position:relative;
+}
+
+.tree-level{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    width:100%;
+}
+
+.tree-root-level{
+    z-index:3;
+    position:relative;
+}
+
+.tree-root-level .faculty-card{
+    width:340px;
+    max-width:340px;
+    border-width:1.5px;
+    border-color:rgba(168,80,255,.85);
+    box-shadow:
+        0 0 35px rgba(168,80,255,.25),
+        0 14px 35px rgba(0,0,0,.65);
+}
+
+.tree-branch-level{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    width:100%;
+    z-index:3;
+    position:relative;
+}
+
+.tree-branch-level .faculty-card{
+    width:330px;
+    max-width:330px;
+    flex:0 0 330px;
+}
+
+/* Cyber Tree Connector Lines */
+.tree-connector{
+    position:relative;
+    width:100%;
+    height:70px;
+    pointer-events:none;
+    z-index:1;
+}
+
+/* Center vertical stem coming down from HOD */
+.connector-stem-top{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:2px;
+    height:35px;
+    background:linear-gradient(180deg, rgba(168,80,255,.95), rgba(0,217,255,.95));
+    box-shadow:0 0 10px rgba(0,217,255,.7);
+}
+
+/* Glowing junction node at fork center */
+.connector-stem-top::after{
+    content:"";
+    position:absolute;
+    bottom:-4px;
+    left:50%;
+    transform:translateX(-50%);
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#00d9ff;
+    box-shadow:0 0 12px #00d9ff, 0 0 20px #a850ff;
+    z-index:2;
+}
+
+/* Horizontal connecting branch bar */
+.connector-fork{
+    position:absolute;
+    top:35px;
+    left:50%;
+    transform:translateX(-50%);
+    width:370px;
+    height:2px;
+    background:linear-gradient(90deg, #19d8ff 0%, #a850ff 50%, #ff2bd6 100%);
+    box-shadow:0 0 10px rgba(25,216,255,.6), 0 0 15px rgba(255,43,214,.4);
+    border-radius:2px;
+}
+
+/* Bottom drop stems to coordinators */
+.connector-stems-bottom{
+    position:absolute;
+    top:35px;
+    left:50%;
+    transform:translateX(-50%);
+    width:370px;
+    height:35px;
+}
+
+.connector-stems-bottom .stem-bottom.left{
+    position:absolute;
+    left:0;
+    top:0;
+    width:2px;
+    height:35px;
+    background:linear-gradient(180deg, #19d8ff, rgba(25,216,255,.8));
+    box-shadow:0 0 8px rgba(25,216,255,.8);
+}
+
+.connector-stems-bottom .stem-bottom.left::after{
+    content:"";
+    position:absolute;
+    bottom:-3px;
+    left:-3px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#19d8ff;
+    box-shadow:0 0 10px #19d8ff;
+}
+
+.connector-stems-bottom .stem-bottom.right{
+    position:absolute;
+    right:0;
+    top:0;
+    width:2px;
+    height:35px;
+    background:linear-gradient(180deg, #ff2bd6, rgba(255,43,214,.8));
+    box-shadow:0 0 8px rgba(255,43,214,.8);
+}
+
+.connector-stems-bottom .stem-bottom.right::after{
+    content:"";
+    position:absolute;
+    bottom:-3px;
+    right:-3px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#ff2bd6;
+    box-shadow:0 0 10px #ff2bd6;
 }
 
 .faculty-card{
@@ -1575,6 +1759,11 @@ footer{
     border-radius:18px;
     overflow:hidden;
     background:rgba(3,12,29,.78);
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    max-width:340px;
+    margin:0 auto;
     transition:
         transform .3s ease,
         box-shadow .3s ease,
@@ -1583,14 +1772,14 @@ footer{
 
 .faculty-card img{
     width:100%;
-    height:280px;
+    height:340px;
     object-fit:cover;
-    object-position:center top;
+    object-position:center 12%;
     display:block;
     background:#050b18;
 
     filter:
-        saturate(.9)
+        saturate(.95)
         contrast(1.05);
 
     transition:
@@ -2345,17 +2534,12 @@ footer{
     }
 
     .faculty-grid{
-        grid-template-columns:
-            repeat(3,minmax(0,1fr));
-    }
-
-    .student-core-grid{
-        grid-template-columns:
-            repeat(3,minmax(0,1fr));
+        grid-template-columns:repeat(auto-fit, minmax(260px, 320px));
+        justify-content:center;
     }
 
     .faculty-card img{
-        height:270px;
+        height:320px;
     }
 
     .student-core-grid .person img{
@@ -2442,13 +2626,41 @@ footer{
     }
 
     .faculty-grid{
-        grid-template-columns:1fr;
-        max-width:520px;
+        grid-template-columns:repeat(auto-fit, minmax(260px, 340px));
+        justify-content:center;
+        max-width:540px;
+        margin:0 auto;
+    }
+
+    .tree-branch-level{
+        flex-direction:column;
+        align-items:center;
+        gap:32px;
+    }
+
+    .tree-root-level .faculty-card,
+    .tree-branch-level .faculty-card{
+        width:100%;
+        max-width:330px;
+        flex:1 1 auto;
+    }
+
+    .tree-connector{
+        height:45px;
+    }
+
+    .connector-fork,
+    .connector-stems-bottom{
+        display:none;
+    }
+
+    .connector-stem-top{
+        height:45px;
     }
 
     .faculty-card img{
-        height:300px;
-        object-position:center top;
+        height:320px;
+        object-position:center 12%;
     }
 
     .student-core-grid{
