@@ -9,8 +9,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -44,19 +44,19 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.02) 35%, rgba(1,7,20,0.58) 100%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 35%, rgba(1, 7, 20, 0.58) 100%);
             z-index: 2;
             pointer-events: none;
         }
 
-        .event-img.event-photo > span {
+        .event-img.event-photo>span {
             position: absolute;
             top: 18px;
             left: 18px;
             z-index: 3;
         }
 
-        .campus-section .campus-card > img {
+        .campus-section .campus-card>img {
             width: 100%;
             height: 100%;
             min-height: 320px;
@@ -75,177 +75,541 @@
     <!-- COUNTDOWN STYLE -->
     <style>
         /* =========================
-           AGENTICTHON COUNTDOWN
+           CYBER MISSION COUNTDOWN INSTRUMENT
         ========================= */
 
-        .countdown {
+        .mission-countdown {
             width: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            margin-top: 38px;
+            margin-top: 36px;
             position: relative;
             z-index: 20;
         }
 
-        .countdown-box {
-            position: relative;
-            min-width: 105px;
-            padding: 15px 18px 12px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 217, 255, 0.10),
-                    rgba(110, 0, 255, 0.16)
-                );
-
-            border: 1px solid rgba(0, 217, 255, 0.75);
-            border-radius: 10px;
-
-            text-align: center;
-
-            box-shadow:
-                0 0 8px rgba(0, 217, 255, 0.35),
-                0 0 25px rgba(0, 217, 255, 0.12),
-                inset 0 0 18px rgba(0, 217, 255, 0.08);
-
+        /* Technical mission status header */
+        .mission-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding: 5px 14px 5px 10px;
+            background: rgba(4, 10, 26, 0.72);
+            border: 1px solid rgba(0, 217, 255, 0.28);
+            border-radius: 20px;
             backdrop-filter: blur(10px);
-
-            overflow: hidden;
-
-            transition: 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 0 14px rgba(0, 217, 255, 0.12), inset 0 0 8px rgba(0, 217, 255, 0.06);
         }
 
-        .countdown-box::before {
+        .mission-radar {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #00d9ff;
+            box-shadow: 0 0 8px #00d9ff;
+            position: relative;
+        }
+
+        .mission-radar::after {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 217, 255, 0.75);
+            animation: radarRing 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+        }
+
+        @keyframes radarRing {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.4);
+                opacity: 0;
+            }
+        }
+
+        .mission-label {
+            font-family: var(--font-display), sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
+        }
+
+        .mission-tag {
+            font-family: var(--font-body), monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: #00d9ff;
+            letter-spacing: 1.5px;
+            padding-left: 6px;
+            border-left: 1px solid rgba(0, 217, 255, 0.35);
+        }
+
+        /* Countdown instrument layout */
+        .countdown-instrument {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .countdown-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Instrument card unit */
+        .mission-card {
+            position: relative;
+            min-width: 116px;
+            padding: 12px 14px 10px;
+            background: linear-gradient(160deg, rgba(8, 16, 36, 0.82) 0%, rgba(4, 9, 22, 0.90) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.24);
+            border-radius: 18px;
+            text-align: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow:
+                0 14px 34px -4px rgba(0, 0, 0, 0.65),
+                0 0 18px rgba(0, 217, 255, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.12),
+                inset 0 0 20px rgba(0, 217, 255, 0.03);
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            isolation: isolate;
+        }
+
+        /* Subtle technical grid background */
+        .mission-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(rgba(0, 217, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(0, 217, 255, 0.03) 0%, transparent 60%);
+            background-size: 10px 10px, 100% 100%;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Top subtle border highlight */
+        .mission-card::after {
             content: "";
             position: absolute;
             top: 0;
-            left: 12px;
-            right: 12px;
-            height: 1px;
-
-            background: #00d9ff;
-
-            box-shadow:
-                0 0 8px #00d9ff,
-                0 0 15px #00d9ff;
+            left: 20%;
+            right: 20%;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.95), rgba(168, 85, 247, 0.7), transparent);
+            box-shadow: 0 0 10px #00d9ff;
+            transition: left 0.4s ease, right 0.4s ease;
         }
 
-        .countdown-box::after {
-            content: "";
+        .mission-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 217, 255, 0.48);
+            box-shadow:
+                0 18px 40px -4px rgba(0, 0, 0, 0.75),
+                0 0 24px rgba(0, 217, 255, 0.18),
+                inset 0 1px 2px rgba(255, 255, 255, 0.18),
+                inset 0 0 25px rgba(0, 217, 255, 0.08);
+        }
+
+        .mission-card:hover::after {
+            left: 10%;
+            right: 10%;
+        }
+
+        /* HUD corner accents */
+        .card-corner {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-color: rgba(0, 217, 255, 0.45);
+            pointer-events: none;
+            z-index: 2;
+            transition: border-color 0.3s ease;
+        }
+
+        .mission-card:hover .card-corner {
+            border-color: rgba(0, 217, 255, 0.85);
+        }
+
+        .card-corner.tl {
+            top: 6px;
+            left: 6px;
+            border-top: 1.5px solid;
+            border-left: 1.5px solid;
+        }
+
+        .card-corner.tr {
+            top: 6px;
+            right: 6px;
+            border-top: 1.5px solid;
+            border-right: 1.5px solid;
+        }
+
+        .card-corner.bl {
+            bottom: 6px;
+            left: 6px;
+            border-bottom: 1.5px solid;
+            border-left: 1.5px solid;
+        }
+
+        .card-corner.br {
+            bottom: 6px;
+            right: 6px;
+            border-bottom: 1.5px solid;
+            border-right: 1.5px solid;
+        }
+
+        /* Card HUD status line */
+        .card-hud-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-body), monospace;
+            font-size: 8px;
+            font-weight: 600;
+            color: rgba(0, 217, 255, 0.65);
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+            padding: 0 4px;
+            z-index: 1;
+        }
+
+        .hud-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 7.5px;
+            color: rgba(125, 211, 252, 0.75);
+        }
+
+        .hud-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #00d9ff;
+            box-shadow: 0 0 6px #00d9ff;
+        }
+
+        .hud-dot.pulse-fast {
+            animation: hudDotPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes hudDotPulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+                filter: drop-shadow(0 0 5px #00d9ff);
+            }
+        }
+
+        /* Circular progress ring and viewport */
+        .card-dial {
+            position: relative;
+            width: 96px;
+            height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2px 0;
+            z-index: 1;
+        }
+
+        .progress-ring {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+            pointer-events: none;
+        }
+
+        .progress-ring-bg {
+            fill: transparent;
+            stroke: rgba(0, 217, 255, 0.08);
+            stroke-width: 2.5;
+        }
+
+        .progress-ring-bar {
+            fill: transparent;
+            stroke: url(#ring-grad-cyan);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-dasharray: 289.026;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 4px rgba(0, 217, 255, 0.45));
+        }
+
+        /* Smooth vertical digit transition */
+        .digit-viewport {
+            position: relative;
+            width: 100%;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .digit-slot {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .digit-current,
+        .digit-incoming {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display), monospace, sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            font-variant-numeric: tabular-nums;
+            text-shadow:
+                0 0 10px rgba(0, 217, 255, 0.6),
+                0 0 22px rgba(0, 217, 255, 0.25);
+            transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), opacity 380ms ease-out;
+            will-change: transform, opacity;
+        }
+
+        .digit-current {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .digit-incoming {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .digit-current.digit-slide-up {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .digit-incoming.digit-slide-in {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Unit label */
+        .mission-unit-label {
+            display: block;
+            margin-top: 4px;
+            font-family: var(--font-body), sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: #00d9ff;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
+            z-index: 1;
+        }
+
+        .card-bottom-accent {
             position: absolute;
             bottom: 0;
-            left: 18px;
-            right: 18px;
+            left: 25%;
+            right: 25%;
             height: 1px;
-
-            background: #b400ff;
-
-            box-shadow:
-                0 0 8px #b400ff,
-                0 0 15px #b400ff;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.7), rgba(0, 217, 255, 0.8), transparent);
+            box-shadow: 0 0 6px rgba(0, 217, 255, 0.5);
         }
 
-        .countdown-box:hover {
-            transform: translateY(-4px);
-
-            box-shadow:
-                0 0 12px rgba(0, 217, 255, 0.7),
-                0 0 35px rgba(160, 0, 255, 0.25),
-                inset 0 0 20px rgba(0, 217, 255, 0.12);
+        /* Glowing dual-dot separator */
+        .countdown-sep {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            padding: 0 2px;
+            align-items: center;
+            justify-content: center;
         }
 
-        .countdown-box span {
-            display: block;
-
-            font-family: "Oxanium", sans-serif;
-            font-size: 34px;
-            font-weight: 800;
-
-            line-height: 1;
-
-            color: #ffffff;
-
-            letter-spacing: 2px;
-
-            text-shadow:
-                0 0 5px #ffffff,
-                0 0 12px #00d9ff,
-                0 0 25px rgba(0, 217, 255, 0.8);
+        .sep-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #00d9ff;
+            box-shadow: 0 0 8px #00d9ff, 0 0 16px rgba(0, 217, 255, 0.7);
+            animation: sepGlowPulse 1s ease-in-out infinite;
         }
 
-        .countdown-box small {
-            display: block;
-
-            margin-top: 9px;
-
-            font-family: "Oxanium", sans-serif;
-            font-size: 8px;
-            font-weight: 700;
-
-            letter-spacing: 2px;
-
-            color: #00d9ff;
-
-            text-shadow:
-                0 0 8px #00d9ff;
+        .sep-dot:last-child {
+            animation-delay: 0.15s;
         }
 
-        /* Connecting lines */
-        .countdown-box:not(:last-child)::marker {
-            display: none;
-        }
+        @keyframes sepGlowPulse {
 
-        /* Small glowing dots between boxes */
-        .countdown-box + .countdown-box {
-            margin-left: 5px;
-        }
-
-        /* Mobile */
-        @media (max-width: 700px) {
-
-            .countdown {
-                gap: 6px;
-                margin-top: 28px;
+            0%,
+            100% {
+                opacity: 0.35;
+                transform: scale(0.9);
             }
 
-            .countdown-box {
-                min-width: 72px;
-                padding: 12px 5px 10px;
-                border-radius: 8px;
-            }
-
-            .countdown-box span {
-                font-size: 22px;
-                letter-spacing: 1px;
-            }
-
-            .countdown-box small {
-                margin-top: 6px;
-                font-size: 6px;
-                letter-spacing: 1px;
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 8px #00d9ff);
             }
         }
 
-        @media (max-width: 420px) {
+        /* Screen reader utility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
 
-            .countdown {
-                gap: 4px;
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .countdown-instrument {
+                gap: 8px;
             }
 
-            .countdown-box {
-                min-width: 62px;
-                padding: 10px 3px;
+            .countdown-group {
+                gap: 8px;
             }
 
-            .countdown-box span {
-                font-size: 18px;
+            .mission-card {
+                min-width: 98px;
+                padding: 10px 10px 8px;
+                border-radius: 16px;
             }
 
-            .countdown-box small {
-                font-size: 5px;
+            .card-dial {
+                width: 82px;
+                height: 82px;
+            }
+
+            .digit-current,
+            .digit-incoming {
+                font-size: 28px;
+            }
+
+            .mission-unit-label {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+        }
+
+        /* Mobile 2x2 grid layout */
+        @media (max-width: 600px) {
+            .mission-countdown {
+                margin-top: 24px;
+            }
+
+            .countdown-instrument {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                max-width: 330px;
+            }
+
+            .sep-middle {
+                display: none !important;
+            }
+
+            .countdown-group {
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+            }
+
+            .mission-card {
+                flex: 1;
+                min-width: 0;
+                padding: 10px 8px 8px;
+                border-radius: 14px;
+            }
+
+            .card-dial {
+                width: 76px;
+                height: 76px;
+            }
+
+            .digit-current,
+            .digit-incoming {
+                font-size: 24px;
+            }
+
+            .mission-unit-label {
+                font-size: 8.5px;
+                letter-spacing: 1.5px;
+            }
+
+            .mission-header {
+                margin-bottom: 12px;
+                padding: 4px 12px;
+            }
+
+            .mission-label {
+                font-size: 9.5px;
+                letter-spacing: 2px;
+            }
+
+            .mission-tag {
+                font-size: 8.5px;
+            }
+        }
+
+        /* Reduced motion accessibility */
+        @media (prefers-reduced-motion: reduce) {
+
+            .digit-current,
+            .digit-incoming,
+            .progress-ring-bar,
+            .mission-card,
+            .mission-radar::after,
+            .hud-dot.pulse-fast,
+            .sep-dot {
+                transition: none !important;
+                animation: none !important;
+            }
+
+            .mission-card:hover {
+                transform: none !important;
             }
         }
 
@@ -277,7 +641,9 @@
             border-radius: 20px;
             color: #ff7be6;
             background: rgba(255, 43, 214, 0.08);
-            font: 700 10px Oxanium;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 700;
             letter-spacing: 2px;
         }
 
@@ -298,7 +664,6 @@
                 grid-column: auto;
             }
         }
-
     </style>
 
     <!-- INTERACTIVE INSTITUTION TITLE STYLE -->
@@ -311,25 +676,27 @@
             padding: 14px 28px;
             text-align: center;
             z-index: 5;
-            border: 1px solid rgba(25,216,255,.28);
+            border: 1px solid rgba(25, 216, 255, .28);
             border-radius: 18px;
-            background: linear-gradient(135deg, rgba(10,35,75,.45), rgba(35,5,65,.32));
-            box-shadow: 0 0 20px rgba(25,216,255,.08), inset 0 0 25px rgba(25,216,255,.04);
+            background: linear-gradient(135deg, rgba(10, 35, 75, .45), rgba(35, 5, 65, .32));
+            box-shadow: 0 0 20px rgba(25, 216, 255, .08), inset 0 0 25px rgba(25, 216, 255, .04);
             backdrop-filter: blur(8px);
             overflow: hidden;
-            transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease;
+            transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .35s ease, box-shadow .35s ease;
         }
+
         .institution-title::before {
             content: "";
             position: absolute;
             inset: -1px;
             border-radius: inherit;
-            background: linear-gradient(90deg, transparent, rgba(25,216,255,.8), transparent, rgba(255,43,214,.8), transparent);
+            background: linear-gradient(90deg, transparent, rgba(25, 216, 255, .8), transparent, rgba(255, 43, 214, .8), transparent);
             background-size: 250% 100%;
             z-index: -1;
             opacity: .35;
             animation: institutionBorder 5s linear infinite;
         }
+
         .institution-title::after {
             content: "";
             position: absolute;
@@ -337,58 +704,127 @@
             left: -100%;
             width: 45%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .14), transparent);
             transform: skewX(-20deg);
             animation: institutionShine 4.5s ease-in-out infinite;
             pointer-events: none;
         }
+
         .institution-title:hover {
             transform: translateY(-5px) scale(1.025);
-            border-color: rgba(25,216,255,.75);
-            box-shadow: 0 0 25px rgba(25,216,255,.22), 0 0 55px rgba(140,60,255,.12), inset 0 0 30px rgba(25,216,255,.07);
+            border-color: rgba(25, 216, 255, .75);
+            box-shadow: 0 0 25px rgba(25, 216, 255, .22), 0 0 55px rgba(140, 60, 255, .12), inset 0 0 30px rgba(25, 216, 255, .07);
         }
+
         .institution-title h2 {
             margin: 0;
-            font-family: Oxanium, sans-serif;
+            font-family: var(--font-display), sans-serif;
             font-size: clamp(20px, 3vw, 34px);
-            font-weight: 900;
-            letter-spacing: 3px;
-            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: 2px;
+            line-height: 1.15;
             background: linear-gradient(90deg, #fff, #6feaff, #fff, #c45cff, #fff);
             background-size: 250% auto;
             color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
-            text-shadow: 0 0 18px rgba(25,216,255,.25);
+            text-shadow: 0 0 18px rgba(25, 216, 255, .25);
             animation: institutionText 6s linear infinite;
         }
+
         .institution-title p {
             margin: 9px 0 0;
-            font-family: Oxanium, sans-serif;
-            font-size: clamp(9px, 1.3vw, 13px);
-            font-weight: 700;
-            letter-spacing: 4px;
+            font-family: var(--font-body), sans-serif;
+            font-size: clamp(10px, 1.1vw, 13px);
+            font-weight: 600;
+            letter-spacing: 3px;
             line-height: 1.4;
             color: #68ddff;
-            text-shadow: 0 0 10px rgba(25,216,255,.55), 0 0 25px rgba(25,216,255,.2);
+            text-shadow: 0 0 10px rgba(25, 216, 255, .55), 0 0 25px rgba(25, 216, 255, .2);
             transition: letter-spacing .35s ease, color .35s ease;
         }
-        .institution-title:hover p { letter-spacing: 5px; color: #9cecff; }
-        @keyframes institutionBorder { 0% { background-position: 0% 50%; } 100% { background-position: 250% 50%; } }
-        @keyframes institutionText { 0% { background-position: 0% 50%; } 100% { background-position: 250% 50%; } }
-        @keyframes institutionShine { 0%,45% { left: -100%; } 70%,100% { left: 160%; } }
+
+        .institution-title:hover p {
+            letter-spacing: 5px;
+            color: #9cecff;
+        }
+
+        @keyframes institutionBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 250% 50%;
+            }
+        }
+
+        @keyframes institutionText {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 250% 50%;
+            }
+        }
+
+        @keyframes institutionShine {
+
+            0%,
+            45% {
+                left: -100%;
+            }
+
+            70%,
+            100% {
+                left: 160%;
+            }
+        }
+
         @media (max-width: 800px) {
-            .institution-title { margin-bottom: 22px; padding: 12px 18px; border-radius: 15px; }
-            .institution-title h2 { font-size: 18px; letter-spacing: 1.8px; }
-            .institution-title p { font-size: 8px; letter-spacing: 2.2px; margin-top: 7px; }
+            .institution-title {
+                margin-bottom: 22px;
+                padding: 12px 18px;
+                border-radius: 15px;
+            }
+
+            .institution-title h2 {
+                font-size: 18px;
+                letter-spacing: 1.8px;
+            }
+
+            .institution-title p {
+                font-size: 8px;
+                letter-spacing: 2.2px;
+                margin-top: 7px;
+            }
         }
+
         @media (max-width: 500px) {
-            .institution-title { width: 94%; padding: 11px 12px; }
-            .institution-title h2 { font-size: 15px; letter-spacing: 1.2px; }
-            .institution-title p { font-size: 7px; letter-spacing: 1.5px; }
+            .institution-title {
+                width: 94%;
+                padding: 11px 12px;
+            }
+
+            .institution-title h2 {
+                font-size: 15px;
+                letter-spacing: 1.2px;
+            }
+
+            .institution-title p {
+                font-size: 7px;
+                letter-spacing: 1.5px;
+            }
         }
+
         @media (prefers-reduced-motion: reduce) {
-            .institution-title::before, .institution-title::after, .institution-title h2 { animation: none !important; }
+
+            .institution-title::before,
+            .institution-title::after,
+            .institution-title h2 {
+                animation: none !important;
+            }
         }
     </style>
 
@@ -433,18 +869,11 @@
 
                 <path
                     d="M72 145c-23-5-39-22-39-46 0-16 8-29 20-37-2-25 15-44 39-44 13 0 24 5 32 14 8-9 19-14 32-14 24 0 41 19 39 44 12 8 20 21 20 37 0 24-16 41-39 46-7 15-19 23-37 23H109c-18 0-30-8-37-23Z"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="5"
-                    stroke-linejoin="round" />
+                    fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" />
 
                 <path
                     d="M82 30c-9 8-11 19-7 29M55 66c14 2 22 10 23 23M46 105c15-2 26 5 31 18M91 61c10 7 14 17 10 29M92 119c8-9 18-12 30-9M138 31c9 8 11 19 7 29M165 66c-14 2-22 10-23 23M174 105c-15-2-26 5-31 18M129 61c-10 7-14 17-10 29M128 119c-8-9-18-12-30-9M110 44v92M77 91h65"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    opacity=".85" />
+                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85" />
 
             </svg>
         </div>
@@ -515,10 +944,6 @@
 
                 <b>MAHENDRA ENGINEERING COLLEGE</b>
 
-                <small>
-                    (Autonomous, Mahendrapuri, Mallasamudram, Namakkal)
-                </small>
-
             </div>
 
         </div>
@@ -572,6 +997,9 @@
                 <!-- INTERACTIVE INSTITUTION TITLE -->
                 <div class="institution-title">
                     <h2>MAHENDRA ENGINEERING COLLEGE</h2>
+                    <small>
+                        (Autonomous, Mahendrapuri, Mallasamudram, Namakkal)
+                    </small>
                     <p>ARTIFICIAL INTELLIGENCE &amp; DATA SCIENCE</p>
                 </div>
 
@@ -588,7 +1016,7 @@
 
                 <h1>
 
-                    <em>AI ×</em>
+                    <em><span class="handwritten-accent">AI ×</span></em>
 
                     <strong>AGENTICTHON</strong>
 
@@ -598,7 +1026,8 @@
                 <p class="lead">
 
                     Two days. One campus. Learn with AI,
-                    then build fast at a high-energy hackathon.
+                    then build fast at a high-energy hackathon. <span class="handwritten-accent">build the future
+                        ✎</span>
 
                 </p>
 
@@ -630,45 +1059,175 @@
 
 
                 <!-- =========================
-                     COUNTDOWN TIMER
+                     CYBER MISSION COUNTDOWN INSTRUMENT
                 ========================== -->
 
-                <div class="countdown">
+                <div class="mission-countdown" role="region" aria-label="Event Countdown Timer">
 
-                    <div class="countdown-box">
+                    <!-- Technical mission status indicator -->
+                    <div class="mission-header">
+                        <span class="mission-radar" aria-hidden="true"></span>
+                        <span class="mission-label">MISSION STARTS IN</span>
+                        <span class="mission-tag">[ T - MINUS ]</span>
+                    </div>
 
-                        <span id="days">00</span>
+                    <!-- 4 Instruments with Dynamic HUD & Arc Progress Rings -->
+                    <div class="countdown-instrument" role="timer" aria-live="off">
 
-                        <small>DAYS</small>
+                        <!-- GROUP 1: DAYS & HOURS -->
+                        <div class="countdown-group">
+
+                            <!-- DAYS -->
+                            <div class="mission-card" data-unit="days">
+                                <span class="card-corner tl" aria-hidden="true"></span>
+                                <span class="card-corner tr" aria-hidden="true"></span>
+                                <span class="card-corner bl" aria-hidden="true"></span>
+                                <span class="card-corner br" aria-hidden="true"></span>
+
+                                <div class="card-hud-bar" aria-hidden="true">
+                                    <span class="hud-code">T-DD</span>
+                                    <span class="hud-status"><span class="hud-dot"></span>ACTIVE</span>
+                                </div>
+
+                                <div class="card-dial">
+                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
+                                        <defs>
+                                            <linearGradient id="ring-grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#00d9ff" />
+                                                <stop offset="100%" stop-color="#8b5cf6" />
+                                            </linearGradient>
+                                        </defs>
+                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
+                                        <circle class="progress-ring-bar" id="ring-days" cx="55" cy="55" r="46" />
+                                    </svg>
+
+                                    <div class="digit-viewport">
+                                        <div class="digit-slot" id="slot-days">
+                                            <span class="digit-current" id="days">00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="mission-unit-label">DAYS</span>
+                                <div class="card-bottom-accent" aria-hidden="true"></div>
+                            </div>
+
+                            <!-- SEPARATOR 1 -->
+                            <div class="countdown-sep" aria-hidden="true">
+                                <span class="sep-dot"></span>
+                                <span class="sep-dot"></span>
+                            </div>
+
+                            <!-- HOURS -->
+                            <div class="mission-card" data-unit="hours">
+                                <span class="card-corner tl" aria-hidden="true"></span>
+                                <span class="card-corner tr" aria-hidden="true"></span>
+                                <span class="card-corner bl" aria-hidden="true"></span>
+                                <span class="card-corner br" aria-hidden="true"></span>
+
+                                <div class="card-hud-bar" aria-hidden="true">
+                                    <span class="hud-code">T-HH</span>
+                                    <span class="hud-status"><span class="hud-dot"></span>SYNC</span>
+                                </div>
+
+                                <div class="card-dial">
+                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
+                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
+                                        <circle class="progress-ring-bar" id="ring-hours" cx="55" cy="55" r="46" />
+                                    </svg>
+
+                                    <div class="digit-viewport">
+                                        <div class="digit-slot" id="slot-hours">
+                                            <span class="digit-current" id="hours">00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="mission-unit-label">HOURS</span>
+                                <div class="card-bottom-accent" aria-hidden="true"></div>
+                            </div>
+
+                        </div>
+
+                        <!-- SEPARATOR MIDDLE (Hidden on mobile 2x2 grid) -->
+                        <div class="countdown-sep sep-middle" aria-hidden="true">
+                            <span class="sep-dot"></span>
+                            <span class="sep-dot"></span>
+                        </div>
+
+                        <!-- GROUP 2: MINUTES & SECONDS -->
+                        <div class="countdown-group">
+
+                            <!-- MINUTES -->
+                            <div class="mission-card" data-unit="minutes">
+                                <span class="card-corner tl" aria-hidden="true"></span>
+                                <span class="card-corner tr" aria-hidden="true"></span>
+                                <span class="card-corner bl" aria-hidden="true"></span>
+                                <span class="card-corner br" aria-hidden="true"></span>
+
+                                <div class="card-hud-bar" aria-hidden="true">
+                                    <span class="hud-code">T-MM</span>
+                                    <span class="hud-status"><span class="hud-dot"></span>LOCK</span>
+                                </div>
+
+                                <div class="card-dial">
+                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
+                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
+                                        <circle class="progress-ring-bar" id="ring-minutes" cx="55" cy="55" r="46" />
+                                    </svg>
+
+                                    <div class="digit-viewport">
+                                        <div class="digit-slot" id="slot-minutes">
+                                            <span class="digit-current" id="minutes">00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="mission-unit-label">MINUTES</span>
+                                <div class="card-bottom-accent" aria-hidden="true"></div>
+                            </div>
+
+                            <!-- SEPARATOR 2 -->
+                            <div class="countdown-sep" aria-hidden="true">
+                                <span class="sep-dot"></span>
+                                <span class="sep-dot"></span>
+                            </div>
+
+                            <!-- SECONDS -->
+                            <div class="mission-card" data-unit="seconds">
+                                <span class="card-corner tl" aria-hidden="true"></span>
+                                <span class="card-corner tr" aria-hidden="true"></span>
+                                <span class="card-corner bl" aria-hidden="true"></span>
+                                <span class="card-corner br" aria-hidden="true"></span>
+
+                                <div class="card-hud-bar" aria-hidden="true">
+                                    <span class="hud-code">T-SS</span>
+                                    <span class="hud-status"><span class="hud-dot pulse-fast"></span>LIVE</span>
+                                </div>
+
+                                <div class="card-dial">
+                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
+                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
+                                        <circle class="progress-ring-bar" id="ring-seconds" cx="55" cy="55" r="46" />
+                                    </svg>
+
+                                    <div class="digit-viewport">
+                                        <div class="digit-slot" id="slot-seconds">
+                                            <span class="digit-current" id="seconds">00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="mission-unit-label">SECONDS</span>
+                                <div class="card-bottom-accent" aria-hidden="true"></div>
+                            </div>
+
+                        </div>
 
                     </div>
 
-
-                    <div class="countdown-box">
-
-                        <span id="hours">00</span>
-
-                        <small>HOURS</small>
-
-                    </div>
-
-
-                    <div class="countdown-box">
-
-                        <span id="minutes">00</span>
-
-                        <small>MINUTES</small>
-
-                    </div>
-
-
-                    <div class="countdown-box">
-
-                        <span id="seconds">00</span>
-
-                        <small>SECONDS</small>
-
-                    </div>
+                    <!-- Invisible accessibility live announcer for screen readers -->
+                    <div class="sr-only" id="countdown-live-announcer" aria-live="polite"></div>
 
                 </div>
 
@@ -707,7 +1266,7 @@
             <h2>
                 Where Concepts Become Code,
                 <br>
-                <span>and Code Becomes Creation.</span>
+                <span>and Code Becomes Creation.</span> <span class="handwritten-accent">hands-on ✎</span>
             </h2>
 
             <p>
@@ -793,8 +1352,7 @@
 
                         <a class="event-btn"
                             href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
-                            target="_blank"
-                            rel="noopener">
+                            target="_blank" rel="noopener">
 
                             Register for AI Workshop →
 
@@ -877,8 +1435,7 @@
 
                         <a class="event-btn pink-btn"
                             href="https://docs.google.com/forms/d/e/1FAIpQLSc7CL5igNfzYNUMa1JRG6yKdPZKBJz-Kqf3IHec0rHO3BdU6g/viewform?usp=header"
-                            target="_blank"
-                            rel="noopener">
+                            target="_blank" rel="noopener">
 
                             Register for AGENTICTHON →
 
@@ -904,8 +1461,7 @@
             </div>
 
             <h2>
-                ₹12,000
-                <span>prize pool.</span>
+                <span class="handwritten-accent">win big rewards! ₹12,000 ✦</span>
             </h2>
 
             <p>
@@ -1145,7 +1701,7 @@
 
             <h2>
                 The team behind
-                <span>AI × CODING CLUB.</span>
+                <span>AI × CODING CLUB.</span> <span class="handwritten-accent">crafted with passion ♡</span>
             </h2>
 
             <p>
@@ -1156,126 +1712,124 @@
 
             <div class="faculty-section">
 
-                    <div class="team-section-title">
-                        FACULTY &amp; COORDINATORS
+                <div class="team-section-title">
+                    FACULTY &amp; COORDINATORS
+                </div>
+
+                <div class="faculty-grid">
+
+                    <!-- HOD -->
+                    <div class="person faculty-card hod-card">
+                        <img src="assets/HodSir.jpeg" alt="HOD">
+                        <b>ANANTH S - HOD</b>
+                        <small>HEAD OF DEPARTMENT</small>
+                        <em>AI &amp; DS · Mahendra Engineering College</em>
                     </div>
 
-                    <div class="faculty-grid">
-
-                        <!-- HOD -->
-                        <div class="person faculty-card hod-card">
-                            <img src="assets/HodSir.jpeg" alt="HOD">
-                            <b>ANANTH S - HOD</b>
-                            <small>HEAD OF DEPARTMENT</small>
-                            <em>AI &amp; DS · Mahendra Engineering College</em>
-                        </div>
-
-                        <!-- WORKSHOP STAFF COORDINATOR -->
-                        <div class="person faculty-card workshop-card">
-                            <img src="assets/Mekala Mam.jpeg"
-                                 alt="Workshop Staff Coordinator">
-                            <b>Mekala R AP/AI&DS</b>
-                            <small>STAFF COORDINATOR - AI WORKSHOP</small>
-                            <em>AI &amp; DS · Mahendra Engineering College</em>
-                        </div>
-
-                        <!-- HACKATHON STAFF COORDINATOR -->
-                        <div class="person faculty-card hackathon-card">
-                            <img src="assets/hackathon-coordinator.jpeg"
-                                 alt="Hackathon Staff Coordinator">
-                            <b>Staff Coordinator</b>
-                            <small>AGENTICTHON</small>
-                            <em>AI &amp; DS · Mahendra Engineering College</em>
-                        </div>
-
+                    <!-- WORKSHOP STAFF COORDINATOR -->
+                    <div class="person faculty-card workshop-card">
+                        <img src="assets/Mekala Mam.jpeg" alt="Workshop Staff Coordinator">
+                        <b>Mekala R AP/AI&DS</b>
+                        <small>STAFF COORDINATOR - AI WORKSHOP</small>
+                        <em>AI &amp; DS · Mahendra Engineering College</em>
                     </div>
 
-                    <div class="team-section-title student-title">
-                        STUDENT CORE TEAM
-                    </div>
-
-                    <div class="student-core-grid">
-<div class="person">
-                    <img src="assets/pavithra.jpeg">
-                    <b>Pavithra N</b>
-                    <small>President</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/bala.jpeg">
-                    <b>Balamurugan R</b>
-                    <small>President</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Sujay1.jpeg">
-                    <b>Sujay Chidambaram C S</b>
-                    <small>President</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Praveen1.jpeg">
-                    <b>Praveen K Y</b>
-                    <small>Operation Lead</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Pooja (24).jpeg">
-                    <b>Pooja V (24/07)</b>
-                    <small>Executive Lead</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Janashree1.jpeg">
-                    <b>Janashree R</b>
-                    <small>Strategy Lead</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Pooja(20).jpeg">
-                    <b>Pooja V (20/8)</b>
-                    <small>Operation Manager</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/jessika.jpeg">
-                    <b>Jessika B</b>
-                    <small>Strategy Manager</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Keerthana.jpeg">
-                    <b>Keerthana E</b>
-                    <small>Strategy Director</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Kalaimathi.jpeg">
-                    <b>Kalaimathi V</b>
-                    <small>Executive Director</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Kowshiga.jpeg">
-                    <b>Kowshigadevi S</b>
-                    <small>Executive Governor</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Saran1.jpeg">
-                    <b>Saran L</b>
-                    <small>Operations Officer</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
-<div class="person">
-                    <img src="assets/Srithar1.jpeg">
-                    <b>Srithar K</b>
-                    <small>Data Intelligence Lead</small>
-                    <em>Coding Club · AI &amp; DS</em>
-                </div>
+                    <!-- HACKATHON STAFF COORDINATOR -->
+                    <div class="person faculty-card hackathon-card">
+                        <img src="assets/hackathon-coordinator.jpeg" alt="Hackathon Staff Coordinator">
+                        <b>Staff Coordinator</b>
+                        <small>AGENTICTHON</small>
+                        <em>AI &amp; DS · Mahendra Engineering College</em>
                     </div>
 
                 </div>
+
+                <div class="team-section-title student-title">
+                    STUDENT CORE TEAM
+                </div>
+
+                <div class="student-core-grid">
+                    <div class="person">
+                        <img src="assets/pavithra.jpeg">
+                        <b>Pavithra N</b>
+                        <small>President</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/bala.jpeg">
+                        <b>Balamurugan R</b>
+                        <small>President</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Sujay1.jpeg">
+                        <b>Sujay Chidambaram C S</b>
+                        <small>President</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Praveen1.jpeg">
+                        <b>Praveen K Y</b>
+                        <small>Operation Lead</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Pooja (24).jpeg">
+                        <b>Pooja V (24/07)</b>
+                        <small>Executive Lead</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Janashree1.jpeg">
+                        <b>Janashree R</b>
+                        <small>Strategy Lead</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Pooja(20).jpeg">
+                        <b>Pooja V (20/8)</b>
+                        <small>Operation Manager</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="https://codingclubai-ds.github.io/Coding-Club-Event---1-Web/assets/jessika.jpeg">
+                        <b>Jessika B</b>
+                        <small>Strategy Manager</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Keerthana.jpeg">
+                        <b>Keerthana E</b>
+                        <small>Strategy Director</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Kalaimathi.jpeg">
+                        <b>Kalaimathi V</b>
+                        <small>Executive Director</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Kowshiga.jpeg">
+                        <b>Kowshigadevi S</b>
+                        <small>Executive Governor</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Saran1.jpeg">
+                        <b>Saran L</b>
+                        <small>Operations Officer</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                    <div class="person">
+                        <img src="assets/Srithar1.jpeg">
+                        <b>Srithar K</b>
+                        <small>Data Intelligence Lead</small>
+                        <em>Coding Club · AI &amp; DS</em>
+                    </div>
+                </div>
+
+            </div>
 
         </section>
 
@@ -1420,8 +1974,7 @@
             <div class="reg-grid">
 
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
-                    target="_blank"
-                    rel="noopener">
+                    target="_blank" rel="noopener">
 
                     <b>🧠 AI Workshop</b>
 
@@ -1437,8 +1990,7 @@
 
 
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7CL5igNfzYNUMa1JRG6yKdPZKBJz-Kqf3IHec0rHO3BdU6g/viewform?usp=header"
-                    target="_blank"
-                    rel="noopener">
+                    target="_blank" rel="noopener">
 
                     <b>
                         🚀 AGENTICTHON (HACKATHON)
@@ -1459,8 +2011,7 @@
 
                 <a class="combo-card"
                     href="https://docs.google.com/forms/d/e/1FAIpQLSehtvuJuJHM-3ES4yR0Zbm19rv9ApH9oMwK4N9vBtlKagXePg/viewform?usp=header"
-                    target="_blank"
-                    rel="noopener">
+                    target="_blank" rel="noopener">
 
                     <div class="combo-badge">👑 BEST VALUE</div>
 
@@ -1510,113 +2061,146 @@
 
 
     <!-- =========================
-         COUNTDOWN JAVASCRIPT
+         CYBER MISSION COUNTDOWN JAVASCRIPT
     ========================== -->
 
     <script>
+        (function () {
+            "use strict";
 
-        /* AGENTICTHON EVENT DATE
-           24 September 2026
-           9:00 AM
-        */
+            /* CONFIGURATION: Configurable target date & reference span */
+            const COUNTDOWN_CONFIG = {
+                // Event date: 24 September 2026, 09:00:00 IST
+                targetDate: "September 24, 2026 09:00:00",
+                // Reference span in days for the Days ring progress scale
+                referenceDaysSpan: 30
+            };
 
-        const eventDate =
-            new Date("September 24, 2026 09:00:00").getTime();
+            const targetTime = new Date(COUNTDOWN_CONFIG.targetDate).getTime();
+            const CIRCUMFERENCE = 289.026; // 2 * PI * 46
+            let lastAnnouncedMinute = -1;
 
-
-        function updateCountdown() {
-
-            const now =
-                new Date().getTime();
-
-            const distance =
-                eventDate - now;
-
-
-            /* EVENT STARTED */
-
-            if (distance <= 0) {
-
-                document.getElementById("days").textContent = "00";
-
-                document.getElementById("hours").textContent = "00";
-
-                document.getElementById("minutes").textContent = "00";
-
-                document.getElementById("seconds").textContent = "00";
-
-                return;
+            /**
+             * Sets the strokeDashoffset of an SVG progress circle smoothly
+             */
+            function setProgressRing(ringId, ratio) {
+                const ring = document.getElementById(ringId);
+                if (!ring) return;
+                const clamped = Math.max(0, Math.min(1, ratio));
+                const offset = CIRCUMFERENCE * (1 - clamped);
+                ring.style.strokeDashoffset = offset.toFixed(2);
             }
 
+            /**
+             * Smooth vertical flip transition for changing digits
+             * Previous number slides upward (translateY -100%),
+             * new number enters smoothly from below (translateY 100% -> 0)
+             */
+            function updateUnitDigit(slotId, spanId, nextVal) {
+                const slot = document.getElementById(slotId);
+                if (!slot) return;
+                const current = slot.querySelector(".digit-current");
+                if (!current) return;
 
-            /* CALCULATE TIME */
+                if (current.textContent === nextVal) {
+                    return; // Value hasn't changed: do not re-animate
+                }
 
-            const days =
-                Math.floor(
-                    distance /
-                    (1000 * 60 * 60 * 24)
-                );
+                // Respect user reduced-motion preference
+                if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                    current.textContent = nextVal;
+                    return;
+                }
 
+                // Remove previous uncompleted incoming span if any
+                const pending = slot.querySelector(".digit-incoming");
+                if (pending) {
+                    pending.remove();
+                }
 
-            const hours =
-                Math.floor(
-                    (distance %
-                        (1000 * 60 * 60 * 24))
-                    /
-                    (1000 * 60 * 60)
-                );
+                const incoming = document.createElement("span");
+                incoming.className = "digit-incoming";
+                incoming.id = spanId;
+                incoming.textContent = nextVal;
+                current.removeAttribute("id");
+                slot.appendChild(incoming);
 
+                // Force reflow
+                void incoming.offsetWidth;
 
-            const minutes =
-                Math.floor(
-                    (distance %
-                        (1000 * 60 * 60))
-                    /
-                    (1000 * 60)
-                );
+                current.classList.add("digit-slide-up");
+                incoming.classList.add("digit-slide-in");
 
+                setTimeout(function () {
+                    if (current.parentNode === slot) {
+                        current.remove();
+                    }
+                    incoming.className = "digit-current";
+                }, 400);
+            }
 
-            const seconds =
-                Math.floor(
-                    (distance %
-                        (1000 * 60))
-                    /
-                    1000
-                );
+            /**
+             * Main calculation and render loop
+             */
+            function updateMissionCountdown() {
+                const now = Date.now();
+                const distance = targetTime - now;
 
+                if (distance <= 0) {
+                    updateUnitDigit("slot-days", "days", "00");
+                    updateUnitDigit("slot-hours", "hours", "00");
+                    updateUnitDigit("slot-minutes", "minutes", "00");
+                    updateUnitDigit("slot-seconds", "seconds", "00");
+                    setProgressRing("ring-days", 0);
+                    setProgressRing("ring-hours", 0);
+                    setProgressRing("ring-minutes", 0);
+                    setProgressRing("ring-seconds", 0);
+                    return;
+                }
 
-            /* DISPLAY */
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").textContent =
-                String(days).padStart(2, "0");
+                const sDays = String(days).padStart(2, "0");
+                const sHours = String(hours).padStart(2, "0");
+                const sMinutes = String(minutes).padStart(2, "0");
+                const sSeconds = String(seconds).padStart(2, "0");
 
+                // Update digits with smooth vertical flip
+                updateUnitDigit("slot-days", "days", sDays);
+                updateUnitDigit("slot-hours", "hours", sHours);
+                updateUnitDigit("slot-minutes", "minutes", sMinutes);
+                updateUnitDigit("slot-seconds", "seconds", sSeconds);
 
-            document.getElementById("hours").textContent =
-                String(hours).padStart(2, "0");
+                // Update progress arcs
+                setProgressRing("ring-seconds", seconds / 60);
+                setProgressRing("ring-minutes", minutes / 60);
+                setProgressRing("ring-hours", hours / 24);
+                setProgressRing("ring-days", Math.min(1, days / COUNTDOWN_CONFIG.referenceDaysSpan));
 
+                // Accessibility: update live announcer periodically without audio spam
+                if (minutes !== lastAnnouncedMinute) {
+                    lastAnnouncedMinute = minutes;
+                    const announcer = document.getElementById("countdown-live-announcer");
+                    if (announcer) {
+                        announcer.textContent = days + " days, " + hours + " hours, and " + minutes + " minutes remaining.";
+                    }
+                }
+            }
 
-            document.getElementById("minutes").textContent =
-                String(minutes).padStart(2, "0");
+            // Clean up existing interval if present
+            if (window.missionCountdownInterval) {
+                clearInterval(window.missionCountdownInterval);
+            }
 
+            // Immediate initial execution
+            updateMissionCountdown();
 
-            document.getElementById("seconds").textContent =
-                String(seconds).padStart(2, "0");
-
-        }
-
-
-        /* RUN IMMEDIATELY */
-
-        updateCountdown();
-
-
-        /* UPDATE EVERY SECOND */
-
-        setInterval(
-            updateCountdown,
-            1000
-        );
-
+            // Interval tick every second
+            window.missionCountdownInterval = setInterval(updateMissionCountdown, 1000);
+        })();
     </script>
 
 </body>

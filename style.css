@@ -7,6 +7,45 @@
     --violet:#8c3cff;
     --text:#f2f8ff;
     --muted:#89a9c9;
+
+    /* =========================================================
+       TYPOGRAPHY DESIGN TOKENS
+       ========================================================= */
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-accent: 'Caveat', cursive;
+
+    /* Responsive Fluid Type Scale via clamp() */
+    --text-xs: clamp(0.6875rem, 0.8vw, 0.75rem);       /* 11px - 12px */
+    --text-sm: clamp(0.8125rem, 0.9vw, 0.875rem);      /* 13px - 14px */
+    --text-base: clamp(0.9375rem, 1.1vw, 1.0625rem);   /* 15px - 17px */
+    --text-lg: clamp(1.0625rem, 1.3vw, 1.1875rem);     /* 17px - 19px */
+    --text-xl: clamp(1.25rem, 1.8vw, 1.5rem);          /* 20px - 24px */
+    --text-2xl: clamp(1.375rem, 2.3vw, 1.75rem);       /* 22px - 28px */
+    --text-3xl: clamp(1.625rem, 3.2vw, 2.25rem);       /* 26px - 36px */
+    --text-4xl: clamp(2rem, 4vw, 2.75rem);             /* 32px - 44px */
+    --text-5xl: clamp(2.25rem, 5.5vw, 3.75rem);        /* 36px - 60px */
+
+    /* Font Weights */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+
+    /* Line Heights */
+    --lh-tight: 1.15;
+    --lh-snug: 1.25;
+    --lh-normal: 1.5;
+    --lh-relaxed: 1.65;
+
+    /* Letter Spacing */
+    --tracking-tighter: -0.03em;
+    --tracking-tight: -0.015em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.04em;
+    --tracking-wider: 0.08em;
+    --tracking-widest: 0.15em;
 }
 
 *{
@@ -21,8 +60,14 @@ body{
     margin:0;
     background:var(--bg);
     color:var(--text);
-    font-family:"Oxanium",sans-serif;
+    font-family:var(--font-body);
+    font-size:var(--text-base);
+    font-weight:var(--weight-regular);
+    line-height:var(--lh-relaxed);
     overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
 }
 
 a{
@@ -2580,13 +2625,17 @@ footer{
 }
 
 /* =========================================================
-   FUTURISTIC FONT SYSTEM — AGENTICTHON
-   Inspired by the new cyber-tech visual direction.
-   Oxanium is applied consistently across the full website.
+   PROFESSIONAL WEBSITE TYPOGRAPHY SYSTEM
+   Primary Font: Inter (Body, Navigation, Buttons, Forms, Metadata)
+   Display Font: Space Grotesk (H1, H2, H3, Stats, Numbers)
+   Accent Font:  Caveat (Designer annotations, highlighted callouts)
    ========================================================= */
 
-html, body, button, input, textarea, select, option {
-    font-family: "Oxanium", sans-serif !important;
+html, body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--text);
+    line-height: var(--lh-relaxed);
 }
 
 body,
@@ -2601,34 +2650,232 @@ select {
     font: inherit;
 }
 
-/* Keep the visual hierarchy while using one unified typeface. */
-.hero h1,
+/* ---------------------------------------------------------
+   Headings System (Space Grotesk)
+   Desktop: H1 48–64px | H2 32–40px | H3 22–28px
+   Tablet:  H1 40–52px | H2 28–36px | H3 20–24px
+   Mobile:  H1 32–40px | H2 26–32px | H3 20–24px
+   --------------------------------------------------------- */
+h1, .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: var(--weight-extrabold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--tracking-tight);
+    color: #ffffff;
+}
+
+h2,
 .section h2,
 .prize-section h2,
 .final h2,
 .registration h2,
-.event h3,
-.campus-card h3,
-.contact-grid strong,
-.person b,
-.brand b {
-    font-family: "Oxanium", sans-serif !important;
-    font-weight: 700;
+.institution-title h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.625rem, 3.5vw, 2.5rem);
+    font-weight: var(--weight-bold);
+    line-height: var(--lh-snug);
+    letter-spacing: var(--tracking-tight);
+    color: #ffffff;
 }
 
-/* Technical labels and numbers */
-.kicker,
+h3,
+.event h3,
+.campus-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: var(--weight-semibold);
+    line-height: 1.35;
+    letter-spacing: var(--tracking-normal);
+    color: #ffffff;
+}
+
+h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    line-height: 1.4;
+    color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   Body & Supporting Content (Inter)
+   Desktop 16–18px | Tablet 16–17px | Mobile 15–16px
+   --------------------------------------------------------- */
+p,
+.lead,
+.faq p,
+.section-desc,
+.location,
+.venue,
+.benefits span,
+.chips b,
+.institution-title p {
+    font-family: var(--font-body);
+}
+
+.lead {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.35vw, 1.125rem);
+    font-weight: var(--weight-regular);
+    line-height: var(--lh-relaxed);
+    color: #a7c5df;
+}
+
+/* ---------------------------------------------------------
+   Navigation (Inter: 14–16px, weight 500–600)
+   --------------------------------------------------------- */
+nav a,
+.nav-links a {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.01em;
+}
+
+/* ---------------------------------------------------------
+   Buttons & CTAs (Inter: 14–16px, weight 600–700)
+   --------------------------------------------------------- */
+button,
+input[type="button"],
+input[type="submit"],
+.cta,
+.btn,
+.hero-buttons a,
+.event-btn {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------
+   Labels, Eyebrows & Technical HUD Elements (Inter: 12–14px)
+   --------------------------------------------------------- */
 .eyebrow,
-.date-line,
+.kicker,
 .tag,
-.facts span,
-.prizes b,
-.prizes strong,
-.contact-grid b,
+.date-line,
+.combo-badge,
+.mission-tag,
+.card-hud-bar,
+.mission-unit-label,
+.brand small,
 .person small,
-.countdown-box span,
-.countdown-box small,
-.hero-orb span,
-.hero-orb b {
-    font-family: "Oxanium", sans-serif !important;
+.faculty-card small,
+.facts small {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: var(--weight-semibold);
+    line-height: 1.35;
+}
+
+.eyebrow,
+.kicker,
+.tag,
+.combo-badge {
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+}
+
+.date-line {
+    letter-spacing: var(--tracking-wider);
+}
+
+/* ---------------------------------------------------------
+   Numbers, Metrics & Tabular Data (Space Grotesk: 700–800)
+   --------------------------------------------------------- */
+.digit-current,
+.digit-incoming,
+#days,
+#hours,
+#minutes,
+#seconds,
+.facts span,
+.prizes strong,
+.contact-grid strong,
+.reg-grid b,
+.combo-card b,
+.stat-number {
+    font-family: var(--font-display);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.01em;
+}
+
+.prizes strong {
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+}
+
+/* ---------------------------------------------------------
+   Handwritten Designer Accent (Caveat)
+   Used ONLY for small highlighted words, annotations, callouts
+   --------------------------------------------------------- */
+.handwritten-accent,
+.annotation {
+    font-family: var(--font-accent);
+    font-size: 1.3em;
+    font-weight: var(--weight-medium);
+    color: var(--cyan);
+    display: inline-block;
+    transform: rotate(-2.5deg);
+    vertical-align: baseline;
+    margin: 0 4px;
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 12px rgba(0, 217, 255, 0.45);
+    line-height: 1;
+}
+
+/* ---------------------------------------------------------
+   Important Concept Highlights (Selective Emphasis)
+   --------------------------------------------------------- */
+.concept-highlight {
+    font-weight: var(--weight-bold);
+    color: #ffffff;
+    background: linear-gradient(90deg, #00d9ff, #d946ef);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.35);
+}
+
+/* ---------------------------------------------------------
+   Forms & Inputs (Inter: 14px)
+   --------------------------------------------------------- */
+input,
+textarea,
+select,
+option {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+}
+
+label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: var(--weight-semibold);
+    line-height: 1.4;
+}
+
+/* ---------------------------------------------------------
+   Cards & Entity Headings
+   --------------------------------------------------------- */
+.person b,
+.faculty-card b,
+.brand b {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+}
+
+.contact-grid b {
+    font-family: var(--font-body);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+}
+
+footer {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.02em;
 }
