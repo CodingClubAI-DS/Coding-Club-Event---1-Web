@@ -3342,3 +3342,595 @@ footer {
         height:300px !important;
     }
 }
+/* =========================================================
+   REMOVE LINES BETWEEN FACULTY PHOTOS
+   ========================================================= */
+
+/* Remove borders from coordinator cards */
+.faculty-tree .tree-branch-level .faculty-card,
+.faculty-tree .tree-branch-level .person {
+    border: none !important;
+    outline: none !important;
+}
+
+/* Remove any border directly around coordinator images */
+.faculty-tree .tree-branch-level .faculty-card img {
+    border: none !important;
+    outline: none !important;
+    display: block;
+}
+
+/* Make sure no pseudo-element creates a divider */
+.faculty-tree .tree-branch-level .faculty-card::before,
+.faculty-tree .tree-branch-level .faculty-card::after,
+.faculty-tree .tree-branch-level .person::before,
+.faculty-tree .tree-branch-level .person::after {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Keep the cards separated by clean spacing */
+.faculty-tree .tree-branch-level {
+    gap: 24px !important;
+}
+
+/* Keep rounded corners on each photo/card */
+.faculty-tree .tree-branch-level .faculty-card {
+    border-radius: 18px !important;
+    overflow: hidden !important;
+}
+/* =========================================================
+   CHIEF GUESTS — WORKSHOP & AGENTICTHON
+   5 CARDS — 2 × 2 + 1 CENTERED BELOW
+   ========================================================= */
+
+.chief-guest-section{
+    width:100%;
+    max-width:1220px;
+    margin:0 auto;
+    padding:35px 30px 65px;
+    position:relative;
+}
+
+.chief-guest-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:28px;
+    text-align:center;
+    flex-wrap:wrap;
+}
+
+.chief-guest-title::before,
+.chief-guest-title::after{
+    content:"";
+    height:1px;
+    flex:1;
+    max-width:180px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(25,216,255,.8),
+        rgba(255,43,214,.8)
+    );
+    box-shadow:0 0 10px rgba(25,216,255,.35);
+}
+
+.chief-guest-title span{
+    font-family:var(--font-display);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:3px;
+    color:#19d8ff;
+    text-shadow:0 0 12px rgba(25,216,255,.55);
+}
+
+.chief-guest-title strong{
+    font-family:var(--font-display);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:3px;
+    background:linear-gradient(
+        90deg,
+        #19d8ff,
+        #8c3cff,
+        #ff2bd6
+    );
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+}
+
+/* 2 cards per row */
+.chief-guest-grid{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+}
+
+/* Each guest card */
+.chief-guest-card{
+    position:relative;
+    width:100%;
+    min-height:310px;
+
+    display:grid;
+    grid-template-columns:220px minmax(0,1fr);
+    align-items:center;
+    gap:28px;
+
+    padding:25px 30px;
+
+    border:1px solid rgba(25,216,255,.45);
+    border-radius:26px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(4,18,45,.88),
+            rgba(13,5,37,.82)
+        );
+
+    box-shadow:
+        0 0 30px rgba(25,216,255,.10),
+        0 0 65px rgba(140,60,255,.08),
+        inset 0 0 35px rgba(25,216,255,.035);
+
+    overflow:hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+/* Fifth card centered below the first four */
+.chief-guest-card:nth-child(5){
+    grid-column:1 / -1;
+    width:calc(50% - 12px);
+    justify-self:center;
+}
+
+/* Moving glow */
+.chief-guest-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-30%;
+    width:35%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.07),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+    animation:chiefGuestShine 5s ease-in-out infinite;
+    pointer-events:none;
+}
+
+.chief-guest-card:nth-child(2)::before{animation-delay:1s;}
+.chief-guest-card:nth-child(3)::before{animation-delay:2s;}
+.chief-guest-card:nth-child(4)::before{animation-delay:3s;}
+.chief-guest-card:nth-child(5)::before{animation-delay:4s;}
+
+@keyframes chiefGuestShine{
+    0%{left:-35%;}
+    45%{left:110%;}
+    100%{left:110%;}
+}
+
+/* Outer glow line */
+.chief-guest-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    border-radius:inherit;
+    border:1px solid transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,216,255,.5),
+            transparent 35%,
+            transparent 65%,
+            rgba(255,43,214,.5)
+        ) border-box;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+
+    pointer-events:none;
+}
+
+.chief-guest-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(25,216,255,.75);
+
+    box-shadow:
+        0 0 35px rgba(25,216,255,.18),
+        0 0 75px rgba(255,43,214,.10),
+        inset 0 0 40px rgba(25,216,255,.06);
+}
+
+/* Photo */
+.chief-guest-photo{
+    position:relative;
+    width:220px;
+    height:260px;
+
+    border-radius:20px;
+    overflow:hidden;
+
+    border:2px solid rgba(25,216,255,.65);
+    background:#020816;
+
+    box-shadow:
+        0 0 20px rgba(25,216,255,.20),
+        0 0 40px rgba(140,60,255,.10);
+}
+
+.chief-guest-photo::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.02),
+            rgba(0,0,0,.38)
+        );
+
+    z-index:2;
+    pointer-events:none;
+}
+
+.chief-guest-photo img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+    transition:transform .5s ease;
+}
+
+.chief-guest-card:hover .chief-guest-photo img{
+    transform:scale(1.035);
+}
+
+/* Information */
+.chief-guest-info{
+    position:relative;
+    z-index:3;
+    min-width:0;
+}
+
+.chief-guest-label{
+    display:inline-block;
+    padding:6px 13px;
+    margin-bottom:12px;
+
+    border:1px solid rgba(255,43,214,.45);
+    border-radius:20px;
+    background:rgba(255,43,214,.07);
+
+    color:#ff73e7;
+
+    font-family:var(--font-display);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2.5px;
+
+    box-shadow:0 0 15px rgba(255,43,214,.08);
+}
+
+.chief-guest-info h2{
+    margin:0 0 5px;
+
+    font-family:var(--font-display);
+    font-size:clamp(26px,3vw,38px);
+    font-weight:800;
+    line-height:1.1;
+    color:#ffffff;
+
+    text-shadow:0 0 18px rgba(25,216,255,.18);
+}
+
+.chief-guest-info h3{
+    margin:7px 0 14px;
+
+    font-family:var(--font-display);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2.5px;
+    color:#19d8ff;
+
+    text-shadow:0 0 12px rgba(25,216,255,.5);
+}
+
+.chief-guest-info p{
+    max-width:500px;
+    margin:0 0 20px;
+
+    color:#9db9d3;
+    font-size:14px;
+    line-height:1.65;
+}
+
+/* Event Tags */
+.chief-guest-events{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.chief-guest-events span{
+    padding:8px 13px;
+
+    border:1px solid rgba(25,216,255,.28);
+    border-radius:20px;
+
+    background:rgba(25,216,255,.05);
+    color:#8eeaff;
+
+    font-family:var(--font-display);
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1.7px;
+
+    box-shadow:inset 0 0 12px rgba(25,216,255,.04);
+}
+
+.chief-guest-events span:nth-child(2){
+    border-color:rgba(255,43,214,.35);
+    color:#ff7be8;
+    background:rgba(255,43,214,.05);
+}
+
+
+/* =========================================================
+   CHIEF GUEST — RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1050px){
+
+    .chief-guest-card{
+        grid-template-columns:180px minmax(0,1fr);
+        gap:20px;
+        padding:22px;
+    }
+
+    .chief-guest-photo{
+        width:180px;
+        height:235px;
+    }
+
+    .chief-guest-card:nth-child(5){
+        width:calc(50% - 10px);
+    }
+}
+
+@media(max-width:850px){
+
+    .chief-guest-grid{
+        grid-template-columns:1fr;
+    }
+
+    .chief-guest-card,
+    .chief-guest-card:nth-child(5){
+        width:100%;
+        grid-column:auto;
+        justify-self:stretch;
+
+        grid-template-columns:1fr;
+        gap:25px;
+        padding:25px;
+    }
+
+    .chief-guest-photo{
+        width:100%;
+        max-width:300px;
+        height:300px;
+        margin:0 auto;
+    }
+
+    .chief-guest-info{
+        text-align:center;
+    }
+
+    .chief-guest-events{
+        justify-content:center;
+    }
+}
+
+@media(max-width:600px){
+
+    .chief-guest-section{
+        padding:25px 18px 45px;
+    }
+
+    .chief-guest-title{
+        gap:6px;
+    }
+
+    .chief-guest-title::before,
+    .chief-guest-title::after{
+        display:none;
+    }
+
+    .chief-guest-title span,
+    .chief-guest-title strong{
+        font-size:9px;
+        letter-spacing:2px;
+    }
+
+    .chief-guest-card,
+    .chief-guest-card:nth-child(5){
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .chief-guest-photo{
+        height:270px;
+        border-radius:17px;
+    }
+
+    .chief-guest-info h2{
+        font-size:28px;
+    }
+
+    .chief-guest-info h3{
+        font-size:11px;
+        letter-spacing:2px;
+    }
+
+    .chief-guest-info p{
+        font-size:13px;
+    }
+
+    .chief-guest-label{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+}
+
+
+/* =========================================================
+   CHIEF GUEST — RESPONSIVE
+   ========================================================= */
+
+@media(max-width:850px){
+
+    .chief-guest-card{
+        grid-template-columns:1fr;
+        gap:25px;
+        padding:25px;
+    }
+
+    .chief-guest-photo{
+        width:100%;
+        max-width:300px;
+        height:300px;
+        margin:0 auto;
+    }
+
+    .chief-guest-info{
+        text-align:center;
+    }
+
+    .chief-guest-events{
+        justify-content:center;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .chief-guest-section{
+        padding:25px 18px 45px;
+    }
+
+    .chief-guest-title{
+        gap:6px;
+    }
+
+    .chief-guest-title::before,
+    .chief-guest-title::after{
+        display:none;
+    }
+
+    .chief-guest-title span,
+    .chief-guest-title strong{
+        font-size:9px;
+        letter-spacing:2px;
+    }
+
+    .chief-guest-card{
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .chief-guest-photo{
+        height:270px;
+        border-radius:17px;
+    }
+
+    .chief-guest-info h2{
+        font-size:28px;
+    }
+
+    .chief-guest-info h3{
+        font-size:11px;
+        letter-spacing:2px;
+    }
+
+    .chief-guest-info p{
+        font-size:13px;
+    }
+
+    .chief-guest-label{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+
+}
+
+
+/* =========================================================
+   ADDITIONAL STAFF — CENTERED BELOW ALL FOUR FACULTY CARDS
+   ========================================================= */
+
+.faculty-tree .tree-branch-level .additional-staff-card{
+    grid-column:1 / -1 !important;
+    justify-self:center !important;
+    width:330px !important;
+    max-width:330px !important;
+    margin:0 auto !important;
+}
+
+.faculty-tree .tree-branch-level .additional-staff-card img{
+    width:100% !important;
+    height:300px !important;
+    object-fit:cover !important;
+    object-position:center 12% !important;
+}
+
+@media(max-width:1200px){
+    .faculty-tree .tree-branch-level .additional-staff-card img{
+        height:280px !important;
+    }
+}
+
+@media(max-width:950px){
+    .faculty-tree .tree-branch-level .additional-staff-card{
+        grid-column:1 / -1 !important;
+        width:330px !important;
+        max-width:100% !important;
+    }
+}
+
+@media(max-width:600px){
+    .faculty-tree .tree-branch-level .additional-staff-card{
+        width:100% !important;
+        max-width:330px !important;
+    }
+}
+/* =========================================================
+   MEKALA R — PINK STAFF COORDINATOR TITLE
+   ========================================================= */
+
+.tree-branch-level .workshop-card:nth-child(3) small {
+    color: #ff2bd6 !important;
+}
