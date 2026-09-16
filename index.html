@@ -9,11 +9,27 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- COFTEN FONT: place Coften.woff2 inside assets/ -->
+    <style>
+        @font-face {
+            font-family: "Coften";
+            src: url("assets/Coften.woff2") format("woff2");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Coften is used only for the institution name inside the hero box */
+        .institution-title h2 {
+            font-family: "Coften", sans-serif !important;
+        }
+    </style>
 
     <!-- =========================
          EVENT IMAGE FIX
@@ -44,19 +60,19 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 35%, rgba(1, 7, 20, 0.58) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.02) 35%, rgba(1,7,20,0.58) 100%);
             z-index: 2;
             pointer-events: none;
         }
 
-        .event-img.event-photo>span {
+        .event-img.event-photo > span {
             position: absolute;
             top: 18px;
             left: 18px;
             z-index: 3;
         }
 
-        .campus-section .campus-card>img {
+        .campus-section .campus-card > img {
             width: 100%;
             height: 100%;
             min-height: 320px;
@@ -74,596 +90,363 @@
 
     <!-- COUNTDOWN STYLE -->
     <style>
-        /* =========================
-           CYBER MISSION COUNTDOWN INSTRUMENT
-        ========================= */
+        /* =========================================================
+           AGENTICTHON — DESIGN 6 CYBER PANEL COUNTDOWN
+        ========================================================= */
 
-        .mission-countdown {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 36px;
+        .countdown {
+            width: min(920px, 94%);
+            margin: 42px auto 0;
             position: relative;
             z-index: 20;
-        }
-
-        /* Technical mission status header */
-        .mission-header {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-            padding: 5px 14px 5px 10px;
-            background: rgba(4, 10, 26, 0.72);
-            border: 1px solid rgba(0, 217, 255, 0.28);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 0 14px rgba(0, 217, 255, 0.12), inset 0 0 8px rgba(0, 217, 255, 0.06);
-        }
-
-        .mission-radar {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #00d9ff;
-            box-shadow: 0 0 8px #00d9ff;
-            position: relative;
-        }
-
-        .mission-radar::after {
-            content: "";
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 217, 255, 0.75);
-            animation: radarRing 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
-        }
-
-        @keyframes radarRing {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(2.4);
-                opacity: 0;
-            }
-        }
-
-        .mission-label {
-            font-family: var(--font-display), sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
-        }
-
-        .mission-tag {
-            font-family: var(--font-body), monospace;
-            font-size: 9px;
-            font-weight: 700;
-            color: #00d9ff;
-            letter-spacing: 1.5px;
-            padding-left: 6px;
-            border-left: 1px solid rgba(0, 217, 255, 0.35);
-        }
-
-        /* Countdown instrument layout */
-        .countdown-instrument {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .countdown-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Instrument card unit */
-        .mission-card {
-            position: relative;
-            min-width: 116px;
-            padding: 12px 14px 10px;
-            background: linear-gradient(160deg, rgba(8, 16, 36, 0.82) 0%, rgba(4, 9, 22, 0.90) 100%);
-            border: 1px solid rgba(0, 217, 255, 0.24);
-            border-radius: 18px;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow:
-                0 14px 34px -4px rgba(0, 0, 0, 0.65),
-                0 0 18px rgba(0, 217, 255, 0.08),
-                inset 0 1px 1px rgba(255, 255, 255, 0.12),
-                inset 0 0 20px rgba(0, 217, 255, 0.03);
-            overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+            padding: 14px 18px 18px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            isolation: isolate;
         }
 
-        /* Subtle technical grid background */
-        .mission-card::before {
+        /* Outer cyber frame */
+        .countdown::before,
+        .countdown::after {
             content: "";
             position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(rgba(0, 217, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(180deg, rgba(0, 217, 255, 0.03) 0%, transparent 60%);
-            background-size: 10px 10px, 100% 100%;
-            opacity: 0.6;
             pointer-events: none;
-            z-index: 0;
         }
 
-        /* Top subtle border highlight */
-        .mission-card::after {
+        .countdown::before {
+            inset: 0;
+            border: 1px solid rgba(25, 216, 255, .32);
+            clip-path: polygon(
+                28px 0,
+                calc(100% - 28px) 0,
+                100% 28px,
+                100% calc(100% - 28px),
+                calc(100% - 28px) 100%,
+                28px 100%,
+                0 calc(100% - 28px),
+                0 28px
+            );
+            box-shadow:
+                0 0 18px rgba(25,216,255,.10),
+                inset 0 0 24px rgba(25,216,255,.035);
+        }
+
+        .countdown::after {
+            width: 120px;
+            height: 2px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #19d8ff,
+                #ff2bd6,
+                transparent
+            );
+            box-shadow:
+                0 0 10px #19d8ff,
+                0 0 22px rgba(255,43,214,.65);
+        }
+
+        /* Small HUD heading */
+        .countdown-label {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 13px;
+            padding: 6px 28px;
+            font-family: "Oxanium", sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #8ceeff;
+            background: rgba(4, 13, 31, .86);
+            border: 1px solid rgba(25,216,255,.38);
+            clip-path: polygon(
+                10px 0,
+                calc(100% - 10px) 0,
+                100% 50%,
+                calc(100% - 10px) 100%,
+                10px 100%,
+                0 50%
+            );
+            text-shadow:
+                0 0 7px rgba(25,216,255,.9);
+        }
+
+        .countdown-row {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Cyber timer cards */
+        .countdown-box {
+            position: relative;
+            width: 142px;
+            height: 104px;
+            flex: 1 1 0;
+            max-width: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(5, 22, 45, .94),
+                    rgba(25, 8, 52, .92)
+                );
+
+            border: 1px solid rgba(25,216,255,.48);
+
+            clip-path: polygon(
+                14px 0,
+                calc(100% - 14px) 0,
+                100% 14px,
+                100% calc(100% - 14px),
+                calc(100% - 14px) 100%,
+                14px 100%,
+                0 calc(100% - 14px),
+                0 14px
+            );
+
+            box-shadow:
+                0 0 14px rgba(25,216,255,.12),
+                inset 0 0 24px rgba(25,216,255,.045);
+
+            overflow: hidden;
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
+
+        /* Top neon rail */
+        .countdown-box::before {
             content: "";
             position: absolute;
             top: 0;
-            left: 20%;
-            right: 20%;
-            height: 1.5px;
-            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.95), rgba(168, 85, 247, 0.7), transparent);
-            box-shadow: 0 0 10px #00d9ff;
-            transition: left 0.4s ease, right 0.4s ease;
-        }
-
-        .mission-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 217, 255, 0.48);
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #19d8ff 25%,
+                #ffffff 50%,
+                #ff2bd6 75%,
+                transparent
+            );
             box-shadow:
-                0 18px 40px -4px rgba(0, 0, 0, 0.75),
-                0 0 24px rgba(0, 217, 255, 0.18),
-                inset 0 1px 2px rgba(255, 255, 255, 0.18),
-                inset 0 0 25px rgba(0, 217, 255, 0.08);
+                0 0 8px #19d8ff,
+                0 0 18px rgba(25,216,255,.7);
         }
 
-        .mission-card:hover::after {
-            left: 10%;
-            right: 10%;
-        }
-
-        /* HUD corner accents */
-        .card-corner {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-color: rgba(0, 217, 255, 0.45);
-            pointer-events: none;
-            z-index: 2;
-            transition: border-color 0.3s ease;
-        }
-
-        .mission-card:hover .card-corner {
-            border-color: rgba(0, 217, 255, 0.85);
-        }
-
-        .card-corner.tl {
-            top: 6px;
-            left: 6px;
-            border-top: 1.5px solid;
-            border-left: 1.5px solid;
-        }
-
-        .card-corner.tr {
-            top: 6px;
-            right: 6px;
-            border-top: 1.5px solid;
-            border-right: 1.5px solid;
-        }
-
-        .card-corner.bl {
-            bottom: 6px;
-            left: 6px;
-            border-bottom: 1.5px solid;
-            border-left: 1.5px solid;
-        }
-
-        .card-corner.br {
-            bottom: 6px;
-            right: 6px;
-            border-bottom: 1.5px solid;
-            border-right: 1.5px solid;
-        }
-
-        /* Card HUD status line */
-        .card-hud-bar {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-body), monospace;
-            font-size: 8px;
-            font-weight: 600;
-            color: rgba(0, 217, 255, 0.65);
-            letter-spacing: 1.5px;
-            margin-bottom: 2px;
-            padding: 0 4px;
-            z-index: 1;
-        }
-
-        .hud-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 3px;
-            font-size: 7.5px;
-            color: rgba(125, 211, 252, 0.75);
-        }
-
-        .hud-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #00d9ff;
-            box-shadow: 0 0 6px #00d9ff;
-        }
-
-        .hud-dot.pulse-fast {
-            animation: hudDotPulse 1s ease-in-out infinite;
-        }
-
-        @keyframes hudDotPulse {
-
-            0%,
-            100% {
-                opacity: 0.4;
-            }
-
-            50% {
-                opacity: 1;
-                filter: drop-shadow(0 0 5px #00d9ff);
-            }
-        }
-
-        /* Circular progress ring and viewport */
-        .card-dial {
-            position: relative;
-            width: 96px;
-            height: 96px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2px 0;
-            z-index: 1;
-        }
-
-        .progress-ring {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            transform: rotate(-90deg);
-            pointer-events: none;
-        }
-
-        .progress-ring-bg {
-            fill: transparent;
-            stroke: rgba(0, 217, 255, 0.08);
-            stroke-width: 2.5;
-        }
-
-        .progress-ring-bar {
-            fill: transparent;
-            stroke: url(#ring-grad-cyan);
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-dasharray: 289.026;
-            stroke-dashoffset: 0;
-            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: drop-shadow(0 0 4px rgba(0, 217, 255, 0.45));
-        }
-
-        /* Smooth vertical digit transition */
-        .digit-viewport {
-            position: relative;
-            width: 100%;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .digit-slot {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .digit-current,
-        .digit-incoming {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display), monospace, sans-serif;
-            font-size: 36px;
-            font-weight: 800;
-            line-height: 1;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            font-variant-numeric: tabular-nums;
-            text-shadow:
-                0 0 10px rgba(0, 217, 255, 0.6),
-                0 0 22px rgba(0, 217, 255, 0.25);
-            transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), opacity 380ms ease-out;
-            will-change: transform, opacity;
-        }
-
-        .digit-current {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .digit-incoming {
-            transform: translateY(100%);
-            opacity: 0;
-        }
-
-        .digit-current.digit-slide-up {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-
-        .digit-incoming.digit-slide-in {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Unit label */
-        .mission-unit-label {
-            display: block;
-            margin-top: 4px;
-            font-family: var(--font-body), sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            color: #00d9ff;
-            text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
-            z-index: 1;
-        }
-
-        .card-bottom-accent {
+        /* Bottom cyber rail */
+        .countdown-box::after {
+            content: "";
             position: absolute;
             bottom: 0;
-            left: 25%;
-            right: 25%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.7), rgba(0, 217, 255, 0.8), transparent);
-            box-shadow: 0 0 6px rgba(0, 217, 255, 0.5);
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #19d8ff,
+                #ff2bd6,
+                transparent
+            );
+            box-shadow:
+                0 0 8px #ff2bd6,
+                0 0 16px rgba(255,43,214,.55);
         }
 
-        /* Glowing dual-dot separator */
-        .countdown-sep {
+        .countdown-box:hover {
+            transform: translateY(-6px);
+            border-color: rgba(25,216,255,.9);
+            box-shadow:
+                0 0 20px rgba(25,216,255,.26),
+                0 0 42px rgba(255,43,214,.10),
+                inset 0 0 30px rgba(25,216,255,.075);
+        }
+
+        .countdown-box span {
+            display: block;
+            position: relative;
+            z-index: 2;
+            font-family: "Oxanium", sans-serif;
+            font-size: 43px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow:
+                0 0 5px #ffffff,
+                0 0 12px #19d8ff,
+                0 0 25px rgba(25,216,255,.72);
+        }
+
+        .countdown-box small {
+            display: block;
+            position: relative;
+            z-index: 2;
+            margin-top: 11px;
+            font-family: "Oxanium", sans-serif;
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #70eaff;
+            text-shadow:
+                0 0 8px rgba(25,216,255,.75);
+        }
+
+        /* Live one-second pulse */
+        .countdown-box span.tick {
+            animation: cyberTick .42s ease;
+        }
+
+        @keyframes cyberTick {
+            0% {
+                transform: scale(1);
+                text-shadow:
+                    0 0 5px #ffffff,
+                    0 0 12px #19d8ff,
+                    0 0 25px rgba(25,216,255,.72);
+            }
+            45% {
+                transform: scale(1.10);
+                text-shadow:
+                    0 0 7px #ffffff,
+                    0 0 18px #19d8ff,
+                    0 0 34px #ff2bd6;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Small cyber decorations under the timer */
+        .countdown-status {
+            width: 88%;
+            margin-top: 13px;
             display: flex;
-            flex-direction: column;
-            gap: 7px;
-            padding: 0 2px;
             align-items: center;
             justify-content: center;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+            font-family: "Oxanium", sans-serif;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #66e7ff;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(25,216,255,.65);
         }
 
-        .sep-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #00d9ff;
-            box-shadow: 0 0 8px #00d9ff, 0 0 16px rgba(0, 217, 255, 0.7);
-            animation: sepGlowPulse 1s ease-in-out infinite;
-        }
-
-        .sep-dot:last-child {
-            animation-delay: 0.15s;
-        }
-
-        @keyframes sepGlowPulse {
-
-            0%,
-            100% {
-                opacity: 0.35;
-                transform: scale(0.9);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.15);
-                filter: drop-shadow(0 0 8px #00d9ff);
-            }
-        }
-
-        /* Screen reader utility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
+        .countdown-status::before,
+        .countdown-status::after {
+            content: "";
             height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+            flex: 1;
+            max-width: 130px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(25,216,255,.8)
+            );
+            box-shadow: 0 0 7px rgba(25,216,255,.55);
         }
 
-        /* Responsive styling */
-        @media (max-width: 768px) {
-            .countdown-instrument {
-                gap: 8px;
-            }
-
-            .countdown-group {
-                gap: 8px;
-            }
-
-            .mission-card {
-                min-width: 98px;
-                padding: 10px 10px 8px;
-                border-radius: 16px;
-            }
-
-            .card-dial {
-                width: 82px;
-                height: 82px;
-            }
-
-            .digit-current,
-            .digit-incoming {
-                font-size: 28px;
-            }
-
-            .mission-unit-label {
-                font-size: 9px;
-                letter-spacing: 2px;
-            }
+        .countdown-status::after {
+            background: linear-gradient(
+                90deg,
+                rgba(255,43,214,.8),
+                transparent
+            );
+            box-shadow: 0 0 7px rgba(255,43,214,.55);
         }
 
-        /* Mobile 2x2 grid layout */
-        @media (max-width: 600px) {
-            .mission-countdown {
-                margin-top: 24px;
+        /* Mobile */
+        @media (max-width: 700px) {
+            .countdown {
+                width: 94%;
+                margin-top: 30px;
+                padding: 11px 8px 13px;
             }
 
-            .countdown-instrument {
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
-                max-width: 330px;
+            .countdown-label {
+                font-size: 7px;
+                letter-spacing: 2.5px;
+                padding: 5px 18px;
+                margin-bottom: 9px;
             }
 
-            .sep-middle {
-                display: none !important;
+            .countdown-row {
+                gap: 6px;
             }
 
-            .countdown-group {
-                width: 100%;
-                justify-content: space-between;
-                gap: 8px;
-            }
-
-            .mission-card {
-                flex: 1;
+            .countdown-box {
+                height: 78px;
                 min-width: 0;
-                padding: 10px 8px 8px;
-                border-radius: 14px;
+                max-width: none;
             }
 
-            .card-dial {
-                width: 76px;
-                height: 76px;
+            .countdown-box span {
+                font-size: 25px;
+                letter-spacing: 1px;
             }
 
-            .digit-current,
-            .digit-incoming {
-                font-size: 24px;
-            }
-
-            .mission-unit-label {
-                font-size: 8.5px;
+            .countdown-box small {
+                margin-top: 7px;
+                font-size: 5px;
                 letter-spacing: 1.5px;
             }
 
-            .mission-header {
-                margin-bottom: 12px;
-                padding: 4px 12px;
+            .countdown-status {
+                margin-top: 9px;
+                font-size: 5px;
+                letter-spacing: 1.5px;
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .countdown {
+                width: 96%;
             }
 
-            .mission-label {
-                font-size: 9.5px;
+            .countdown-row {
+                gap: 4px;
+            }
+
+            .countdown-box {
+                height: 70px;
+            }
+
+            .countdown-box span {
+                font-size: 21px;
+            }
+
+            .countdown-box small {
+                font-size: 4px;
+                letter-spacing: 1px;
+            }
+
+            .countdown-label {
+                font-size: 6px;
                 letter-spacing: 2px;
             }
-
-            .mission-tag {
-                font-size: 8.5px;
-            }
         }
 
-        /* Reduced motion accessibility */
-        @media (prefers-reduced-motion: reduce) {
-
-            .digit-current,
-            .digit-incoming,
-            .progress-ring-bar,
-            .mission-card,
-            .mission-radar::after,
-            .hud-dot.pulse-fast,
-            .sep-dot {
-                transition: none !important;
-                animation: none !important;
-            }
-
-            .mission-card:hover {
-                transform: none !important;
-            }
-        }
-
-
-        /* =========================
-           WORKSHOP + AGENTICTHON COMBO
-        ========================= */
-
-        .reg-grid .combo-card {
-            grid-column: 1 / -1;
-            position: relative;
-            text-align: center;
-            border-color: rgba(255, 43, 214, 0.65);
-            background: linear-gradient(135deg, rgba(8, 20, 54, 0.82), rgba(48, 5, 50, 0.78));
-            box-shadow: 0 0 35px rgba(255, 43, 214, 0.12), inset 0 0 30px rgba(112, 45, 255, 0.06);
-        }
-
-        .reg-grid .combo-card:hover {
-            transform: translateY(-4px);
-            border-color: #ff2bd6;
-            box-shadow: 0 0 35px rgba(255, 43, 214, 0.28), 0 0 60px rgba(92, 50, 255, 0.14);
-        }
-
-        .combo-card .combo-badge {
-            display: inline-block;
-            padding: 6px 14px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255, 43, 214, 0.7);
-            border-radius: 20px;
-            color: #ff7be6;
-            background: rgba(255, 43, 214, 0.08);
-            font-family: var(--font-body);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .combo-card b {
-            font-size: 19px !important;
-        }
-
-        .combo-card span {
-            font-size: 13px !important;
-        }
-
-        .combo-card em {
-            color: #ff6be3 !important;
-        }
-
-        @media (max-width: 800px) {
-            .reg-grid .combo-card {
-                grid-column: auto;
-            }
-        }
     </style>
 
     <!-- INTERACTIVE INSTITUTION TITLE STYLE -->
@@ -676,27 +459,25 @@
             padding: 14px 28px;
             text-align: center;
             z-index: 5;
-            border: 1px solid rgba(25, 216, 255, .28);
+            border: 1px solid rgba(25,216,255,.28);
             border-radius: 18px;
-            background: linear-gradient(135deg, rgba(10, 35, 75, .45), rgba(35, 5, 65, .32));
-            box-shadow: 0 0 20px rgba(25, 216, 255, .08), inset 0 0 25px rgba(25, 216, 255, .04);
+            background: linear-gradient(135deg, rgba(10,35,75,.45), rgba(35,5,65,.32));
+            box-shadow: 0 0 20px rgba(25,216,255,.08), inset 0 0 25px rgba(25,216,255,.04);
             backdrop-filter: blur(8px);
             overflow: hidden;
-            transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .35s ease, box-shadow .35s ease;
+            transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease;
         }
-
         .institution-title::before {
             content: "";
             position: absolute;
             inset: -1px;
             border-radius: inherit;
-            background: linear-gradient(90deg, transparent, rgba(25, 216, 255, .8), transparent, rgba(255, 43, 214, .8), transparent);
+            background: linear-gradient(90deg, transparent, rgba(25,216,255,.8), transparent, rgba(255,43,214,.8), transparent);
             background-size: 250% 100%;
             z-index: -1;
             opacity: .35;
             animation: institutionBorder 5s linear infinite;
         }
-
         .institution-title::after {
             content: "";
             position: absolute;
@@ -704,160 +485,260 @@
             left: -100%;
             width: 45%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .14), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
             transform: skewX(-20deg);
             animation: institutionShine 4.5s ease-in-out infinite;
             pointer-events: none;
         }
-
         .institution-title:hover {
             transform: translateY(-5px) scale(1.025);
-            border-color: rgba(25, 216, 255, .75);
-            box-shadow: 0 0 25px rgba(25, 216, 255, .22), 0 0 55px rgba(140, 60, 255, .12), inset 0 0 30px rgba(25, 216, 255, .07);
+            border-color: rgba(25,216,255,.75);
+            box-shadow: 0 0 25px rgba(25,216,255,.22), 0 0 55px rgba(140,60,255,.12), inset 0 0 30px rgba(25,216,255,.07);
         }
-
         .institution-title h2 {
             margin: 0;
-            font-family: var(--font-display), sans-serif;
+            font-family: Oxanium, sans-serif;
             font-size: clamp(20px, 3vw, 34px);
-            font-weight: 800;
-            letter-spacing: 2px;
-            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: 3px;
+            line-height: 1.1;
             background: linear-gradient(90deg, #fff, #6feaff, #fff, #c45cff, #fff);
             background-size: 250% auto;
             color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
-            text-shadow: 0 0 18px rgba(25, 216, 255, .25);
+            text-shadow: 0 0 18px rgba(25,216,255,.25);
             animation: institutionText 6s linear infinite;
         }
-
         .institution-title p {
-            margin: 11px auto 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6px 18px;
-            font-family: var(--font-display), 'Space Grotesk', sans-serif;
-            font-size: clamp(10.5px, 1.2vw, 13.5px);
-            font-weight: 800;
-            letter-spacing: 3.5px;
+            margin: 9px 0 0;
+            font-family: Oxanium, sans-serif;
+            font-size: clamp(9px, 1.3vw, 13px);
+            font-weight: 700;
+            letter-spacing: 4px;
             line-height: 1.4;
-            border-radius: 25px;
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12), rgba(255, 43, 214, 0.1));
-            border: 1px solid rgba(0, 217, 255, 0.42);
-            box-shadow: 0 0 18px rgba(0, 217, 255, 0.18), inset 0 0 14px rgba(255, 43, 214, 0.12);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-
-            background-image: linear-gradient(90deg, #00f0ff 0%, #7eeaff 25%, #ff2bd6 55%, #c084fc 80%, #00f0ff 100%);
-            background-size: 250% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.5));
-            animation: deptGlow 5s linear infinite;
-            transition: all .35s cubic-bezier(.2, .8, .2, 1);
+            color: #68ddff;
+            text-shadow: 0 0 10px rgba(25,216,255,.55), 0 0 25px rgba(25,216,255,.2);
+            transition: letter-spacing .35s ease, color .35s ease;
         }
-
-        .institution-title:hover p {
-            letter-spacing: 5px;
-            border-color: rgba(255, 43, 214, 0.7);
-            box-shadow: 0 0 28px rgba(255, 43, 214, 0.35), 0 0 45px rgba(0, 217, 255, 0.25), inset 0 0 18px rgba(0, 217, 255, 0.18);
-            transform: scale(1.04);
-            filter: drop-shadow(0 0 16px rgba(255, 43, 214, 0.6));
-        }
-
-        @keyframes deptGlow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 250% 50%;
-            }
-        }
-
-        @keyframes institutionBorder {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 250% 50%;
-            }
-        }
-
-        @keyframes institutionText {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            100% {
-                background-position: 250% 50%;
-            }
-        }
-
-        @keyframes institutionShine {
-
-            0%,
-            45% {
-                left: -100%;
-            }
-
-            70%,
-            100% {
-                left: 160%;
-            }
-        }
-
+        .institution-title:hover p { letter-spacing: 5px; color: #9cecff; }
+        @keyframes institutionBorder { 0% { background-position: 0% 50%; } 100% { background-position: 250% 50%; } }
+        @keyframes institutionText { 0% { background-position: 0% 50%; } 100% { background-position: 250% 50%; } }
+        @keyframes institutionShine { 0%,45% { left: -100%; } 70%,100% { left: 160%; } }
         @media (max-width: 800px) {
-            .institution-title {
-                margin-bottom: 22px;
-                padding: 12px 18px;
-                border-radius: 15px;
-            }
-
-            .institution-title h2 {
-                font-size: 18px;
-                letter-spacing: 1.8px;
-            }
-
-            .institution-title p {
-                font-size: 8px;
-                letter-spacing: 2.2px;
-                margin-top: 7px;
-            }
+            .institution-title { margin-bottom: 22px; padding: 12px 18px; border-radius: 15px; }
+            .institution-title h2 { font-size: 18px; letter-spacing: 1.8px; }
+            .institution-title p { font-size: 8px; letter-spacing: 2.2px; margin-top: 7px; }
         }
-
         @media (max-width: 500px) {
-            .institution-title {
-                width: 94%;
-                padding: 11px 12px;
-            }
-
-            .institution-title h2 {
-                font-size: 15px;
-                letter-spacing: 1.2px;
-            }
-
-            .institution-title p {
-                font-size: 7px;
-                letter-spacing: 1.5px;
-            }
+            .institution-title { width: 94%; padding: 11px 12px; }
+            .institution-title h2 { font-size: 15px; letter-spacing: 1.2px; }
+            .institution-title p { font-size: 7px; letter-spacing: 1.5px; }
         }
-
         @media (prefers-reduced-motion: reduce) {
-
-            .institution-title::before,
-            .institution-title::after,
-            .institution-title h2 {
-                animation: none !important;
-            }
+            .institution-title::before, .institution-title::after, .institution-title h2 { animation: none !important; }
         }
     </style>
+
+
+<style>
+/* =========================================================
+   FACULTY / COORDINATOR LAYOUT — NO CONNECTOR LINES
+   ========================================================= */
+
+.tree-team{
+    position:relative;
+    width:100%;
+    margin-top:34px;
+}
+
+.tree-team .team-section-title{
+    text-align:center;
+    margin-bottom:26px;
+}
+
+.org-tree{
+    width:min(1100px,100%);
+    margin:0 auto;
+    position:relative;
+}
+
+/* HOD — CENTERED */
+.tree-root{
+    display:flex;
+    justify-content:center;
+    position:relative;
+    z-index:3;
+}
+
+.tree-root .faculty-card{
+    width:min(390px,100%);
+}
+
+/* NO CONNECTOR LINES */
+.tree-connector,
+.vertical-line,
+.horizontal-line,
+.branch-line{
+    display:none !important;
+}
+
+/* TWO COORDINATORS */
+.tree-branches{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:34px;
+    position:relative;
+    margin-top:40px;
+}
+
+.tree-branch{
+    position:relative;
+    padding-top:0;
+}
+
+.tree-branch .faculty-card{
+    width:100%;
+    margin:0;
+}
+
+/* FACULTY CARDS */
+.tree-team .faculty-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    border:1px solid rgba(25,216,255,.35);
+    background:linear-gradient(145deg,rgba(5,13,31,.96),rgba(7,8,27,.92));
+    box-shadow:0 0 22px rgba(25,216,255,.08),inset 0 0 28px rgba(25,216,255,.025);
+    transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+
+.tree-team .faculty-card:hover{
+    transform:translateY(-7px);
+    border-color:#19d8ff;
+    box-shadow:0 0 28px rgba(25,216,255,.22),0 0 55px rgba(255,43,214,.08);
+}
+
+/* PHOTOS */
+.tree-team .faculty-card img{
+    display:block;
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    object-position:center top;
+}
+
+/* HOD PHOTO */
+.tree-root .faculty-card img{
+    height:300px;
+}
+
+/* CARD INFORMATION */
+.tree-team .person-info{
+    padding:18px 18px 20px;
+    display:flex;
+    flex-direction:column;
+}
+
+.tree-team .person-info b{
+    font-size:18px;
+    line-height:1.2;
+}
+
+.tree-team .person-info small{
+    margin-top:7px;
+    color:#19d8ff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.tree-team .person-info em{
+    margin-top:8px;
+    font-style:normal;
+    opacity:.68;
+    font-size:11px;
+}
+
+/* BADGES */
+.tree-badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    z-index:4;
+    padding:7px 12px;
+    border:1px solid rgba(255,43,214,.65);
+    border-radius:999px;
+    background:rgba(76,24,122,.82);
+    color:#fff;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    box-shadow:0 0 15px rgba(255,43,214,.22);
+}
+
+.workshop-badge{
+    background:rgba(0,119,160,.78);
+    border-color:rgba(25,216,255,.7);
+}
+
+.hackathon-badge{
+    background:rgba(118,20,100,.8);
+    border-color:rgba(255,43,214,.72);
+}
+
+@media(max-width:760px){
+    .tree-root .faculty-card{
+        width:min(360px,92vw);
+    }
+
+    .tree-branches{
+        gap:14px;
+        margin-top:30px;
+    }
+
+    .tree-team .faculty-card img,
+    .tree-root .faculty-card img{
+        height:230px;
+    }
+}
+
+@media(max-width:560px){
+    .tree-branches{
+        grid-template-columns:1fr;
+        gap:18px;
+        margin-top:25px;
+    }
+
+    .tree-team .faculty-card img,
+    .tree-root .faculty-card img{
+        height:180px;
+    }
+
+    .tree-team .person-info{
+        padding:13px;
+    }
+
+    .tree-team .person-info b{
+        font-size:13px;
+    }
+
+    .tree-team .person-info small{
+        font-size:8px;
+    }
+
+    .tree-team .person-info em{
+        font-size:9px;
+    }
+
+    .tree-badge{
+        top:9px;
+        left:9px;
+        padding:5px 8px;
+        font-size:7px;
+    }
+}
+</style>
 
 </head>
 
@@ -900,11 +781,18 @@
 
                 <path
                     d="M72 145c-23-5-39-22-39-46 0-16 8-29 20-37-2-25 15-44 39-44 13 0 24 5 32 14 8-9 19-14 32-14 24 0 41 19 39 44 12 8 20 21 20 37 0 24-16 41-39 46-7 15-19 23-37 23H109c-18 0-30-8-37-23Z"
-                    fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" />
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="5"
+                    stroke-linejoin="round" />
 
                 <path
                     d="M82 30c-9 8-11 19-7 29M55 66c14 2 22 10 23 23M46 105c15-2 26 5 31 18M91 61c10 7 14 17 10 29M92 119c8-9 18-12 30-9M138 31c9 8 11 19 7 29M165 66c-14 2-22 10-23 23M174 105c-15-2-26 5-31 18M129 61c-10 7-14 17-10 29M128 119c-8-9-18-12-30-9M110 44v92M77 91h65"
-                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85" />
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    opacity=".85" />
 
             </svg>
         </div>
@@ -975,6 +863,10 @@
 
                 <b>MAHENDRA ENGINEERING COLLEGE</b>
 
+                <small>
+                    (Autonomous, Mahendrapuri, Mallasamudram, Namakkal)
+                </small>
+
             </div>
 
         </div>
@@ -1028,10 +920,7 @@
                 <!-- INTERACTIVE INSTITUTION TITLE -->
                 <div class="institution-title">
                     <h2>MAHENDRA ENGINEERING COLLEGE</h2>
-                    <small>
-                        (Autonomous, Mahendrapuri, Mallasamudram, Namakkal)
-                    </small>
-                    <br>
+                    <h0>(Autonomous, Mahendrapuri, Mallasamudram, Namakkal)</h0>
                     <p>ARTIFICIAL INTELLIGENCE &amp; DATA SCIENCE</p>
                 </div>
 
@@ -1048,7 +937,7 @@
 
                 <h1>
 
-                    <em><span class="handwritten-accent">AI ×</span></em>
+                    <em>AI ×</em>
 
                     <strong>AGENTICTHON</strong>
 
@@ -1058,8 +947,7 @@
                 <p class="lead">
 
                     Two days. One campus. Learn with AI,
-                    then build fast at a high-energy hackathon. <span class="handwritten-accent">build the future
-                        ✎</span>
+                    then build fast at a high-energy hackathon.
 
                 </p>
 
@@ -1091,180 +979,46 @@
 
 
                 <!-- =========================
-                     CYBER MISSION COUNTDOWN INSTRUMENT
+                     COUNTDOWN TIMER
                 ========================== -->
 
-                <div class="mission-countdown" role="region" aria-label="Event Countdown Timer">
+                <div class="countdown">
 
-                    <!-- Technical mission status indicator -->
-                    <div class="mission-header">
-                        <span class="mission-radar" aria-hidden="true"></span>
-                        <span class="mission-label">MISSION STARTS IN</span>
-                        <span class="mission-tag">[ T - MINUS ]</span>
+                    <div class="countdown-label">
+                        HACKATHON STARTS IN
                     </div>
 
-                    <!-- 4 Instruments with Dynamic HUD & Arc Progress Rings -->
-                    <div class="countdown-instrument" role="timer" aria-live="off">
+                    <div class="countdown-row">
 
-                        <!-- GROUP 1: DAYS & HOURS -->
-                        <div class="countdown-group">
-
-                            <!-- DAYS -->
-                            <div class="mission-card" data-unit="days">
-                                <span class="card-corner tl" aria-hidden="true"></span>
-                                <span class="card-corner tr" aria-hidden="true"></span>
-                                <span class="card-corner bl" aria-hidden="true"></span>
-                                <span class="card-corner br" aria-hidden="true"></span>
-
-                                <div class="card-hud-bar" aria-hidden="true">
-                                    <span class="hud-code">T-DD</span>
-                                    <span class="hud-status"><span class="hud-dot"></span>ACTIVE</span>
-                                </div>
-
-                                <div class="card-dial">
-                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
-                                        <defs>
-                                            <linearGradient id="ring-grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" stop-color="#00d9ff" />
-                                                <stop offset="100%" stop-color="#8b5cf6" />
-                                            </linearGradient>
-                                        </defs>
-                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
-                                        <circle class="progress-ring-bar" id="ring-days" cx="55" cy="55" r="46" />
-                                    </svg>
-
-                                    <div class="digit-viewport">
-                                        <div class="digit-slot" id="slot-days">
-                                            <span class="digit-current" id="days">00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <span class="mission-unit-label">DAYS</span>
-                                <div class="card-bottom-accent" aria-hidden="true"></div>
-                            </div>
-
-                            <!-- SEPARATOR 1 -->
-                            <div class="countdown-sep" aria-hidden="true">
-                                <span class="sep-dot"></span>
-                                <span class="sep-dot"></span>
-                            </div>
-
-                            <!-- HOURS -->
-                            <div class="mission-card" data-unit="hours">
-                                <span class="card-corner tl" aria-hidden="true"></span>
-                                <span class="card-corner tr" aria-hidden="true"></span>
-                                <span class="card-corner bl" aria-hidden="true"></span>
-                                <span class="card-corner br" aria-hidden="true"></span>
-
-                                <div class="card-hud-bar" aria-hidden="true">
-                                    <span class="hud-code">T-HH</span>
-                                    <span class="hud-status"><span class="hud-dot"></span>SYNC</span>
-                                </div>
-
-                                <div class="card-dial">
-                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
-                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
-                                        <circle class="progress-ring-bar" id="ring-hours" cx="55" cy="55" r="46" />
-                                    </svg>
-
-                                    <div class="digit-viewport">
-                                        <div class="digit-slot" id="slot-hours">
-                                            <span class="digit-current" id="hours">00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <span class="mission-unit-label">HOURS</span>
-                                <div class="card-bottom-accent" aria-hidden="true"></div>
-                            </div>
-
+                        <div class="countdown-box">
+                            <span id="days">00</span>
+                            <small>DAYS</small>
                         </div>
 
-                        <!-- SEPARATOR MIDDLE (Hidden on mobile 2x2 grid) -->
-                        <div class="countdown-sep sep-middle" aria-hidden="true">
-                            <span class="sep-dot"></span>
-                            <span class="sep-dot"></span>
+                        <div class="countdown-box">
+                            <span id="hours">00</span>
+                            <small>HOURS</small>
                         </div>
 
-                        <!-- GROUP 2: MINUTES & SECONDS -->
-                        <div class="countdown-group">
+                        <div class="countdown-box">
+                            <span id="minutes">00</span>
+                            <small>MINUTES</small>
+                        </div>
 
-                            <!-- MINUTES -->
-                            <div class="mission-card" data-unit="minutes">
-                                <span class="card-corner tl" aria-hidden="true"></span>
-                                <span class="card-corner tr" aria-hidden="true"></span>
-                                <span class="card-corner bl" aria-hidden="true"></span>
-                                <span class="card-corner br" aria-hidden="true"></span>
-
-                                <div class="card-hud-bar" aria-hidden="true">
-                                    <span class="hud-code">T-MM</span>
-                                    <span class="hud-status"><span class="hud-dot"></span>LOCK</span>
-                                </div>
-
-                                <div class="card-dial">
-                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
-                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
-                                        <circle class="progress-ring-bar" id="ring-minutes" cx="55" cy="55" r="46" />
-                                    </svg>
-
-                                    <div class="digit-viewport">
-                                        <div class="digit-slot" id="slot-minutes">
-                                            <span class="digit-current" id="minutes">00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <span class="mission-unit-label">MINUTES</span>
-                                <div class="card-bottom-accent" aria-hidden="true"></div>
-                            </div>
-
-                            <!-- SEPARATOR 2 -->
-                            <div class="countdown-sep" aria-hidden="true">
-                                <span class="sep-dot"></span>
-                                <span class="sep-dot"></span>
-                            </div>
-
-                            <!-- SECONDS -->
-                            <div class="mission-card" data-unit="seconds">
-                                <span class="card-corner tl" aria-hidden="true"></span>
-                                <span class="card-corner tr" aria-hidden="true"></span>
-                                <span class="card-corner bl" aria-hidden="true"></span>
-                                <span class="card-corner br" aria-hidden="true"></span>
-
-                                <div class="card-hud-bar" aria-hidden="true">
-                                    <span class="hud-code">T-SS</span>
-                                    <span class="hud-status"><span class="hud-dot pulse-fast"></span>LIVE</span>
-                                </div>
-
-                                <div class="card-dial">
-                                    <svg class="progress-ring" viewBox="0 0 110 110" aria-hidden="true">
-                                        <circle class="progress-ring-bg" cx="55" cy="55" r="46" />
-                                        <circle class="progress-ring-bar" id="ring-seconds" cx="55" cy="55" r="46" />
-                                    </svg>
-
-                                    <div class="digit-viewport">
-                                        <div class="digit-slot" id="slot-seconds">
-                                            <span class="digit-current" id="seconds">00</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <span class="mission-unit-label">SECONDS</span>
-                                <div class="card-bottom-accent" aria-hidden="true"></div>
-                            </div>
-
+                        <div class="countdown-box">
+                            <span id="seconds">00</span>
+                            <small>SECONDS</small>
                         </div>
 
                     </div>
 
-                    <!-- Invisible accessibility live announcer for screen readers -->
-                    <div class="sr-only" id="countdown-live-announcer" aria-live="polite"></div>
+                    <div class="countdown-status">
+                        AI&nbsp;&nbsp;×&nbsp;&nbsp;BUILD&nbsp;&nbsp;×&nbsp;&nbsp;COMPETE
+                    </div>
 
                 </div>
 
             </div>
-
 
             <!-- HERO ORB -->
 
@@ -1298,7 +1052,7 @@
             <h2>
                 Where Concepts Become Code,
                 <br>
-                <span>and Code Becomes Creation.</span> <span class="handwritten-accent">hands-on ✎</span>
+                <span>and Code Becomes Creation.</span>
             </h2>
 
             <p>
@@ -1383,8 +1137,9 @@
 
 
                         <a class="event-btn"
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSdYtjFbHntz2r8RtjzLCVGQvLXBYm3ksrnWIts0uDAgjJbHQQ/viewform?usp=header"
-                            target="_blank" rel="noopener">
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
+                            target="_blank"
+                            rel="noopener">
 
                             Register for AI Workshop →
 
@@ -1467,7 +1222,8 @@
 
                         <a class="event-btn pink-btn"
                             href="https://docs.google.com/forms/d/e/1FAIpQLSc7CL5igNfzYNUMa1JRG6yKdPZKBJz-Kqf3IHec0rHO3BdU6g/viewform?usp=header"
-                            target="_blank" rel="noopener">
+                            target="_blank"
+                            rel="noopener">
 
                             Register for AGENTICTHON →
 
@@ -1493,7 +1249,8 @@
             </div>
 
             <h2>
-                <span class="handwritten-accent">win big rewards! ₹12,000 ✦</span>
+                ₹12,000
+                <span>prize pool.</span>
             </h2>
 
             <p>
@@ -1501,32 +1258,32 @@
             </p>
 
 
-            <div class="benefits">
+            <div class="prizes">
 
-                <span>
-                    🏅 Certificates
+                <div>
+                    <strong>🏅 Certificates</strong>
                     <small>For participants.</small>
-                </span>
+                </div>
 
-                <span>
-                    🎒 Workshop Kit
+                <div>
+                    <strong>🎒 Workshop Kit</strong>
                     <small>Included with AI Workshop.</small>
-                </span>
+                </div>
 
-                <span>
-                    🎉 Fun Activities
+                <div>
+                    <strong>🎉 Fun Activities</strong>
                     <small>Across the event experience.</small>
-                </span>
+                </div>
 
-                <span>
-                    🚀 Build &amp; Innovate
+                <div>
+                    <strong>🚀 Build & Innovate</strong>
                     <small>Show what you can create.</small>
-                </span>
+                </div>
 
-                <span>
-                    🏆 Top 5 Prizes
+                <div>
+                    <strong>🏆 Top 5 Prizes</strong>
                     <small>₹12,000 total prize pool.</small>
-                </span>
+                </div>
 
             </div>
 
@@ -1640,7 +1397,7 @@
 
                     <p>
                         Teams can have 1 to 5 members.
-                        The fee is ₹199 per person.
+                        The fee is ₹179 per person.
                     </p>
 
                 </details>
@@ -1680,8 +1437,8 @@
                     </summary>
 
                     <p>
-                        Click the Register buttons on this page — they open
-                        the respective Google Form directly.
+                        The website will open the relevant Google Form.
+                        The final form links will be added later.
                     </p>
 
                 </details>
@@ -1698,74 +1455,70 @@
         <section class="section team" id="team">
 
             <div class="kicker">
-                MEET THE CODING CLUB
+                MEET THE 
             </div>
 
             <h2>
-                The team behind
-                <span>AI × CODING CLUB.</span> <span class="handwritten-accent">crafted with passion ♡</span>
+                Officials Behind 
+                <span>AI x AGENTICTHON.</span>
             </h2>
 
             <p>
-                Our faculty leadership and coordinators guiding the event
-                from vision to execution.
+                Our leadership team driving the event
+                from idea to execution.
             </p>
 
 
-            <div class="faculty-section">
+            <div class="faculty-section tree-team">
 
                 <div class="team-section-title">
                     FACULTY &amp; COORDINATORS
                 </div>
 
-                <div class="faculty-tree">
+                <div class="org-tree">
 
-                    <!-- LEVEL 1: HOD (TREE ROOT) -->
-                    <div class="tree-level tree-root-level">
+                    <!-- HOD — ROOT -->
+                    <div class="tree-root">
                         <div class="person faculty-card hod-card">
-                            <img src="assets/HodSir.jpeg" alt="HoD">
-                            <b>ANANTH S - HOD</b>
-                            <small>HEAD OF DEPARTMENT</small>
-                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                            <div class="tree-badge">HOD</div>
+                            <img src="assets/HodSir.jpeg" alt="HOD">
+                            <div class="person-info">
+                                <b>ANANTH S - HOD</b>
+                                <small>HEAD OF DEPARTMENT</small>
+                                <em>AI &amp; DS · Mahendra Engineering College</em>
+                            </div>
                         </div>
                     </div>
+<!-- TWO BRANCHES -->
+                    <div class="tree-branches">
 
-                    <!-- CYBER TREE CONNECTOR LINES -->
-                    <div class="tree-connector" aria-hidden="true">
-                        <div class="connector-stem-top"></div>
-                        <div class="connector-fork"></div>
-                        <div class="connector-stems-bottom">
-                            <span class="stem-bottom left"></span>
-                            <span class="stem-bottom right"></span>
-                        </div>
-                    </div>
-
-                    <!-- LEVEL 2: FACULTY COORDINATORS (BRANCHES) -->
-                    <div class="tree-level tree-branch-level">
-
-                        <!-- WORKSHOP STAFF COORDINATOR -->
-                        <div class="person faculty-card workshop-card">
-                            <img src="assets/Mekala Mam.jpeg" alt="Workshop Staff Coordinator">
-                            <b>Mekala R AP/AI&DS</b>
-                            <small>STAFF COORDINATOR - AI WORKSHOP</small>
-                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        <div class="tree-branch">
+<div class="person faculty-card workshop-card">
+                                <div class="tree-badge workshop-badge">WORKSHOP</div>
+                                <img src="assets/Mekala Mam.jpeg" alt="Workshop Staff Coordinator">
+                                <div class="person-info">
+                                    <b>Mekala R AP/AI&amp;DS</b>
+                                    <small>STAFF COORDINATOR - AI WORKSHOP</small>
+                                    <em>AI &amp; DS · Mahendra Engineering College</em>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- HACKATHON STAFF COORDINATOR -->
-                        <div class="person faculty-card hackathon-card">
-                            <img src="assets/hackathon-coordinator.jpeg" alt="Hackathon Staff Coordinator">
-                            <b>Staff Coordinator</b>
-                            <small>AGENTICTHON</small>
-                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        <div class="tree-branch">
+<div class="person faculty-card hackathon-card">
+                                <div class="tree-badge hackathon-badge">AGENTICTHON</div>
+                                <img src="assets/Mekala Mam.jpeg" alt="Hackathon Staff Coordinator">
+                                <div class="person-info">
+                                    <b>Staff Coordinator</b>
+                                    <small>AGENTICTHON</small>
+                                    <em>AI &amp; DS · Mahendra Engineering College</em>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
-
                 </div>
-
-
             </div>
-
         </section>
 
 
@@ -1825,7 +1578,7 @@
 
                     <b>STAFF COORDINATORS</b>
 
-                    <strong>Nithya M</strong>
+                    <strong>Deepa </strong>
 
                     <span>
                         AP / AI &amp; DS
@@ -1875,7 +1628,7 @@
 
             <p>
                 Choose the AI Workshop or enter AGENTICTHON.
-                Click Register Now to open the Google Form.
+                Your Google Form links can be connected when they are ready.
             </p>
 
             <a class="cta" href="#register">
@@ -1908,8 +1661,9 @@
 
             <div class="reg-grid">
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYtjFbHntz2r8RtjzLCVGQvLXBYm3ksrnWIts0uDAgjJbHQQ/viewform?usp=header"
-                    target="_blank" rel="noopener">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqh2G05nlX3TFG3m7KZQ64_XdprGLA7-mCimCWSzQHLzcs7w/viewform?usp=header"
+                    target="_blank"
+                    rel="noopener">
 
                     <b>🧠 AI Workshop</b>
 
@@ -1925,7 +1679,8 @@
 
 
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7CL5igNfzYNUMa1JRG6yKdPZKBJz-Kqf3IHec0rHO3BdU6g/viewform?usp=header"
-                    target="_blank" rel="noopener">
+                    target="_blank"
+                    rel="noopener">
 
                     <b>
                         🚀 AGENTICTHON (HACKATHON)
@@ -1946,7 +1701,8 @@
 
                 <a class="combo-card"
                     href="https://docs.google.com/forms/d/e/1FAIpQLSehtvuJuJHM-3ES4yR0Zbm19rv9ApH9oMwK4N9vBtlKagXePg/viewform?usp=header"
-                    target="_blank" rel="noopener">
+                    target="_blank"
+                    rel="noopener">
 
                     <div class="combo-badge">👑 BEST VALUE</div>
 
@@ -1996,146 +1752,129 @@
 
 
     <!-- =========================
-         CYBER MISSION COUNTDOWN JAVASCRIPT
+         COUNTDOWN JAVASCRIPT
     ========================== -->
 
     <script>
-        (function () {
-            "use strict";
 
-            /* CONFIGURATION: Configurable target date & reference span */
-            const COUNTDOWN_CONFIG = {
-                // Event date: 24 September 2026, 09:00:00 IST
-                targetDate: "September 24, 2026 09:00:00",
-                // Reference span in days for the Days ring progress scale
-                referenceDaysSpan: 30
+        /* AGENTICTHON EVENT DATE
+           24 September 2026
+           9:00 AM
+        */
+
+        const eventDate =
+            new Date("September 24, 2026 09:00:00").getTime();
+
+
+        function updateCountdown() {
+
+            const now =
+                new Date().getTime();
+
+            const distance =
+                eventDate - now;
+
+
+            /* EVENT STARTED */
+
+            if (distance <= 0) {
+
+                document.getElementById("days").textContent = "00";
+
+                document.getElementById("hours").textContent = "00";
+
+                document.getElementById("minutes").textContent = "00";
+
+                document.getElementById("seconds").textContent = "00";
+
+                return;
+            }
+
+
+            /* CALCULATE TIME */
+
+            const days =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            const hours =
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60 * 24))
+                    /
+                    (1000 * 60 * 60)
+                );
+
+
+            const minutes =
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60))
+                    /
+                    (1000 * 60)
+                );
+
+
+            const seconds =
+                Math.floor(
+                    (distance %
+                        (1000 * 60))
+                    /
+                    1000
+                );
+
+
+            /* DISPLAY */
+
+            document.getElementById("days").textContent =
+                String(days).padStart(2, "0");
+
+
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
+
+
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
+
+
+            const values = {
+                days: String(days).padStart(2, "0"),
+                hours: String(hours).padStart(2, "0"),
+                minutes: String(minutes).padStart(2, "0"),
+                seconds: String(seconds).padStart(2, "0")
             };
 
-            const targetTime = new Date(COUNTDOWN_CONFIG.targetDate).getTime();
-            const CIRCUMFERENCE = 289.026; // 2 * PI * 46
-            let lastAnnouncedMinute = -1;
+            Object.entries(values).forEach(([id, value]) => {
+                const element = document.getElementById(id);
 
-            /**
-             * Sets the strokeDashoffset of an SVG progress circle smoothly
-             */
-            function setProgressRing(ringId, ratio) {
-                const ring = document.getElementById(ringId);
-                if (!ring) return;
-                const clamped = Math.max(0, Math.min(1, ratio));
-                const offset = CIRCUMFERENCE * (1 - clamped);
-                ring.style.strokeDashoffset = offset.toFixed(2);
-            }
+                if (element.textContent !== value) {
+                    element.textContent = value;
 
-            /**
-             * Smooth vertical flip transition for changing digits
-             * Previous number slides upward (translateY -100%),
-             * new number enters smoothly from below (translateY 100% -> 0)
-             */
-            function updateUnitDigit(slotId, spanId, nextVal) {
-                const slot = document.getElementById(slotId);
-                if (!slot) return;
-                const current = slot.querySelector(".digit-current");
-                if (!current) return;
-
-                if (current.textContent === nextVal) {
-                    return; // Value hasn't changed: do not re-animate
+                    element.classList.remove("tick");
+                    void element.offsetWidth;
+                    element.classList.add("tick");
                 }
+            });
 
-                // Respect user reduced-motion preference
-                if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                    current.textContent = nextVal;
-                    return;
-                }
+        }
 
-                // Remove previous uncompleted incoming span if any
-                const pending = slot.querySelector(".digit-incoming");
-                if (pending) {
-                    pending.remove();
-                }
 
-                const incoming = document.createElement("span");
-                incoming.className = "digit-incoming";
-                incoming.id = spanId;
-                incoming.textContent = nextVal;
-                current.removeAttribute("id");
-                slot.appendChild(incoming);
+        /* RUN IMMEDIATELY */
 
-                // Force reflow
-                void incoming.offsetWidth;
+        updateCountdown();
 
-                current.classList.add("digit-slide-up");
-                incoming.classList.add("digit-slide-in");
 
-                setTimeout(function () {
-                    if (current.parentNode === slot) {
-                        current.remove();
-                    }
-                    incoming.className = "digit-current";
-                }, 400);
-            }
+        /* UPDATE EVERY SECOND */
 
-            /**
-             * Main calculation and render loop
-             */
-            function updateMissionCountdown() {
-                const now = Date.now();
-                const distance = targetTime - now;
+        setInterval(
+            updateCountdown,
+            1000
+        );
 
-                if (distance <= 0) {
-                    updateUnitDigit("slot-days", "days", "00");
-                    updateUnitDigit("slot-hours", "hours", "00");
-                    updateUnitDigit("slot-minutes", "minutes", "00");
-                    updateUnitDigit("slot-seconds", "seconds", "00");
-                    setProgressRing("ring-days", 0);
-                    setProgressRing("ring-hours", 0);
-                    setProgressRing("ring-minutes", 0);
-                    setProgressRing("ring-seconds", 0);
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                const sDays = String(days).padStart(2, "0");
-                const sHours = String(hours).padStart(2, "0");
-                const sMinutes = String(minutes).padStart(2, "0");
-                const sSeconds = String(seconds).padStart(2, "0");
-
-                // Update digits with smooth vertical flip
-                updateUnitDigit("slot-days", "days", sDays);
-                updateUnitDigit("slot-hours", "hours", sHours);
-                updateUnitDigit("slot-minutes", "minutes", sMinutes);
-                updateUnitDigit("slot-seconds", "seconds", sSeconds);
-
-                // Update progress arcs
-                setProgressRing("ring-seconds", seconds / 60);
-                setProgressRing("ring-minutes", minutes / 60);
-                setProgressRing("ring-hours", hours / 24);
-                setProgressRing("ring-days", Math.min(1, days / COUNTDOWN_CONFIG.referenceDaysSpan));
-
-                // Accessibility: update live announcer periodically without audio spam
-                if (minutes !== lastAnnouncedMinute) {
-                    lastAnnouncedMinute = minutes;
-                    const announcer = document.getElementById("countdown-live-announcer");
-                    if (announcer) {
-                        announcer.textContent = days + " days, " + hours + " hours, and " + minutes + " minutes remaining.";
-                    }
-                }
-            }
-
-            // Clean up existing interval if present
-            if (window.missionCountdownInterval) {
-                clearInterval(window.missionCountdownInterval);
-            }
-
-            // Immediate initial execution
-            updateMissionCountdown();
-
-            // Interval tick every second
-            window.missionCountdownInterval = setInterval(updateMissionCountdown, 1000);
-        })();
     </script>
 
 </body>

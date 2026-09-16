@@ -473,7 +473,7 @@ nav a.active:after{
 .institution-title h2{
     margin:0;
 
-    font-family:Oxanium,sans-serif;
+    font-family: "Coften", sans-serif !important;
     font-size:clamp(20px,3vw,34px);
     font-weight:900;
     letter-spacing:3px;
