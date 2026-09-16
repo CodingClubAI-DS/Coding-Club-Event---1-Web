@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -160,7 +160,7 @@
         .countdown-box span {
             display: block;
 
-            font-family: "Orbitron", sans-serif;
+            font-family: "Oxanium", sans-serif;
             font-size: 34px;
             font-weight: 800;
 
@@ -181,7 +181,7 @@
 
             margin-top: 9px;
 
-            font-family: "Orbitron", sans-serif;
+            font-family: "Oxanium", sans-serif;
             font-size: 8px;
             font-weight: 700;
 
@@ -277,7 +277,7 @@
             border-radius: 20px;
             color: #ff7be6;
             background: rgba(255, 43, 214, 0.08);
-            font: 700 10px Orbitron;
+            font: 700 10px Oxanium;
             letter-spacing: 2px;
         }
 
@@ -300,6 +300,98 @@
         }
 
     </style>
+
+    <!-- INTERACTIVE INSTITUTION TITLE STYLE -->
+    <style>
+        .institution-title {
+            position: relative;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto 28px;
+            padding: 14px 28px;
+            text-align: center;
+            z-index: 5;
+            border: 1px solid rgba(25,216,255,.28);
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(10,35,75,.45), rgba(35,5,65,.32));
+            box-shadow: 0 0 20px rgba(25,216,255,.08), inset 0 0 25px rgba(25,216,255,.04);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+            transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease;
+        }
+        .institution-title::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(90deg, transparent, rgba(25,216,255,.8), transparent, rgba(255,43,214,.8), transparent);
+            background-size: 250% 100%;
+            z-index: -1;
+            opacity: .35;
+            animation: institutionBorder 5s linear infinite;
+        }
+        .institution-title::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+            transform: skewX(-20deg);
+            animation: institutionShine 4.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .institution-title:hover {
+            transform: translateY(-5px) scale(1.025);
+            border-color: rgba(25,216,255,.75);
+            box-shadow: 0 0 25px rgba(25,216,255,.22), 0 0 55px rgba(140,60,255,.12), inset 0 0 30px rgba(25,216,255,.07);
+        }
+        .institution-title h2 {
+            margin: 0;
+            font-family: Oxanium, sans-serif;
+            font-size: clamp(20px, 3vw, 34px);
+            font-weight: 900;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #fff, #6feaff, #fff, #c45cff, #fff);
+            background-size: 250% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 18px rgba(25,216,255,.25);
+            animation: institutionText 6s linear infinite;
+        }
+        .institution-title p {
+            margin: 9px 0 0;
+            font-family: Oxanium, sans-serif;
+            font-size: clamp(9px, 1.3vw, 13px);
+            font-weight: 700;
+            letter-spacing: 4px;
+            line-height: 1.4;
+            color: #68ddff;
+            text-shadow: 0 0 10px rgba(25,216,255,.55), 0 0 25px rgba(25,216,255,.2);
+            transition: letter-spacing .35s ease, color .35s ease;
+        }
+        .institution-title:hover p { letter-spacing: 5px; color: #9cecff; }
+        @keyframes institutionBorder { 0% { background-position: 0% 50%; } 100% { background-position: 250% 50%; } }
+        @keyframes institutionText { 0% { background-position: 0% 50%; } 100% { background-position: 250% 50%; } }
+        @keyframes institutionShine { 0%,45% { left: -100%; } 70%,100% { left: 160%; } }
+        @media (max-width: 800px) {
+            .institution-title { margin-bottom: 22px; padding: 12px 18px; border-radius: 15px; }
+            .institution-title h2 { font-size: 18px; letter-spacing: 1.8px; }
+            .institution-title p { font-size: 8px; letter-spacing: 2.2px; margin-top: 7px; }
+        }
+        @media (max-width: 500px) {
+            .institution-title { width: 94%; padding: 11px 12px; }
+            .institution-title h2 { font-size: 15px; letter-spacing: 1.2px; }
+            .institution-title p { font-size: 7px; letter-spacing: 1.5px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .institution-title::before, .institution-title::after, .institution-title h2 { animation: none !important; }
+        }
+    </style>
+
 </head>
 
 
@@ -476,6 +568,12 @@
         <section class="hero">
 
             <div class="hero-inner">
+
+                <!-- INTERACTIVE INSTITUTION TITLE -->
+                <div class="institution-title">
+                    <h2>MAHENDRA ENGINEERING COLLEGE</h2>
+                    <p>ARTIFICIAL INTELLIGENCE &amp; DATA SCIENCE</p>
+                </div>
 
                 <div class="eyebrow">
 
