@@ -404,7 +404,7 @@ nav a.active:after{
 .institution-title{
     position:relative;
     width:90%;
-    max-width:1100px;
+    max-width:100px;
     margin:0 auto 28px;
     padding:28px 45px;
     text-align:center;
@@ -1609,7 +1609,7 @@ footer{
     flex-direction:column;
     align-items:center;
     width:100%;
-    max-width:960px;
+    max-width:1400px;
     margin:0 auto;
     position:relative;
 }
@@ -1904,7 +1904,8 @@ footer{
 .student-core-grid{
     display:grid;
     grid-template-columns:
-        repeat(4,minmax(0,1fr));
+        repeat(2,minmax(280px,340px));
+    justify-content:center;
     gap:15px;
 }
 
@@ -3446,25 +3447,23 @@ footer {
 .chief-guest-grid{
     width:100%;
     display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:24px;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:22px;
 }
 
-/* Each guest card */
+/* Four chief guests per row */
 .chief-guest-card{
     position:relative;
     width:100%;
-    min-height:310px;
+    min-height:0;
 
-    display:grid;
-    grid-template-columns:220px minmax(0,1fr);
-    align-items:center;
-    gap:28px;
+    display:flex;
+    flex-direction:column;
+    gap:0;
 
-    padding:25px 30px;
-
+    padding:0;
     border:1px solid rgba(25,216,255,.45);
-    border-radius:26px;
+    border-radius:24px;
 
     background:
         linear-gradient(
@@ -3486,11 +3485,11 @@ footer {
         box-shadow .35s ease;
 }
 
-/* Fifth card centered below the first four */
+/* Remove the old centered fifth-card behavior */
 .chief-guest-card:nth-child(5){
-    grid-column:1 / -1;
-    width:calc(50% - 12px);
-    justify-self:center;
+    grid-column:auto;
+    width:100%;
+    justify-self:stretch;
 }
 
 /* Moving glow */
@@ -3512,12 +3511,16 @@ footer {
     transform:skewX(-20deg);
     animation:chiefGuestShine 5s ease-in-out infinite;
     pointer-events:none;
+    z-index:3;
 }
 
 .chief-guest-card:nth-child(2)::before{animation-delay:1s;}
 .chief-guest-card:nth-child(3)::before{animation-delay:2s;}
 .chief-guest-card:nth-child(4)::before{animation-delay:3s;}
 .chief-guest-card:nth-child(5)::before{animation-delay:4s;}
+.chief-guest-card:nth-child(6)::before{animation-delay:5s;}
+.chief-guest-card:nth-child(7)::before{animation-delay:6s;}
+.chief-guest-card:nth-child(8)::before{animation-delay:7s;}
 
 @keyframes chiefGuestShine{
     0%{left:-35%;}
@@ -3551,6 +3554,7 @@ footer {
     mask-composite:exclude;
 
     pointer-events:none;
+    z-index:4;
 }
 
 .chief-guest-card:hover{
@@ -3563,21 +3567,22 @@ footer {
         inset 0 0 40px rgba(25,216,255,.06);
 }
 
-/* Photo */
+/* Portrait photo */
 .chief-guest-photo{
     position:relative;
-    width:220px;
-    height:260px;
+    width:100%;
+    height:230px;
 
-    border-radius:20px;
+    border-radius:0;
     overflow:hidden;
 
-    border:2px solid rgba(25,216,255,.65);
+    border:0;
+    border-bottom:2px solid rgba(25,216,255,.65);
     background:#020816;
 
     box-shadow:
-        0 0 20px rgba(25,216,255,.20),
-        0 0 40px rgba(140,60,255,.10);
+        0 0 20px rgba(25,216,255,.12),
+        0 0 40px rgba(140,60,255,.08);
 }
 
 .chief-guest-photo::before{
@@ -3612,14 +3617,15 @@ footer {
 /* Information */
 .chief-guest-info{
     position:relative;
-    z-index:3;
+    z-index:5;
     min-width:0;
+    padding:20px 20px 22px;
 }
 
 .chief-guest-label{
     display:inline-block;
-    padding:6px 13px;
-    margin-bottom:12px;
+    padding:5px 11px;
+    margin-bottom:10px;
 
     border:1px solid rgba(255,43,214,.45);
     border-radius:20px;
@@ -3628,18 +3634,18 @@ footer {
     color:#ff73e7;
 
     font-family:var(--font-display);
-    font-size:10px;
+    font-size:8px;
     font-weight:800;
-    letter-spacing:2.5px;
+    letter-spacing:2px;
 
     box-shadow:0 0 15px rgba(255,43,214,.08);
 }
 
 .chief-guest-info h2{
-    margin:0 0 5px;
+    margin:0 0 4px;
 
     font-family:var(--font-display);
-    font-size:clamp(26px,3vw,38px);
+    font-size:clamp(20px,2vw,27px);
     font-weight:800;
     line-height:1.1;
     color:#ffffff;
@@ -3648,35 +3654,34 @@ footer {
 }
 
 .chief-guest-info h3{
-    margin:7px 0 14px;
+    margin:7px 0 10px;
 
     font-family:var(--font-display);
-    font-size:12px;
+    font-size:9px;
     font-weight:800;
-    letter-spacing:2.5px;
+    letter-spacing:2px;
     color:#19d8ff;
 
     text-shadow:0 0 12px rgba(25,216,255,.5);
 }
 
 .chief-guest-info p{
-    max-width:500px;
-    margin:0 0 20px;
+    margin:0 0 14px;
 
     color:#9db9d3;
-    font-size:14px;
-    line-height:1.65;
+    font-size:12px;
+    line-height:1.55;
 }
 
 /* Event Tags */
 .chief-guest-events{
     display:flex;
     flex-wrap:wrap;
-    gap:9px;
+    gap:7px;
 }
 
 .chief-guest-events span{
-    padding:8px 13px;
+    padding:6px 9px;
 
     border:1px solid rgba(25,216,255,.28);
     border-radius:20px;
@@ -3685,9 +3690,9 @@ footer {
     color:#8eeaff;
 
     font-family:var(--font-display);
-    font-size:9px;
+    font-size:7px;
     font-weight:800;
-    letter-spacing:1.7px;
+    letter-spacing:1.2px;
 
     box-shadow:inset 0 0 12px rgba(25,216,255,.04);
 }
@@ -3703,28 +3708,25 @@ footer {
    CHIEF GUEST — RESPONSIVE
    ========================================================= */
 
-@media(max-width:1050px){
-
-    .chief-guest-card{
-        grid-template-columns:180px minmax(0,1fr);
+@media(max-width:1100px){
+    .chief-guest-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
         gap:20px;
-        padding:22px;
     }
 
     .chief-guest-photo{
-        width:180px;
-        height:235px;
+        height:260px;
     }
 
-    .chief-guest-card:nth-child(5){
-        width:calc(50% - 10px);
+    .chief-guest-info h2{
+        font-size:24px;
     }
 }
 
-@media(max-width:850px){
-
+@media(max-width:600px){
     .chief-guest-grid{
         grid-template-columns:1fr;
+        gap:18px;
     }
 
     .chief-guest-card,
@@ -3732,58 +3734,19 @@ footer {
         width:100%;
         grid-column:auto;
         justify-self:stretch;
-
-        grid-template-columns:1fr;
-        gap:25px;
-        padding:25px;
     }
 
     .chief-guest-photo{
-        width:100%;
-        max-width:300px;
         height:300px;
-        margin:0 auto;
     }
 
     .chief-guest-info{
+        padding:20px;
         text-align:center;
     }
 
     .chief-guest-events{
         justify-content:center;
-    }
-}
-
-@media(max-width:600px){
-
-    .chief-guest-section{
-        padding:25px 18px 45px;
-    }
-
-    .chief-guest-title{
-        gap:6px;
-    }
-
-    .chief-guest-title::before,
-    .chief-guest-title::after{
-        display:none;
-    }
-
-    .chief-guest-title span,
-    .chief-guest-title strong{
-        font-size:9px;
-        letter-spacing:2px;
-    }
-
-    .chief-guest-card,
-    .chief-guest-card:nth-child(5){
-        padding:20px;
-        border-radius:20px;
-    }
-
-    .chief-guest-photo{
-        height:270px;
-        border-radius:17px;
     }
 
     .chief-guest-info h2{
@@ -3791,8 +3754,7 @@ footer {
     }
 
     .chief-guest-info h3{
-        font-size:11px;
-        letter-spacing:2px;
+        font-size:10px;
     }
 
     .chief-guest-info p{
@@ -3801,92 +3763,13 @@ footer {
 
     .chief-guest-label{
         font-size:8px;
-        letter-spacing:2px;
     }
 }
 
 
 /* =========================================================
-   CHIEF GUEST — RESPONSIVE
+   END CHIEF GUESTS
    ========================================================= */
-
-@media(max-width:850px){
-
-    .chief-guest-card{
-        grid-template-columns:1fr;
-        gap:25px;
-        padding:25px;
-    }
-
-    .chief-guest-photo{
-        width:100%;
-        max-width:300px;
-        height:300px;
-        margin:0 auto;
-    }
-
-    .chief-guest-info{
-        text-align:center;
-    }
-
-    .chief-guest-events{
-        justify-content:center;
-    }
-
-}
-
-
-@media(max-width:600px){
-
-    .chief-guest-section{
-        padding:25px 18px 45px;
-    }
-
-    .chief-guest-title{
-        gap:6px;
-    }
-
-    .chief-guest-title::before,
-    .chief-guest-title::after{
-        display:none;
-    }
-
-    .chief-guest-title span,
-    .chief-guest-title strong{
-        font-size:9px;
-        letter-spacing:2px;
-    }
-
-    .chief-guest-card{
-        padding:20px;
-        border-radius:20px;
-    }
-
-    .chief-guest-photo{
-        height:270px;
-        border-radius:17px;
-    }
-
-    .chief-guest-info h2{
-        font-size:28px;
-    }
-
-    .chief-guest-info h3{
-        font-size:11px;
-        letter-spacing:2px;
-    }
-
-    .chief-guest-info p{
-        font-size:13px;
-    }
-
-    .chief-guest-label{
-        font-size:8px;
-        letter-spacing:2px;
-    }
-
-}
-
 
 /* =========================================================
    ADDITIONAL STAFF — CENTERED BELOW ALL FOUR FACULTY CARDS
@@ -3932,5 +3815,369 @@ footer {
    ========================================================= */
 
 .tree-branch-level .workshop-card:nth-child(3) small {
-    color: #ff2bd6 !important;
+    color: #19d8ff !important;
+}
+
+
+/* =========================================================
+   MAHENDRA ENGINEERING COLLEGE BOX — SIZE UPDATE
+   ========================================================= */
+
+.institution-title {
+    width: 800px;
+    max-width: 90%;
+    min-height: 160px;
+    padding: 22px 35px;
+    margin: 0 auto 28px;
+}
+
+/* Keep the college title visually balanced inside the larger box */
+.institution-title h2 {
+    font-size: clamp(24px, 3.5vw, 42px);
+}
+
+/* Larger department pill */
+.institution-title p {
+    padding: 8px 24px;
+}
+
+/* Tablet */
+@media (max-width: 800px) {
+    .institution-title {
+        width: 92%;
+        max-width: 92%;
+        min-height: 130px;
+        padding: 18px 20px;
+        margin-bottom: 22px;
+    }
+
+    .institution-title h2 {
+        font-size: 20px;
+    }
+
+    .institution-title p {
+        padding: 6px 16px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    .institution-title {
+        width: 94%;
+        max-width: 94%;
+        min-height: 115px;
+        padding: 14px 12px;
+    }
+
+    .institution-title h2 {
+        font-size: 15px;
+    }
+
+    .institution-title p {
+        padding: 5px 10px;
+    }
+}
+
+
+/* =========================================================
+   WORKSHOP FACULTY — 3 PHOTOS CENTERED
+   ========================================================= */
+
+.workshop-faculty-three {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 1050px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+    align-items: start !important;
+}
+
+.workshop-faculty-three .faculty-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+/* Tablet */
+@media (max-width: 800px) {
+    .workshop-faculty-three {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        max-width: 700px !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .workshop-faculty-three {
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+    }
+}
+
+/* =========================================================
+   STUDENT COORDINATORS — 2 PHOTOS CENTERED
+   ========================================================= */
+
+.student-coordinator-only-two {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 700px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+}
+
+.student-coordinator-only-two .student-team-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 600px) {
+    .student-coordinator-only-two {
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+    }
+}
+
+/* =========================================================
+   FINAL FIX — 3 WORKSHOP FACULTY CARDS CENTERED
+   ========================================================= */
+
+.faculty-tree .workshop-faculty-three {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(3, minmax(250px, 1fr)) !important;
+
+    width: 100% !important;
+    max-width: 1050px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    gap: 24px !important;
+
+    justify-content: center !important;
+    align-items: start !important;
+}
+
+.faculty-tree .workshop-faculty-three .faculty-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+/* Keep the photos the same size */
+.faculty-tree .workshop-faculty-three .faculty-card img {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover !important;
+    object-position: center 12% !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .faculty-tree .workshop-faculty-three {
+        grid-template-columns:
+            repeat(3, minmax(220px, 1fr)) !important;
+
+        max-width: 900px !important;
+        gap: 20px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .faculty-tree .workshop-faculty-three {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        max-width: 700px !important;
+        gap: 20px !important;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .faculty-tree .workshop-faculty-three {
+        grid-template-columns: 1fr !important;
+
+        max-width: 350px !important;
+        gap: 18px !important;
+    }
+}
+
+/* =========================================================
+   AGENTICTHON — ONLY 3 FACULTY COORDINATORS
+   CENTERED
+   ========================================================= */
+
+.faculty-tree .agenticthon-faculty-three {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(3, minmax(250px, 1fr)) !important;
+
+    width: 100% !important;
+
+    max-width: 1050px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    gap: 24px !important;
+
+    justify-content: center !important;
+    align-items: start !important;
+}
+
+
+/* Cards */
+
+.faculty-tree .agenticthon-faculty-three .faculty-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+
+/* Photos */
+
+.faculty-tree .agenticthon-faculty-three .faculty-card img {
+    width: 100% !important;
+    height: 300px !important;
+
+    object-fit: cover !important;
+    object-position: center 12% !important;
+
+    display: block !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .faculty-tree .agenticthon-faculty-three {
+        grid-template-columns:
+            repeat(3, minmax(220px, 1fr)) !important;
+
+        max-width: 900px !important;
+
+        gap: 20px !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .faculty-tree .agenticthon-faculty-three {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        max-width: 700px !important;
+
+        gap: 20px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .faculty-tree .agenticthon-faculty-three {
+        grid-template-columns: 1fr !important;
+
+        max-width: 350px !important;
+
+        gap: 18px !important;
+    }
+}
+/* STAFF COORDINATOR — BLUE */
+.faculty-card small,
+.student-team-card small,
+.student-coordinator-card small {
+    color: #19d8ff !important;
+}
+
+
+/* =========================================================
+   CHIEF GUEST PHOTO SIZE
+   ========================================================= */
+
+.chief-guest-photo {
+    position: relative;
+    width: 100%;
+    height: 320px;              /* CHANGE PHOTO HEIGHT HERE */
+
+    overflow: hidden;
+
+    border-radius: 0;
+
+    border: 0;
+    border-bottom: 2px solid rgba(25, 216, 255, 0.65);
+
+    background: #020816;
+
+    box-shadow:
+        0 0 20px rgba(25, 216, 255, 0.12),
+        0 0 40px rgba(140, 60, 255, 0.08);
+}
+
+
+/* PHOTO INSIDE THE BOX */
+
+.chief-guest-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+
+    transition: transform 0.5s ease;
+}
+
+
+/* HOVER EFFECT */
+
+.chief-guest-photo:hover img {
+    transform: scale(1.04);
+}
+
+/* =========================================================
+   WORKSHOP STAFF COORDINATORS — BLUE
+   ========================================================= */
+
+.workshop-faculty-three .faculty-card small,
+.workshop-faculty-three .workshop-card small,
+.workshop-faculty-three .hackathon-card small {
+    color: #19d8ff !important;
 }

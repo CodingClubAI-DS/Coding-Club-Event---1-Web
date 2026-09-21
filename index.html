@@ -15,6 +15,83 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- TEAM GRID — 4 CARDS PER ROW -->
+    <style>
+        .faculty-tree{
+            max-width: 1400px;
+        }
+
+        .tree-branch-level{
+            display:grid;
+            grid-template-columns:repeat(4, minmax(0, 1fr));
+            gap:24px;
+            width:100%;
+            align-items:start;
+        }
+
+        .tree-branch-level .faculty-card{
+            width:100%;
+            max-width:none;
+            flex:none;
+            margin:0;
+        }
+
+        .tree-branch-level .faculty-card img{
+            width:100%;
+            height:300px;
+            object-fit:cover;
+            object-position:center 12%;
+        }
+
+        .student-team-card{
+            grid-column:auto !important;
+            width:100% !important;
+            max-width:none !important;
+            margin:0 !important;
+        }
+
+        /* STUDENT COORDINATORS — ONLY 2, CENTERED */
+        .student-coordinator-only-two{
+            grid-template-columns:repeat(2, minmax(0, 1fr));
+            max-width:700px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .student-coordinator-only-two .student-team-card{
+            width:100% !important;
+        }
+
+        .student-team-card img{
+            height:300px !important;
+            object-fit:cover !important;
+        }
+
+        @media(max-width:1200px){
+            .faculty-tree{
+                max-width:1000px;
+            }
+
+            .tree-branch-level{
+                grid-template-columns:repeat(2, minmax(0, 1fr));
+                gap:20px;
+            }
+        }
+
+        @media(max-width:600px){
+            .tree-branch-level{
+                grid-template-columns:1fr;
+                gap:18px;
+            }
+
+            .tree-branch-level .faculty-card img,
+            .student-team-card img{
+                height:300px !important;
+            }
+        }
+    </style>
+
+
     <!-- =========================
          EVENT IMAGE FIX
          Uses local images from /assets
@@ -859,6 +936,177 @@
         }
     </style>
 
+
+    <style>
+        /* =========================================================
+           COORDINATOR SECTION TITLES
+           ========================================================= */
+
+        .coordinator-heading {
+            width: 100%;
+            text-align: center;
+            margin: 18px 0 28px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .coordinator-heading h2 {
+            margin: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-family: var(--font-display), sans-serif;
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 0 22px rgba(25, 216, 255, 0.22);
+        }
+
+        .coordinator-heading h2 > span:not(.handwritten-accent) {
+            color: #19d8ff;
+            text-shadow: 0 0 18px rgba(25, 216, 255, 0.55);
+        }
+
+        .coordinator-heading .handwritten-accent {
+            margin: 0 2px;
+            font-size: 1.15em;
+        }
+
+        .coordinator-heading-second {
+            margin-top: 58px;
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 600px) {
+            .coordinator-heading {
+                margin: 14px 0 20px;
+            }
+
+            .coordinator-heading h2 {
+                font-size: clamp(24px, 8vw, 34px);
+                gap: 5px;
+                letter-spacing: 1px;
+            }
+
+            .coordinator-heading-second {
+                margin-top: 40px;
+            }
+        }
+    </style>
+
+
+    <style>
+        /* =========================================================
+           WORKSHOP FACULTY — ONLY 3, CENTERED
+           ========================================================= */
+        .workshop-faculty-three {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            width: 100% !important;
+            max-width: 1050px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            gap: 24px !important;
+            justify-content: center !important;
+            align-items: start !important;
+        }
+
+        .workshop-faculty-three .faculty-card {
+            width: 100%;
+        }
+
+        @media (max-width: 1200px) and (min-width: 801px) {
+            .workshop-faculty-three {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                width: 100% !important;
+                max-width: 900px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .workshop-faculty-three {
+                grid-template-columns: 1fr !important;
+                width: 100% !important;
+                max-width: 420px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+    </style>
+
+
+    <!-- FINAL COORDINATOR GRID — 3 WORKSHOP + 3 AGENTICTHON + 2 STUDENTS -->
+    <style>
+        /* Workshop: 3 centered */
+        .faculty-tree .workshop-faculty-three,
+        .faculty-tree .agenticthon-faculty-three {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(250px, 1fr)) !important;
+            width: 100% !important;
+            max-width: 1050px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            gap: 24px !important;
+            justify-content: center !important;
+            align-items: start !important;
+        }
+
+        .faculty-tree .workshop-faculty-three .faculty-card,
+        .faculty-tree .agenticthon-faculty-three .faculty-card {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+        }
+
+        .faculty-tree .workshop-faculty-three .faculty-card img,
+        .faculty-tree .agenticthon-faculty-three .faculty-card img {
+            width: 100% !important;
+            height: 300px !important;
+            object-fit: cover !important;
+            object-position: center 12% !important;
+            display: block !important;
+        }
+
+        /* Students: 2 centered */
+        .faculty-tree .student-coordinator-only-two {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(250px, 1fr)) !important;
+            width: 100% !important;
+            max-width: 700px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            gap: 24px !important;
+            justify-content: center !important;
+        }
+
+        @media (max-width: 800px) {
+            .faculty-tree .workshop-faculty-three,
+            .faculty-tree .agenticthon-faculty-three {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                max-width: 700px !important;
+            }
+
+            .faculty-tree .student-coordinator-only-two {
+                grid-template-columns: 1fr !important;
+                max-width: 350px !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .faculty-tree .workshop-faculty-three,
+            .faculty-tree .agenticthon-faculty-three {
+                grid-template-columns: 1fr !important;
+                max-width: 350px !important;
+            }
+        }
+    </style>
+
 </head>
 
 
@@ -1030,12 +1278,12 @@
 
                 <!-- INTERACTIVE INSTITUTION TITLE -->
                 <div class="institution-title">
-                    <h2>MAHENDRA ENGINEERING COLLEGE</h2>
+                    <h2>     MAHENDRA ENGINEERING COLLEGE     </h2>
                     <small>
-                        (Autonomous, Mahendrapuri, Mallasamudram, Namakkal)
+                        (Autonomous)
                     </small>
                     <br>
-                    <p>DEPT OF ARTIFICIAL INTELLIGENCE &amp; DATA SCIENCE</p>
+                    <h2>                DEPARTMENT OF ARTIFICIAL INTELLIGENCE AND DATA SCIENCE              </h2>
                 </div>
 
                 <div class="eyebrow">
@@ -1069,7 +1317,7 @@
 
                 <div class="date-line">
 
-                    ◈ 24–25 SEPTEMBER 2026
+                    ◈ 24&25 SEPTEMBER 2026
 
                     &nbsp; ◈ &nbsp;
 
@@ -1280,7 +1528,7 @@
                 </span>
 
                 <b>
-                    24 — 25 SEP
+                    24 & 25 SEP
                 </b>
 
             </div>
@@ -1426,7 +1674,7 @@
                         </h3>
 
                         <p>
-                            A fast-paced hackathon for teams ready to build under pressure.
+                            A high-intensity hackathon where ideas turn into working solutions.
                         </p>
 
 
@@ -1456,7 +1704,7 @@
 
                             <b>🎉 Fun Activities</b>
 
-                            <b>❌ 🍽️ Food not provided</b>
+                            <b>❌ 🍽️ Lunch not provided</b>
 
                             <b>🥤 Refreshments</b>
 
@@ -1496,7 +1744,7 @@
             </div>
 
             <h2>
-                <span class="handwritten-accent">win big rewards! ₹12,000 ✦</span>
+                <span class="handwritten-accent">win big rewards! ✦</span>
             </h2>
 
             <p>
@@ -1527,8 +1775,8 @@
                 </span>
 
                 <span>
-                    🏆 Top 5 Prizes
-                    <small>₹12,000 total prize pool.</small>
+                    🏆 Top Prizes
+                    <small>Win big rewards!.</small>
                 </span>
 
             </div>
@@ -1615,7 +1863,7 @@
                     </summary>
 
                     <p>
-                        No. A laptop is optional.
+                        No. A laptop is optional. A laptop is recommended for hands-on activities during the workshop.
                     </p>
 
                 </details>
@@ -1709,7 +1957,7 @@
 
                 <article class="chief-guest-card">
                     <div class="chief-guest-photo">
-                        <img src="assets/ChiefGuest.jpeg" alt="Chief Guest 1">
+                        <img src="assets/Chief Guest 1.jpeg" alt="Chief Guest 1">
                     </div>
 
                     <div class="chief-guest-info">
@@ -1717,8 +1965,8 @@
                             ✦ CHIEF GUEST ✦
                         </div>
 
-                        <h2>Chief Guest 1</h2>
-                        <h3>AI WORKSHOP</h3>
+                        <h2>Er. Vijayakumar Kuppannnan</h2>
+                        <h3>Senior Engineering Consultant & Software Development Verizon Business, Chennai</h3>
 
                         <p>
                             We are honoured to welcome our distinguished Chief Guest
@@ -1734,7 +1982,7 @@
 
                 <article class="chief-guest-card">
                     <div class="chief-guest-photo">
-                        <img src="assets/ChiefGuest.jpeg" alt="Chief Guest 2">
+                        <img src="assets/Chief Guest 2.jpeg" alt="Chief Guest 2">
                     </div>
 
                     <div class="chief-guest-info">
@@ -1742,8 +1990,8 @@
                             ✦ CHIEF GUEST ✦
                         </div>
 
-                        <h2>Chief Guest 2</h2>
-                        <h3>AGENTICTHON</h3>
+                        <h2>Er. Abdul Katheer</h2>
+                        <h3>Senior Engineer III & Payments AI Engineering IG Group, Bangalore</h3>
 
                         <p>
                             We are honoured to welcome our distinguished Chief Guest
@@ -1759,7 +2007,7 @@
 
                 <article class="chief-guest-card">
                     <div class="chief-guest-photo">
-                        <img src="assets/ChiefGuest.jpeg" alt="Chief Guest 3">
+                        <img src="assets/Chief Guest 3 .jpeg" alt="Chief Guest 3">
                     </div>
 
                     <div class="chief-guest-info">
@@ -1767,8 +2015,8 @@
                             ✦ CHIEF GUEST ✦
                         </div>
 
-                        <h2>Chief Guest 3</h2>
-                        <h3>AI WORKSHOP</h3>
+                        <h2>Er. Dhanalakshmi</h2>
+                        <h3>Senior Engineer & Product Engineering Flyerssoft, Chennai</h3>
 
                         <p>
                             We are honoured to welcome our distinguished Chief Guest
@@ -1784,7 +2032,7 @@
 
                 <article class="chief-guest-card">
                     <div class="chief-guest-photo">
-                        <img src="assets/ChiefGuest.jpeg" alt="Chief Guest 4">
+                        <img src="assets/CHief Guest 4.jpeg" alt="Chief Guest 4">
                     </div>
 
                     <div class="chief-guest-info">
@@ -1792,8 +2040,8 @@
                             ✦ CHIEF GUEST ✦
                         </div>
 
-                        <h2>Chief Guest 4</h2>
-                        <h3>AGENTICTHON</h3>
+                        <h2>Er. K. Kamaleshwaran</h2>
+                        <h3>Data Quality Engineer & EPAM Systems, Coimbatore</h3>
 
                         <p>
                             We are honoured to welcome our distinguished Chief Guest
@@ -1809,7 +2057,7 @@
 
                 <article class="chief-guest-card">
                     <div class="chief-guest-photo">
-                        <img src="assets/ChiefGuest.jpeg" alt="Chief Guest 5">
+                        <img src="assets/Chief Guest 5.jpeg" alt="Chief Guest 5">
                     </div>
 
                     <div class="chief-guest-info">
@@ -1817,8 +2065,83 @@
                             ✦ CHIEF GUEST ✦
                         </div>
 
-                        <h2>Chief Guest 5</h2>
-                        <h3>AI WORKSHOP & AGENTICTHON</h3>
+                        <h2>Er. M. Surendar</h2>
+                        <h3>Senior Data Scientist Happiest Minds, Bangalore</h3>
+
+                        <p>
+                            We are honoured to welcome our distinguished Chief Guest
+                            for the AI Workshop &amp; AGENTICTHON.
+                        </p>
+
+                        <div class="chief-guest-events">
+                            <span>AI WORKSHOP</span>
+                            <span>AGENTICTHON</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="chief-guest-card">
+                    <div class="chief-guest-photo">
+                        <img src="assets/ Chief Guest 6.jpeg" alt="Chief Guest 6">
+                    </div>
+
+                    <div class="chief-guest-info">
+                        <div class="chief-guest-label">
+                            ✦ CHIEF GUEST ✦
+                        </div>
+
+                        <h2>Er. Niranjan Krishnamurthy</h2>
+                        <h3>Consultant Deloitte, Coimbatore</h3>
+
+                        <p>
+                            We are honoured to welcome our distinguished Chief Guest
+                            for the AI Workshop &amp; AGENTICTHON.
+                        </p>
+
+                        <div class="chief-guest-events">
+                            <span>AI WORKSHOP</span>
+                            <span>AGENTICTHON</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="chief-guest-card">
+                    <div class="chief-guest-photo">
+                        <img src="assets/Chief Guest 7.jpeg" alt="Chief Guest 7">
+                    </div>
+
+                    <div class="chief-guest-info">
+                        <div class="chief-guest-label">
+                            ✦ CHIEF GUEST ✦
+                        </div>
+
+                        <h2>Er. M. Mohan</h2>
+                        <h3>Founder & CEO Patora AI & IT Services, Salem &amp; AGENTICTHON</h3>
+
+                        <p>
+                            We are honoured to welcome our distinguished Chief Guest
+                            for the AI Workshop &amp; AGENTICTHON.
+                        </p>
+
+                        <div class="chief-guest-events">
+                            <span>AI WORKSHOP</span>
+                            <span>AGENTICTHON</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="chief-guest-card">
+                    <div class="chief-guest-photo">
+                        <img src="assets/Chief Guest 8.jpeg" alt="Chief Guest 8">
+                    </div>
+
+                    <div class="chief-guest-info">
+                        <div class="chief-guest-label">
+                            ✦ CHIEF GUEST ✦
+                        </div>
+
+                        <h2>Er. K. Vasanth</h2>
+                        <h3>Co Founder Arzin AI, Chennai</h3>
 
                         <p>
                             We are honoured to welcome our distinguished Chief Guest
@@ -1844,7 +2167,7 @@
         <section class="section team" id="team">
 
             <div class="kicker">
-                MEET THE CODING CLUB
+                MEET THE 
             </div>
 
             <h2>
@@ -1858,7 +2181,6 @@
             </p>
 
 
-            <div class="faculty-section">
 
                 <div class="team-section-title">
                     MENTORS &amp; COORDINATORS
@@ -1870,11 +2192,12 @@
                     <div class="tree-level tree-root-level">
                         <div class="person faculty-card hod-card">
                             <img src="assets/HodSir.jpeg" alt="HoD">
-                            <b>Dr ANANTH S - HoD</b>
-                            <small>HEAD OF DEPARTMENT</small>
+                            <b>Dr S ANANTH  - HoD</b>
+                            <small>HEAD OF DEPARTMENT</small>   
                             <em>AI &amp; DS · Mahendra Engineering College</em>
                         </div>
                     </div>
+
 
                     <!-- CYBER TREE CONNECTOR LINES -->
                     <div class="tree-connector" aria-hidden="true">
@@ -1885,46 +2208,113 @@
                             <span class="stem-bottom right"></span>
                         </div>
                     </div>
+
+
                     <!-- LEVEL 2: FACULTY & COORDINATORS -->
-                    <div class="tree-level tree-branch-level">
 
-                        <!-- STAFF COORDINATOR — JAYAPRIYA -->
+                    <!-- TITLE ABOVE THE 4 FACULTY PHOTOS -->
+                    <div class="coordinator-heading">
+                        <h2>
+                            FACULTY COORDINATORS
+                            <span class="handwritten-accent">Behind ♡</span>
+                            <span>AI WORKSHOP</span>
+                        </h2>
+                    </div>
+
+                    <!-- ONLY 3 WORKSHOP FACULTY COORDINATORS -->
+                    <div class="tree-level tree-branch-level workshop-faculty-three">
+
+                        <!-- FACULTY COORDINATOR — JAYAPRIYA -->
                         <div class="person faculty-card student-coordinator-card">
-                            <img src="assets/Jayapriya .jpeg" alt="JAYAPRIYA ">
-                            <b>Jayapriya AP/AI&DS</b>
+                            <img src="assets/JayapriyaMam.jpeg" alt="Jayapriya AP/AI&DS">
+                            <b>Jayapriya P AP/AI&amp;DS</b>
                             <small>STAFF COORDINATOR - WORKSHOP</small>
                             <em>AI &amp; DS · Mahendra Engineering College</em>
                         </div>
 
-                        <!-- STAFF COORDINATOR — KAVITHA -->
+                        <!-- FACULTY COORDINATOR — KAVITHA C -->
                         <div class="person faculty-card student-coordinator-card">
-                            <img src="assets/Kavitha C.jpeg" alt="Kavitha C">
-                            <b>Kavitha C AP/AI&DS</b>
+                            <img src="assets/KavithaC.jpeg" alt="Kavitha C AP/AI&DS">
+                            <b>Kavitha C AP/AI&amp;DS</b>
                             <small>STAFF COORDINATOR - WORKSHOP</small>
                             <em>AI &amp; DS · Mahendra Engineering College</em>
                         </div>
 
-                        <!-- FACULTY COORDINATOR — NITHYA M -->
+                        <!-- FACULTY COORDINATOR — KAVITHA L S -->
                         <div class="person faculty-card workshop-card">
-                            <img src="assets/Mekala Mam.jpeg" alt="Mekala R">
-                            <b>Mekala R AP/AI&DS</b>
-                            <small>STAFF COORDINATOR - AGENTICTHON</small>
-                            <em>AI &amp; DS · Mahendra Engineering College</em>
-                        </div>
-
-                        <!-- FACULTY COORDINATOR — Gomathi M -->
-                        <div class="person faculty-card hackathon-card">
-                            <img src="assets/Gomathi.jpeg" alt="GOMATHI M">
+                            <img src="assets/Gomathi.jpeg" alt="Kavitha L S AP/AI&DS">
                             <b>Gomathi M AP/AI&amp;DS</b>
+                            <small>STAFF COORDINATOR - WORKSHOP</small>
+                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        </div>
+
+                    </div>
+
+                    <!-- LEVEL 2: FACULTY & COORDINATORS -->
+
+                    <!-- TITLE ABOVE THE 4 FACULTY PHOTOS -->
+                    <div class="coordinator-heading">
+                        <h2>
+                            FACULTY COORDINATORS
+                            <span class="handwritten-accent">Behind ♡</span>
+                            <span>AGENTICTHON</span>
+                        </h2>
+                    </div>
+
+                    <!-- ONLY 3 AGENTICTHON FACULTY COORDINATORS -->
+                    <div class="tree-level tree-branch-level agenticthon-faculty-three">
+
+                        <!-- AGENTICTHON COORDINATOR — MEKALA -->
+                        <div class="person faculty-card workshop-card">
+                            <img src="assets/Mekalamam.jpeg" alt="Mekala R AP/AI&DS">
+                            <b>Mekala R AP/AI&amp;DS</b>
                             <small>STAFF COORDINATOR - AGENTICTHON</small>
                             <em>AI &amp; DS · Mahendra Engineering College</em>
                         </div>
 
-                        <!-- ADDITIONAL STAFF COORDINATOR -->
-                        <div class="person faculty-card additional-staff-card">
-                            <img src="assets/Deepa A.jpeg" alt="Deepa A">
-                            <b>Deepa A</b>
-                            <small>STAFF COORDINATOR - CODING CLUB</small>
+                        <!-- AGENTICTHON COORDINATOR — ARAVINDRAJ -->
+                        <div class="person faculty-card">
+                            <img src="assets/AravindrajV.jpeg" alt="Aravindraj V AP/AI&DS">
+                            <b>Aravindraj V AP/AI&amp;DS</b>
+                            <small>STAFF COORDINATOR - AGENTICTHON</small>
+                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        </div>
+
+                        <!-- AGENTICTHON COORDINATOR — GOMATHI -->
+                        <div class="person faculty-card hackathon-card">
+                            <img src="assets/DeepaA.jpeg" alt="Gomathi M AP/AI&DS">
+                            <b>Deepa A AP/AI&amp;DS</b>
+                            <small>STAFF COORDINATOR - AGENTICTHON</small>
+                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        </div>
+
+                    </div>
+
+                    <!-- TITLE BELOW THE 4 FACULTY PHOTOS -->
+                    <div class="coordinator-heading coordinator-heading-second">
+                        <h2>
+                            STUDENT COORDINATORS
+                            <span class="handwritten-accent">Behind ♡</span>
+                            <span>THE EVENTS</span>
+                        </h2>
+                    </div>
+
+                    <!-- ONLY 2 STUDENT COORDINATORS -->
+                    <div class="tree-level tree-branch-level student-coordinator-only-two">
+
+                        <!-- STUDENT COORDINATOR — SARAN -->
+                        <div class="person faculty-card student-team-card">
+                            <img src="assets/SaranL.jpeg" alt="Saran">
+                            <b>Saran</b>
+                            <small>STUDENT COORDINATOR - WORKSHOP</small>
+                            <em>AI &amp; DS · Mahendra Engineering College</em>
+                        </div>
+
+                        <!-- STUDENT COORDINATOR — KALAIMATHI -->
+                        <div class="person faculty-card student-team-card">
+                            <img src="assets/kalaimathi.jpeg" alt="Kalaimathi">
+                            <b>Kalaimathi</b>
+                            <small>STUDENT COORDINATOR - WORKSHOP</small>
                             <em>AI &amp; DS · Mahendra Engineering College</em>
                         </div>
 
