@@ -1581,13 +1581,14 @@ footer{
 .team-section-title{
     width:100%;
     text-align:center;
-    margin:35px 0 20px;
+    margin:35px 0 28px;
     color:#7eeaff;
     font:
-        700 14px Oxanium,sans-serif;
-    letter-spacing:4px;
+        700 48px Oxanium,sans-serif;
+    letter-spacing:5px;
     text-shadow:
         0 0 12px rgba(25,216,255,.65);
+    position:relative;
 }
 
 .faculty-grid{
@@ -4178,4 +4179,581 @@ footer {
 .workshop-faculty-three .workshop-card small,
 .workshop-faculty-three .hackathon-card small {
     color: #19d8ff !important;
+}
+
+/* =========================================================
+   FINAL FIXES
+   ========================================================= */
+
+
+/* =========================
+   HOD DETAILS
+   ========================= */
+
+.hod-card .hod-designation{
+    display:block;
+    margin-top:4px;
+    color:#f2f8ff;
+    font-size:16px;
+    font-weight:600;
+    line-height:1.4;
+}
+
+.hod-card .hod-department{
+    display:block;
+    margin-top:5px;
+    margin-bottom:0;
+    color:#19d8ff;
+    font-size:13px;
+    font-style:normal;
+    font-weight:600;
+    line-height:1.4;
+}
+
+.hod-card small{
+    display:block;
+    margin-top:4px;
+}
+
+
+/* =========================
+   CONVENOR BIGGER
+   ========================= */
+
+.team-section-title{
+    font-size:28px !important;
+    font-weight:800 !important;
+    letter-spacing:5px !important;
+}
+
+
+/* =========================
+   HEADER LOGOS FIX
+   ========================= */
+
+header .brand .logos{
+    display:flex !important;
+    align-items:center !important;
+    gap:6px !important;
+}
+
+header .brand .logos img{
+    width:42px !important;
+    height:42px !important;
+    max-width:42px !important;
+    max-height:42px !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    object-fit:contain !important;
+    display:block !important;
+}
+
+
+/* =========================
+   BRAIN SVG FIX
+   ========================= */
+
+.fx .brain-visual{
+    position:absolute !important;
+    width:190px !important;
+    height:155px !important;
+    left:50% !important;
+    top:41% !important;
+    transform:translate(-50%,-50%) !important;
+    z-index:2 !important;
+    color:#43eaff !important;
+    opacity:.18 !important;
+    pointer-events:none !important;
+}
+
+.fx .brain-visual svg{
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    display:block !important;
+}
+
+/* =========================
+   HOD CARD ALIGNMENT
+   ========================= */
+
+.hod-card{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+}
+
+.hod-card img{
+    width:100% !important;
+    display:block !important;
+    object-fit:cover !important;
+}
+
+.hod-card b{
+    width:100% !important;
+    display:block !important;
+    text-align:center !important;
+    margin-top:0 !important;
+}
+
+.hod-card .hod-designation{
+    width:100% !important;
+    display:block !important;
+    text-align:center !important;
+    margin-top:6px !important;
+}
+
+.hod-card .hod-department{
+    width:100% !important;
+    display:block !important;
+    text-align:center !important;
+    margin-top:5px !important;
+}
+
+.hod-card small{
+    width:100% !important;
+    display:block !important;
+    text-align:center !important;
+    margin-top:3px !important;
+}
+
+.team-section-title{
+    font-size:32px !important;
+    font-weight:800 !important;
+    letter-spacing:5px !important;
+}
+
+/* =========================================================
+   CONVENOR + HOD — REFERENCE IMAGE ALIGNMENT
+   ========================================================= */
+
+.team-section-title{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:36px;
+    width:100%;
+    margin:35px 0 28px;
+    color:#7eeaff;
+    font:700 48px Oxanium,sans-serif;
+    letter-spacing:5px;
+    text-shadow:
+        0 0 12px rgba(25,216,255,.65);
+}
+
+/* glowing lines beside CONVENOR */
+.team-section-title::before,
+.team-section-title::after{
+    content:"";
+    display:block;
+    width:130px;
+    height:2px;
+    border-radius:10px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #19d8ff,
+        #a850ff
+    );
+    box-shadow:
+        0 0 8px rgba(25,216,255,.7);
+}
+
+.team-section-title::after{
+    background:linear-gradient(
+        90deg,
+        #ff2bd6,
+        #a850ff,
+        transparent
+    );
+}
+
+
+/* HOD CARD */
+.tree-root-level .faculty-card{
+    width:410px !important;
+    max-width:410px !important;
+    border-width:1.5px;
+    border-color:rgba(168,80,255,.85);
+    box-shadow:
+        0 0 35px rgba(168,80,255,.25),
+        0 14px 35px rgba(0,0,0,.65);
+}
+
+
+/* HOD PHOTO */
+.tree-root-level .faculty-card img{
+    width:100% !important;
+    height:394px !important;
+    object-fit:cover !important;
+    object-position:center 12% !important;
+    display:block;
+}
+
+
+/* HOD TEXT — LEFT ALIGNED LIKE REFERENCE */
+.hod-card{
+    text-align:left !important;
+}
+
+.hod-card b{
+    display:block !important;
+    width:auto !important;
+    margin-left:22px !important;
+    margin-right:15px !important;
+    margin-top:17px !important;
+    text-align:left !important;
+    font-size:18px !important;
+}
+
+.hod-card .hod-designation{
+    display:block !important;
+    width:auto !important;
+    margin:8px 15px 0 22px !important;
+    text-align:left !important;
+    font-size:17px !important;
+    line-height:1.4;
+}
+
+.hod-card .hod-department{
+    display:block !important;
+    width:auto !important;
+    margin:8px 15px 0 22px !important;
+    text-align:left !important;
+    font-size:16px !important;
+    line-height:1.4;
+}
+
+.hod-card small{
+    display:block !important;
+    width:auto !important;
+    margin:6px 15px 0 22px !important;
+    text-align:left !important;
+    font-size:15px !important;
+    line-height:1.35;
+}
+
+.hod-card small:last-child{
+    margin-bottom:17px !important;
+    color:#9fb3c9 !important;
+}
+
+
+/* SPACE BEFORE FACULTY COORDINATORS */
+.tree-root-level{
+    margin-bottom:55px;
+}
+
+
+/* DESKTOP */
+@media(max-width:800px){
+
+    .team-section-title{
+        font-size:32px;
+        letter-spacing:3px;
+        gap:15px;
+    }
+
+    .team-section-title::before,
+    .team-section-title::after{
+        width:55px;
+    }
+
+    .tree-root-level .faculty-card{
+        width:calc(100% - 30px) !important;
+        max-width:410px !important;
+    }
+
+    .tree-root-level .faculty-card img{
+        height:320px !important;
+    }
+}
+
+/* =========================================================
+   CONVENOR + HOD — EXACT REFERENCE ALIGNMENT
+   ========================================================= */
+
+.team-section-title{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:36px;
+
+    margin:35px 0 28px;
+
+    color:#7eeaff;
+
+    font:
+        700 48px Oxanium,sans-serif;
+
+    letter-spacing:5px;
+
+    text-shadow:
+        0 0 12px rgba(25,216,255,.65);
+}
+
+
+/* LINES BESIDE CONVENOR */
+
+.team-section-title::before,
+.team-section-title::after{
+    content:"";
+
+    width:130px;
+    height:2px;
+
+    flex-shrink:0;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #19d8ff,
+            #a850ff
+        );
+
+    box-shadow:
+        0 0 8px rgba(25,216,255,.7);
+}
+
+.team-section-title::after{
+    background:
+        linear-gradient(
+            90deg,
+            #ff2bd6,
+            #a850ff,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   HOD CARD
+   ========================================================= */
+
+.tree-root-level .faculty-card{
+    width:410px !important;
+    max-width:410px !important;
+
+    border-width:1.5px;
+
+    border-color:
+        rgba(168,80,255,.85);
+
+    box-shadow:
+        0 0 35px rgba(168,80,255,.25),
+        0 14px 35px rgba(0,0,0,.65);
+}
+
+
+/* HOD PHOTO */
+
+.tree-root-level .faculty-card img{
+    width:100% !important;
+    height:394px !important;
+
+    object-fit:cover !important;
+    object-position:center 12% !important;
+
+    display:block;
+}
+
+
+/* =========================================================
+   HOD TEXT
+   ========================================================= */
+
+.hod-card{
+    text-align:left !important;
+}
+
+.hod-card b{
+    display:block !important;
+
+    margin-top:17px !important;
+    margin-left:22px !important;
+    margin-right:15px !important;
+
+    text-align:left !important;
+
+    font-size:18px !important;
+}
+
+.hod-card .hod-designation{
+    display:block !important;
+
+    margin:
+        8px 15px 0 22px !important;
+
+    text-align:left !important;
+
+    font-size:17px !important;
+    line-height:1.4;
+}
+
+.hod-card .hod-department{
+    display:block !important;
+
+    margin:
+        8px 15px 0 22px !important;
+
+    text-align:left !important;
+
+    font-size:16px !important;
+    line-height:1.4;
+}
+
+.hod-card small{
+    display:block !important;
+
+    margin:
+        6px 15px 0 22px !important;
+
+    text-align:left !important;
+
+    font-size:15px !important;
+    line-height:1.35;
+}
+
+.hod-card small:last-child{
+    margin-bottom:17px !important;
+    color:#9fb3c9 !important;
+}
+
+
+/* SPACE BELOW HOD */
+
+.tree-root-level{
+    margin-bottom:55px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:800px){
+
+    .team-section-title{
+        font-size:32px;
+        letter-spacing:3px;
+        gap:15px;
+    }
+
+    .team-section-title::before,
+    .team-section-title::after{
+        width:55px;
+    }
+
+    .tree-root-level .faculty-card{
+        width:calc(100% - 30px) !important;
+        max-width:410px !important;
+    }
+
+    .tree-root-level .faculty-card img{
+        height:320px !important;
+    }
+}
+
+/* HOD FINAL ALIGNMENT */
+
+.tree-root-level .faculty-card{
+    width:410px !important;
+    max-width:410px !important;
+}
+
+.tree-root-level .faculty-card img{
+    width:100% !important;
+    height:394px !important;
+    object-fit:cover !important;
+    object-position:center 12% !important;
+}
+
+.hod-card{
+    text-align:left !important;
+}
+
+.hod-card b{
+    display:block !important;
+    margin:17px 15px 0 22px !important;
+    font-size:18px !important;
+}
+
+.hod-card .hod-designation{
+    display:block !important;
+    margin:8px 15px 0 22px !important;
+    font-size:17px !important;
+}
+
+.hod-card .hod-department{
+    display:block !important;
+    margin:8px 15px 0 22px !important;
+    font-size:16px !important;
+    color:#19d8ff !important;
+    font-style:normal !important;
+}
+
+.hod-card small{
+    display:block !important;
+    margin:6px 15px 0 22px !important;
+    font-size:15px !important;
+}
+
+.hod-card small:last-child{
+    margin-bottom:17px !important;
+    color:#9fb3c9 !important;
+}
+
+/* =========================================================
+   HOD TEXT — LEFT ALIGN LIKE REFERENCE
+   ========================================================= */
+
+.hod-card{
+    align-items:stretch !important;
+    text-align:left !important;
+}
+
+/* Name */
+.hod-card b{
+    display:block !important;
+    width:auto !important;
+    margin:17px 15px 0 22px !important;
+    text-align:left !important;
+}
+
+/* Head of Department */
+.hod-card .hod-designation{
+    display:block !important;
+    width:auto !important;
+    margin:8px 15px 0 22px !important;
+    text-align:left !important;
+}
+
+/* Department */
+.hod-card .hod-department{
+    display:block !important;
+    width:auto !important;
+    margin:8px 15px 0 22px !important;
+    text-align:left !important;
+}
+
+/* College */
+.hod-card small{
+    display:block !important;
+    width:auto !important;
+    margin:6px 15px 0 22px !important;
+    text-align:left !important;
+}
+
+/* Autonomous */
+.hod-card small:last-child{
+    margin-bottom:17px !important;
+    text-align:left !important;
+    color:#9fb3c9 !important;
 }
