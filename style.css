@@ -1886,10 +1886,8 @@ footer{
 }
 
 .hod-card::before{
-    content:"HOD";
-    color:#d08cff;
-    background:rgba(80,20,150,.78);
-    border:1px solid rgba(210,120,255,.7);
+    content:none !important;
+    display:none !important;
 }
 
 
